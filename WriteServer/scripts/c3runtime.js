@@ -2710,7 +2710,7 @@ case AUTO_FONT_SIZE:return this._autoFontSize;case CHECKED:return this._isChecke
 		() => "stats game",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => and("http://imb.it.usf.edu/ebook.php?id=1&name=var1", v0.GetValue());
+			return () => and("http://imb.it.usf.edu/ebook.php?id=1&name=var1&value=", v0.GetValue());
 		},
 		() => "",
 		() => "GET",
