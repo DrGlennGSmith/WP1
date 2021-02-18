@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<title>Form example, example 2</title>
+<script type="text/javascript">
+/*  Week 3 - form example like ASG 0 - survey for film festival */
+
+/*
+ * Prompt for Salutation
+ */
+function myClick() {
+    var name, salutation;
+    alert("in function");
+    name = document.Survey.Name.value;
+    
+    if (name == "") {       
+        alert("Please enter your name and click on the button again."); 
+        }
+    else { 
+        salutation = prompt("Enter Mrs. or Mrs. or Ms. etc","");
+        name = salutation + " " + name;
+        document.Survey.Name.value = name;
+        }
+}
+/*
+ * Function to add year of film, BREAK OUT EXERCISE
+ */
+ function addFilmYear()
+ {
+ /* Prompt for film year */   
+     var film_year;
+      film_year = prompt("Enter film year");
+      document.Survey.film_year.value = film_year;
+  /* Could also be done... document.Survey.film_year.value = prompt("Enter film year"); */    
+    
+ }
+</script>
+</HEAD>
+<BODY bgcolor="#E6E6FA">
+<h3>Help us select films for our upcoming film festival</h3>
+<img src="calgary-underground-film-festival-580x400.jpg" height="400" width="580"/>
+<!-- Currently emails it to glenns@usf.edu, but please register your 
+     email address at: http://www.tipjar.com/generic.html when you do the assignment  -->
+<form NAME="Survey" METHOD="post" ACTION="http://www.tipjar.com/bin/generic?&mailto=DZE">
+ Please enter your name: <input TYPE=text NAME="Name" VALUE="" SIZE=30 MAXLENGTH=30>
+<br/>
+ Request: <input TYPE=text NAME="request" VALUE="Request film" SIZE=50 MAXLENGTH=50>
+<br/>
+ What type of movie do you like? <select NAME="RequestedFilm">
+      <option VALUE="Thriller">Thriller
+      <option VALUE="Romantic comedy">Romantic comedy
+      <option VALUE="Adventure">Adventure
+      <option VALUE="Indie">Indie
+</select>
+<br>
+<input type="submit" value="Click Me to Submit">
+<input type="hidden" name="film_year" value="No year entered.">
+</form>
+
+<input type="button" name="button" onclick="myClick()"value="Add salutation"/>
+<br>
+<input type="button" name="button" onclick="addFilmYear()"value="Add film YEAR"/>
+<br> 
+
+</BODY>
+</HTML>
