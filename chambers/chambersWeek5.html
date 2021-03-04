@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Assignment Week 5</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="stylew5.css">
+    <script language="Javascript">
+
+        var imageList = Array();
+        for (var i = 1; i <= 9; i++) {
+           imageList[i] = new Image(300,200);
+           imageList[i].src = "images/school0" + i + ".jpg";
+        }
+
+        function switchImage() {
+            var selectedImage = document.myForm.switch.options[document.myForm.switch.selectedIndex].value;
+          
+            document.myImage.src = imageList[selectedImage].src;
+        }
+        function switchInfo(){
+
+            /*
+            Note how I used a local variable i which is simpler than what you had before in the if else if s..
+            */
+            var i = document.myForm.switch.selectedIndex;
+
+            /* 
+            I moved the javascript to the head. It is more organized to keep it here.
+            It might work with the javascript down in the body, 
+            but it feels more organized to have the javascript in the head and the html code in the body.
+            
+            Do not confuse = with ==  The first is an assignment operator. The second is a test for equality. 
+            Also, i was undefined before. Also, it is document.getElementById, not document.getElementsById
+            
+           Also, looking at a working example, I found that it is innerHTML, 
+           not innerhtml It is case sensitive and should be  document.getElementById("info").innerHTML
+
+            Also, it might be easier to use the switch keyword, instead of all the if and else if
+             
+            Note how I used a local variable i which is simpler than what you had before.
+            */
+            if (i == 1){
+                
+                document.getElementById("info").innerHTML = 
+                "Waterstone Elementary<br>(305) 248-6206<br>855 Waterstone Way<br>Homestead, FL 33033<br>";
+            }   else if (i == 2){
+                document.getElemensById("info").innerHTML =
+                "Airbase Elementary<br>(305) 258-3676<br>12829 SW 272nd St<br>Homestead, FL 33032";
+            }   else if (i == 3){
+                document.getElementById("info").innerHTML =
+                "Somerset Elementary<br>(305) 245-6108<br>300 SE 1st Dr<br>Homestead, FL 33030";
+            }   else if (i == 4){
+                document.getElementById("info").innerHTML =
+                "Campbell Drive<br>(305) 245-0270<br>15790 SW 307th St<br>Homestead, FL 33033";
+            }   else if (i == 5){
+                document.getElementById("info").innerHTML =
+                "Gateway Environmental<br>(305) 257-6000<br>955 SE 18th Ave<br>Homestead, FL 33035";
+            }   else if (i == 6){
+                document.getElementById("info").innerHTML =
+                "Homestead Middle School<br>(305) 247-4221<br>650 NW 2nd Ave<br>Homestead, FL 33030";
+            }   else if (i == 7){
+                document.getElementById("info").innerHTML =
+                "Homestead High School<br>(305) 245-7000)<br>2351 SE 12th Ave<br>Homestead, FL 33035";
+            }   else if (i == 8){
+                document.getElementById("info").innerHTML =
+                "Keys Gate<br>(305) 230-1616<br>2000 SE 28th Ave<br>Homestead, FL 33035";
+            }   else if(i == 9){
+                document.getElementById("info").innerHTML =
+                "Chambers High School<br>(305) 909-6307<br>698 N Homestead Blvd<br>Homestead, FL 33030";
+            }
+
+        }
+
+        
+
+    </script>
+</head>
+
+<body>
+<header></header>
+<!--Side navigation Bar-->	
+<div class="row">
+</div>
+	<div class="column heading">
+		
+	</div>
+	<div class="column nav">
+
+		<h1>Sandra Chambers</h1>
+		<h2>Assignments</h2>
+		<a href="index.html">Week 0</a>
+		<a href="week1.html">Week 1</a>
+		<a href="week2.html">Week 2</a>
+		<a href="week3.html">Week 3</a>
+		<a href="week4.html">Week 4</a>
+		<a href="week5.html" class="active">Week 5</a>
+		<a href="week6.html">Week 6</a>
+		<a href="#">Week 7</a>
+		<a href="#">Week 8</a>
+		<a href="#">Week 9</a>
+		<a href="#">Week 10</a>
+		<a href="#">Week 11</a>
+		<a href="#">Week 12</a>
+
+	</div>
+<div class="column heading">
+
+</div>
+<!--Form Section-->
+<div class="column about">
+    <img id="logo" src="images/seal.svg" alt="Miami Dade County Public Schools Logo">
+	<h1 class="flex">Miami Dade County School District</h1>
+	<h2>School Options</h2>	
+	
+		<div class="text">
+            <p>Please enter your student's information in the form below.</p>
+            <form method="" action="" name="myForm">
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" placeholder="John">
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname" placeholder="Doe"><br>
+                <label for="email">Email address:</label>
+                <input type="email" id="email" name="email" placeholder="abc@myemail.com"><br>
+                <label for="tel">Telephone Number:</label>
+                <input type="tel" id="tel" name="tel" placeholder="123-456-7890">
+                <label for="DOB">Date of Birth:</label>
+                <input type="date" id="DOB" name="DOB"><br>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="other">other</option>
+                </select> 
+                <label for="grade">Grade Level:</label>
+                <select id="grade" name="grade">
+                    <option value="0">K</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <label for="school">School Choice:</label>
+                <select id="switch" name="switch" onchange="switchImage(); switchInfo();">
+                    <option value="1">Waterstone Elementary</option>
+                    <option value="2">Airbase Elementary</option>
+                    <option value="3">Somerset Elementary</option>
+                    <option value="4">Campbell Drive K-8</option>
+                    <option value="5">Gateway Environmental K-8</option>
+                    <option value="6">Homestead Middle School</option>
+                    <option value="7">Homestead Senior High</option>
+                    <option value="8">Keys Gate Charter High School</option>
+                    <option value="9">Chambers High School</option>
+                </select>
+
+                <br><br>
+                <input type="submit" value="Submit">
+
+
+            </form> 
+<!--School Info Section-->
+                <P></P>
+                <p id="info"  >
+                    THE SCHOOL INFO GOES HERE.
+                </p>
+
+  
+            <img src="images/school01.jpg" name="myImage" alt="Waterstone Elementary School">
+
+        </div>
+
+</div>
+
+
+<footer>
+	Copyright &copy; 2021, Sandra Chambers
+</footer>
+</body>
+</html> 
+
+

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title> Object properties example - Dr. Smith</title>
+<script type="text/javascript">
+
+/* globals - two animals */
+    
+var animal1 = {name:"dog", locomotion:"running", food:"meat", range:"land world-wide", noise: "bark" };
+    
+var animal2 = {name:"dolphin", locomotion:"swimming", food:"fish", range:"deep sea, and some coastal areas", noise: "squeaking and clicking noises" }; 
+
+//Create a third animal called animal3
+var animal3 = {name:"bird", locomotion:"flying", food:"earth worms", range:"sky", noise:"tweet" };
+//Create a new animal based on a user.  What do we need to do that with?
+var animal4 = {name:"", locomotion:"", food:"", range:"", noise:"" };
+//Go here!  http://collabedit.com/mbc96
+function enterAnimal(animal)
+{
+    //Someone has suggested prompt();
+    //Someone has suggested creating variables to save things to.
+    //object.whateverthatpropertynamelocomotionfoodblahblahblah
+    //locomotion -- animal.locomotion. <---- Hint Hint
+    animal.name = prompt("Choose your animal");
+    animal.locomotion = prompt ("Choose the method of locomotion");    
+    animal.food = prompt ("Choose the type of food"); 
+    animal.range = prompt ("Choose the range"); 
+    animal.noise = prompt ("Choose the noise"); 
+    
+//All your curly brace are belong to us.
+}
+
+//The function guessAnimal prompts the user for a value and compares it to the parameter animal.  
+function guessAnimal(animal)
+{
+    var your_guess, animal_properties_message, alert_message;
+    
+    animal_properties_message = "I move by " + animal.locomotion + ", eat " + animal.food + ", live in or on " + animal.range +  ", and the noise I make is " + animal.noise + ". What am I?";
+    //Gathers user input.
+    your_guess = prompt(animal_properties_message,"Type of Animal");
+    
+    alert_message = "You guessed " + your_guess + ". I am a " + animal.name + ".";
+    
+    alert(alert_message);
+    //Writes the alert message to the webpage.
+    document.getElementById("demo").innerHTML = alert_message; 
+}   
+    
+</script>
+    
+<style>
+  body {background-color:lightgray}
+  h1   {color:darkred}
+  p    {color:darkred}
+</style>
+    
+</head>
+<body>
+<h1>Simple animal guessing game!</h1>
+ <img src="0805-california-mystery-animal.jpg" alt="mystery animal" height="240" width="360"> 
+<br>
+<br>
+<input type="button" onclick="guessAnimal(animal2)" value="1) Guess what animal I am" />
+<br>
+<br>
+<input type="button" onclick="guessAnimal(animal1)" value="2) Guess what animal I am" />
+<br>
+<br>
+<!--What goes here?-->
+<input type="button" onclick="guessAnimal(animal3)" value="3) Guess what animal I am" />
+<br>
+<br>
+<input type="button" onclick="enterAnimal(animal4)" value="Enter your own animal" />
+<br>
+<br>
+<input type="button" onclick="guessAnimal(animal4)" value="4) Guess what animal I am" />
+<p id="demo"> Your guess and the answer will appear here.</p>
+</body>
+</html>
+
+ 

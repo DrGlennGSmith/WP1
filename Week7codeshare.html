@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Countries</title>
+	<meta charset="utf-8">
+    /* Jennifer */ /*Renyu*/
+  <script type = "text/javascript">
+                
+    function country (name, continent, population, capital, climate, area){
+           
+      /* Rome - climate Kara Jennifer */
+
+                  this.name = name; 
+                  this.continent = continent;
+                  this.population= population;
+                  this.capital = capital;
+                  this.climate = climate;
+                  this.area = area;
+                  
+                  
+                  /* Dr. Smith */
+                  
+                  this.density = function () {
+   								/*Dan*/
+          				return this.population / this.area;
+        									}
+                  
+                  /*Renyu*/
+                  this.writeCountry = function ()
+                  {
+                	var str = this.name + " " + this.continent + " " + this.population + " " + 
+                    this.capital + " " + this.climate + " " + this.area;
+                  writeText(str, "textArea");                                             
+   							    }
+                  };
+                                  
+        /* function to write text out  to hmtl object */
+  function writeText(txt, destination){
+   document.getElementById(destination).innerHTML=txt;
+   } 
+       /*Annette - Wales, Vatican City*/   /*Rome - India */                /*Jennifer-Costa Rica*/    /*area is in square miles*/               
+	  var country1 = new country("Wales", "Europe", 3136000, "Cardiff", "Temperate", 8006); 
+      var country2 = new country("Slovenia", "Europe", 2110000,"Ljubljana", "mountain", 7827);                                                                                 	
+      var country3 = new country("India", "Asia", 1300000000, "New Delhi", "Sub-Tropical", 1260000);         
+      var country4 = new country("Costa Rica", "North America", 5000000, "San Jose", 
+      "Perfect but rains a lot", 19700); 
+      var country5 = new country("Vatican City", "Europe", 825, "None", "Mediterranean", 10); 
+
+  </script>
+</head>                  
+<body style="background-color: rgb(248, 232, 235);"> 
+  <!--Annette-->                                
+	<h1 align="center">Countries of the World - Density</h1>
+  <h3 align="center">This is Fun!<h3>
+ 
+                    <!--Mu-Jung-->
+  <style>
+    .button { background-color: white;
+             color: black;
+             border: 2px solid #D6E5C4;
+                    }  
+ </style>
+          
+    <!--  Dr. Smith  --> 
+   <input type="button" value = "write Country2" onclick= "country2.writeCountry();" 
+   name="write country2"/>
+
+   <input type="button" value = "write Country3" onclick= "country3.writeCountry();" 
+   name="write country3"/>
+ 
+  <!-- Rome - button   -->
+ <input type="button" value = "write capital Country3" 
+ onclick= "writeText(country3.capital,'textArea2');" name="write country3"/>
+ 
+ <input type="button" value = "write capital Country4" onclick= 
+ "writeText(country4.capital,'textArea2');" name="write country4"/>
+ 
+<input type="button" value = "write density Country5" 
+onclick= "writeText(country5.density(),'textArea2');" name="write country5"/>                                                                                                                                
+  
+         <!--  Dan -->                                                                                                    
+
+    <p id="textArea">  Text goes here: </p>
+		<p id="textArea2">  Text goes here: </p>
+                     
+   
+                                                                                                                                                                                                                                     
+</body>
+
+
+</html>

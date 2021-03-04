@@ -1,0 +1,60 @@
+<html>
+ <header>
+     
+<script type="text/javascript">
+ 
+/* globals -  standards */
+    
+var standard1 = {code:"xxx", grade:"xxx", description:"xxx", example:"xxx", CogComplexlevel: "Level -2: Ignoring of useful knowledge" };
+ 
+/*
+This variable holds an empty standard object, i.e., it has only null strings for all properties. However, you can use 
+*/
+var standard2 = {code:"", grade:"", description:"", example:"", CogComplexlevel: "" };
+
+/*
+  Load up the standard from the form..
+*/
+function loadStandardFromForm(aStandard)  
+    {
+        /* you will need to also load the other properties, but here is a start */     
+        aStandard.code = document.UserInput.code.value; 
+        
+    }
+   
+/*
+Show the user a standard. Please feel free to extend this function.
+*/
+function showStandard(anotherStandard)  
+    {
+             
+       document.getElementById("demo").innerHTML = "The code is: " + anotherStandard.code;      
+    }
+     </script>
+     
+ </header> 
+    
+ <body>
+    
+     <p id="demo" > Something will appear here. </p>
+        
+    <form NAME="UserInput" >
+        
+Code: <input TYPE=text NAME="code" VALUE="Input a code" SIZE=50 MAXLENGTH=50>
+   <!--
+    Of course you will need other other inputs in the form, from which to load the other properties
+    -->     
+<br>  
+    Need another form input to load another property, etc. 
+<br> 
+<input type="button" name="button" onclick="loadStandardFromForm(standard2)"value="Load Standard From Form"/>
+ <br>
+<input type="button" name="button" onclick="showStandard(standard1)"value="See a standard"/>
+<br>         
+<input type="button" name="button" onclick="showStandard(standard2)"value="See your new standard"/>
+        
+     </form>
+        
+  </body>
+
+</html>

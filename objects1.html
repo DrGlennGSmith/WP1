@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+ 
+    /* global variable .. and object */
+var car = {
+type:"Honda", model:"Accord", color:"white", year:2015, milage: 7000, 
+    write_car: function () 
+    {
+        var str = "write_car says ... Type is " + this.type + ", Model is  " + this.model + ", color is " + this.color + ", year is " + this.year + ", milage is " + this.milage;
+        
+        alert(str);
+    }
+    
+};
+    
+var Marty_car = {
+type:"Ford", model:"Torus", color:"silver", year:2004, milage: 127000, 
+    write_car: function () 
+    {
+        var str = "write_car says ... Type is " + this.type + ", Model is  " + this.model + ", color is " + this.color + ", year is " + this.year + ", milage is " + this.milage;
+        
+        alert(str);
+    },
+    
+    prompt_values: function () 
+    {
+        this.type = prompt("enter your car type");
+        this.model = prompt("enter your car model");
+        this.color = prompt("enter your car color");
+        this.year = prompt("enter your car year");
+        this.milage = prompt("enter your car milage");
+    }
+};
+
+    /* function to write out the object. */
+function doit()
+    {
+        car.write_car();
+        Marty_car.write_car();
+        Marty_car.prompt_values();
+        Marty_car.write_car();
+        
+        /* local variable */
+  var str = "Mohammed's car is type: " + car.type + " Model: " + car.model + " etc.";
+  
+  var str2;
+        
+  str2 = "Marty's car is type:  " + Marty_car.type + " " + Marty_car.model + " " + Marty_car.color + " " + Marty_car.year + " " + Marty_car.milage;
+        
+
+  document.getElementById("demo").innerHTML = str;
+  document.getElementById("demo2").innerHTML = str2;
+      
+ if (Marty_car.color == "silver")
+  {
+    alert (" Yes, Marty's car is silver");
+        
+    }
+}
+
+</script>
+</head>
+<body>
+
+<p>Creating a JavaScript Object.</p>
+
+<p id="demo"></p>
+    
+<p id="demo2"></p>
+
+  <input type="button" name="button" onclick="doit()"value="Estimate total"/>
+
+</body>
+</html>

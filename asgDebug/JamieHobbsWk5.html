@@ -1,0 +1,136 @@
+
+<html>
+<!--html stands for hypertext markup language. (Chris)-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Schools</title>
+    <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+<h1> Sarasota Middle Schools (grades 6-8)</h1>
+
+<script type="application/javascript">
+    //function to change animal picture based on user selection
+    function submit(){
+        var current = document.getElementById("jungle");
+        var newImg = document.getElementById("animal");
+        current.src = newImg.value;
+    } 
+</script>
+
+
+<script type="text/javascript">
+    function showSchoolInfo(){
+
+         // Dr. Smith: below, I added .value
+        var school = document.getElementById("school").value;
+       /* arguments showSchoolInfo  */
+
+        //based on user prompts, change background color
+        // Dr. Smith: I changed it to SMS and also changed it to
+        // document.getElementById("schoolInfo").innerHTML = "Sarasota middle school is rockin!"
+        // You need make appropriate changes .. 
+        if (school == "SMS") {
+            document.getElementById("schoolInfo").innerHTML = "Sarasota middle school is rockin!"
+            }    
+        else if (school == "MMS") {
+            document.write("<body bgcolor ='lightgoldenrodyellow'>")
+            }
+        else if (school == "BMS") {
+            document.write("<body bgcolor ='lightgoldenrodyellow'>")
+            }
+        else if (school == "BOMS") {
+            document.write("<body bgcolor ='lightgoldenrodyellow'>")
+            }
+        else if (school == "AMS") {
+            document.write("<body bgcolor ='yellow'>")
+            }
+    }   
+</script>
+
+
+<!-- Form for parents to put their child on a waiting list for a school. The form should ask for relevant demographic 
+    information, name, age, gender, upcoming grade, and a drop down selector for which school you want your child to 
+    be on the waiting list. -->
+
+<form action=''>
+    <fieldset>
+        <legend>Middle School Information</legend>
+        <label for="school">Select Middle School:</label> 
+       <!-- Dr. Smith: I added id="school" to the select  -->
+        <select id="school">
+            <option value="SMS">Sarasota Middle School</option>
+            <option value="MMS">McIntosh Middle School</option>
+            <option value="BMS">Brookside Middle School</option>
+            <option value="BOMS">Booker Middle School</option>
+            <option value="AMS">Ashton Middle School</option>
+        </select>
+        <input type = "button"
+                    value = "Get Info"
+                    onclick = "showSchoolInfo()" />
+    </fieldset>
+ <!-- Dr. Smith: I added id="schoolInfo" below  -->   
+    <p id="schoolInfo"> School info: </p>
+</form>
+<!--It was: <form action="mailto:hobbs2@usf.edu" method="post"> -->
+<!-- Dr. Smith: I changed it to the following based on -->
+<!-- https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_mail -->
+<form action="mailto:hobbs2@usf.edu" method="post" enctype="text/plain">
+    <fieldset>
+        <legend>Student Registration Form</legend>
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" value="John">
+    <br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" value="Doe">
+    <br>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" checked="checked">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="female">Prefer not to say</label>
+    <br>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" value="10">
+    <br>
+        <label for="grade">Upcoming Grade:</label> 
+        <select>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+    <br>
+        <label for="prefSchool">Preferred Middle School:</label> 
+        <select>
+            <option value="SMS">Sarasota Middle School</option>
+            <option value="MMS">McIntosh Middle School</option>
+            <option value="BMS">Brookside Middle School</option>
+            <option value="BOMS">Booker Middle School</option>
+            <option value="AMS">Ashton Middle School</option>
+        </select>
+    <br>
+    <input type="submit" value="Send">
+    <p>test A confirmation email will be sent upon clicking Submit.</p>
+    </fieldset>
+</form>
+
+</body>
+<footer>
+    <div class="buttons">
+        <button class="button button0"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk0';">HMWK 0</button>
+        <button class="button button1"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk1';">HMWK 1</button>
+        <button class="button button2"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/index';">HMWK 2</button>
+        <button class="button button3"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk3';">HMWK 3</button>
+        <button class="button button4"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk4';">HMWK 4</button>
+    <br>
+        <button class="button button5">HMWK 5</button>
+        <button class="button button6">HMWK 6</button>
+        <button class="button button7">HMWK 7</button>
+        <button class="button button8">HMWK 8</button>
+        <button class="button button9">HMWK 9</button>
+    
+    </div>
+</footer>
+</html>

@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<title> Objects simple example</title>
+<script type="text/javascript">
+  
+/* Dr. Glenn Smith: an example of constructors and methods for in-class presentation
+/*
+
+/* */
+
+/* 
+*/
+    
+// Constructor function for animal objects
+function Animal(name, phyl, clss, ord, fam, gen, spec ) {
+    // Thinks of "this" as "my." It would make more sense as "my."
+    this.commonName = name;
+    this.phylum = phyl;
+    this.class = clss;
+    this.order = ord;
+    this.family = fam;
+    this.genus = gen;
+    this.species = spec;
+
+    // assemble the full name of the animal
+    this.fullName = function () {
+            return "The " + this.commonName + " is of phylum " + this.phylum +  ", class: " + this.class + ", order: " + this.order + ", family: " + this.family + ", genus: " + this.genus + ", species: " + this.species;
+    };
+    
+/*
+ method to write the animal full phylogeny to the html page
+*/    
+    this.writeAnAnimal = function ()
+    {      
+    writeText(this.fullName(), "textArea");
+    };    
+}
+
+// Create a Animal object
+var animal1 = new Animal("Grizzly bear","Chordata","Mammalia","Carnivora","Ursidae","Ursus","arctos horribilis");
+
+// We will input this one from a form
+var animal2;
+  
+/*
+Write some text out to an html element. The text to write and the id of the html
+element to write to are parameters.
+*/
+function writeText(txt, destination)
+   {
+   document.getElementById(destination).innerHTML=txt;
+   }
+</script>
+
+</head>
+<body>
+<img src="Lesson_animals-6.png" alt="Species" height="270">
+<h2>
+<br>
+<p id="textArea">  Text goes here: </p>
+<br>
+
+<input type="button" onclick= "animal1.writeAnAnimal();" value="Find out the phylogeny of 1 of the 6 animals in the image" name="phylogeny"/>
+<br>
+    
+<!-- Use a form to enter values for an animal -->
+    
+<form name="animalForm">
+Enter values for the animal:
+<br>
+<input type="text" name="commonName" min="0" size="30" placeholder="common name">
+<br>
+<input type="text" name="phylum" min="0" size="30" placeholder="phylum">
+<br>
+<input type="text" name="class" min="0" size="30" placeholder="class">
+<br>
+<input type="text" name="order" min="0" size="30" placeholder="order">
+<br>
+<input type="text" name="family" min="0" size="30" placeholder="family">
+<br>
+<input type="text" name="genus" min="0" size="30" placeholder="genus">
+<br>
+<input type="text" name="species" min="0" size="30" placeholder="species">
+
+</form>
+ <br>
+    
+<input type="button" onclick= "animal2 = new Animal(document.animalForm.commonName.value, 
+          document.animalForm.phylum.value,
+          document.animalForm.class.value, 
+          document.animalForm.order.value,
+          document.animalForm.family.value, 
+          document.animalForm.genus.value, 
+          document.animalForm.species.value)" 
+       
+    value="Create a new animal from the form" name="createAnimalFromForm"/>
+    
+<input type="button" onclick= "animal2.writeAnAnimal();" value="Find out the phylogeny of the animal from the form" name="phylogeny"/>
+
+</body>
+</html>

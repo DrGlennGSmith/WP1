@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    margin-top: 60px;
+    align-items: left;
+    text-align: left;
+    background-color: lightgray;
+}
+
+
+footer{
+    align-items: center;
+}
+
+/*each button has hoover functione except current page.*/  
+.button5 {background-color: lightpink;}
+/*removed hover functionality so to know that you are on that page. */
+
+.button0 {background-color: lightpink;}
+.button0:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+
+.button1 {background-color: lightpink;}
+.button1:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button3 {background-color: lightpink;}
+.button3:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button4 {background-color: lightpink;}
+.button4:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button2 {background-color: lightpink;}
+.button2:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button6 {background-color: lightpink;}
+.button6:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button7 {background-color: lightpink;}
+.button7:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button8 {background-color: lightpink;}
+.button8:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}
+.button9 {background-color: lightpink;}
+.button9:hover {
+    background-color: white;
+    border: 2px solid lightpink;
+}

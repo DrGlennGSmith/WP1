@@ -1,0 +1,64 @@
+
+<html>
+  <head>
+    <script type="text/javascript">
+      /*
+       * make a harry potter character constructor
+       /*
+       Here is the constructor
+       */
+      function potterCharacter(name, house, gender, teacherOrStudent,
+                               goodBad, specialPowers, muggle, importance)
+      				{
+        /* here we initialize properties, from paramaters
+        */
+        this.name   = name;
+        this.house   = house;
+        this.gender   = gender;
+        this.teacherOrStudent   = teacherOrStudent;
+        this.goodBad   = goodBad;
+        this.specialPowers   = specialPowers;
+        this.muggle = muggle;
+        this.importance = importance; 
+     
+        /*method is part of this constructor*/       
+        this.sameHouse = function (otherChar) {
+           if (this.house == otherChar.house)
+             return true;
+          else return false;
+          
+        }
+      }
+  
+   /* function to write text out  to hmtl object */
+  function writeText(txt, destination){
+   document.getElementById(destination).innerHTML=txt;
+   } 
+    
+        /* set up two characters by calling the constructor */
+
+        /* Here we create and initialize two objects by calling the constructor with actual values as paramaters */
+        
+      var char1 = new potterCharacter("Harry Potter", "Griffindor", "male", "student", "good", "specialPowers", false, 10);
+        
+      var char2 = new potterCharacter("Hermione Granger", "Griffindor", "female", "student","good", "specialPowers", false, 9);
+        
+/*
+check if two characters are from the same house and write results to the web page
+*/
+function sameHouseFeedback(charA, charB){
+    
+    if (charA.sameHouse(charB)) 
+         { writeText('yes', 'textArea');} 
+    else {writeText('no', 'textArea');}
+    
+}
+    </script>
+  </head>
+  <body>
+		<p id="textArea">  Text goes here: </p>
+		<p id="textArea2">  Text goes here: </p>
+    
+    <input type="button" value = "same house two characters" onclick= "sameHouseFeedback(char1, char2);" name="same house"/>
+  </body>
+</html>

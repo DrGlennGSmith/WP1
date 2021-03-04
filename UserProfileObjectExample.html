@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+	<head>
+  	<title>CodeShare Example</title>
+    <meta charset="utf-8">
+ 		<script type="text/javascript"> 
+      
+ /*
+ an object   
+UserProfile
+firstName
+lastName
+age
+profession
+gender
+*/      
+      var userProfile = {
+       	 firstName:"John", lastName:"Doe", age:"35", profession:"Superhero", gender:"Female",
+        	write_userProfile: function(){
+            alert(this.firstName + " " + this.lastName + " is " + this.age + " years old, and is a " + 
+                  this.profession + " and a " + this.gender + ".");
+      
+          }
+      };
+
+   
+   </script>
+  </head> 
+<body style="background-color:green;">
+                                      <p>User Profile</p>
+  
+  
+ <input type="button" name="button" onclick="userProfile.write_userProfile()"value="Click"/>
+  
+</body>
+
+</html>

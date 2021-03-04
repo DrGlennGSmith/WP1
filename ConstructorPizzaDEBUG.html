@@ -1,0 +1,206 @@
+
+<!-- HTML comment -->
+<HTML>
+<head>
+<title> Constructor Pizza example Dr. Smith</title>
+<script type="text/javascript">
+
+  
+/* a super simple constructor example */
+    
+function Person(first, last, age, eye) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eye;
+    this.nationality = "English";
+    }
+
+var myFather = new Person("John", "Doe", 50, "blue");
+var myMother = new Person("Sally", "Rally", 48, "green");
+    
+function momDad()
+    {
+        document.getElementById("demo").innerHTML =
+            "My father is " + myFather.nationality + ". My mother is " +                    myMother.nationality;
+    }
+  
+ /*
+  * time functions
+  */
+  
+ /* return milliseconds since 1970/01/01
+  */
+ 
+ function callGetTime()
+ {   
+      var d = new Date();
+      return d.getTime();
+ }
+/* 
+Globals to hold an array of orders, and a var to keep track of orders. 
+*/
+    var orders = new Array(); // variable to hold array of orders.
+    var num_orders = 0;
+ 
+/* Constructor and prototype for a pizza */
+    
+function Pizza(size,cheese, meat, veggies,sauce,PickUpOrDelivery) {
+    this.size = size;
+    this.cheese = cheese;
+    this.meat = meat;
+    this.veggies = veggies;
+    this.sauce = sauce;
+    this.PickUpOrDelivery = PickUpOrDelivery;
+    // time ordered
+    this.orderTime = callGetTime();
+    
+    // Show your order
+    this.showOrder = function () {
+        
+     var OrderString =  "Your order is a " + this.size + " sized pizza with Cheese: " + this.cheese +  " Meat: " + this.meat + " Veggies: " + this.veggies + " Sauce: " + this.sauce + " And you want your pizza by " + this.PickUpOrDelivery;
+
+        writeText(OrderString, "order");       
+    }
+
+    // record the time the pizza was ordered. 
+    this.elapsedTime = function () {
+        
+        return ((callGetTime() - this.orderTime) / 1000).toFixed(0);  
+    }
+    
+    // Check the status of the pizza. 
+    this.checkStatus = function () {
+        var num;
+        var timeSoFar = this.elapsedTime();
+        var str = "You ordered your pizza " + timeSoFar + " minutes ago.";
+
+        
+        if (timeSoFar >= 15)
+            {
+               if (this.PickUpOrDelivery == "delivery") 
+                   str = str + " Your pizza is on its way!"
+                else // pick up
+                    str = str + " You can pick up your pizza now!"                 
+            }
+        else
+            {
+            num =  (15 - timeSoFar).toFixed(0);
+            str = str + " Your pizza is still in the oven, & has " + num + " more minutes to bake! So please be patient."
+            }
+
+        writeText(str, "OrderStatus");
+    }
+}
+
+ 
+   /*
+   document.frm.size.value + 
+   " sized pizza with Cheese: " +  document.frm.cheese.value +  
+   " Meat: " + document.frm.meat.value + 
+   " Veggies: " + document.frm.veggies.value + " Sauce: " + document.frm.sauce.value;
+
+   */
+    
+    
+/*
+    Process the customers order
+ */    
+function pizza_choice () 
+    {
+
+    var OrderString;
+
+    orders[num_orders] = new Pizza(document.frm.size.value,   document.frm.cheese.value,document.frm.meat.value, 
+    document.frm.veggies.value, document.frm.sauce.value,document.frm.PickUpOrDelivery.value);
+   
+    orders[num_orders].showOrder();
+    ++num_orders;   
+        
+        
+    }
+/*
+Write some text out to an html element. The text to write and the id of the html
+element to write to are parameters.
+*/
+function writeText(txt, destination)
+   {
+   document.getElementById(destination).innerHTML=txt;
+   }
+
+   
+    
+    
+</script>
+
+</head>
+<body >
+    <img src="MariosPizza.svg" alt="Smiley face" height="425">
+  <form name = "frm" >
+ 
+<table style="width:55%">
+  <tr>
+    <h2>
+    <td>Cheese</td>
+    <td>Meat</td>
+    <td>Veggies</td>
+    <td>Sauce</td>
+    <td>Size</td>
+    <td>Pick up or Delivery</td>
+    </h2>
+  </tr>
+  <tr>
+    <td>    
+       <select name = "cheese">
+       <option value = "mozzerrela" > mozzerrela
+	   <option value = "romano" > romano
+	   <option value = "parmasean" > parmasean
+       <option value = "none" > none
+	   </select></td>
+    <td>   
+        <select name = "meat">
+        <option value = "pepperoni" > pepperoni
+        <option value = "sausage" > sausage
+        <option value = "beef" > beef
+        <option value = "none" > none
+	</select></td>
+    <td>	    
+        <select name = "veggies" >
+	    <option value = "mushroom" > mushroom
+        <option value = "olives">olives
+        <option value = "onions" > onions
+        <option value = "none" > none
+
+    </select></td>
+    <td>	<select name = "sauce" >
+        <option value = "tomato" > tomato
+        <option value = "ranch"	> ranch
+        <option value = "white"	>	white
+        <option value = "none" > none
+	</select></td>
+    <td>	<select name = "size" >
+        <option value = "small" > small
+        <option value = "medium"> medium
+        <option value = "large"	> large
+	</select></td>
+    <td>	<select name = "PickUpOrDelivery" >
+        <option value = "pick up" > Pick up
+        <option value = "delivery"> delivery
+	</select></td>
+  </tr>
+
+</table>
+
+
+	<br>
+	<input type="button" onclick= "pizza_choice();" value="Order" name="order"/>
+    <input type="button" onclick= "orders[num_orders - 1].checkStatus();" value="Check status" name="checkStatus"/>
+    <input type="button" onclick= "momDad();" value="What nationalities are my mother & father?" name="MomNDad"/>
+	</form>
+
+    <p id="demo">  Some text </p>
+	<p id="price">  Your Price: </p>
+    <p id="order">  Your Order: </p>
+    <p id="OrderStatus"> OrderStatus: </p>
+	</body>
+	</html>

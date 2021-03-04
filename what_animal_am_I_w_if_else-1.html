@@ -1,0 +1,124 @@
+<html>
+<head>
+<title> Object properties example - Dr. Smith</title>
+<script type="text/javascript">
+
+/* globals -  animals */
+    
+var animal1 = {name:"dog", locomotion:"running", food:"meat", range:"land world-wide", noise: "bark", lifeExpectancy: 12, WeightAverage: 40, length: 3 };
+    
+var animal2 = {name:"dolphin", locomotion:"swimming", food:"fish", range:"deep sea, and some coastal areas", noise: "squeaking and clicking noises", lifeExpectancy: "12", WeightAverage: 40, length: 3 }; 
+
+//Create a third animal called animal3
+var animal3 = {name:"bird", locomotion:"flying", food:"earth worms", range:"sky", noise:"tweet" , lifeExpectancy: 1, WeightAverage: 1, length: .5  };
+    
+//Create a new animal based on a user.  What do we need to do that with?
+var animal4 = {name:"", locomotion:"", food:"", range:"", noise:"" , lifeExpectancy: 12, WeightAverage: 40, length: 3 };
+    
+var animal5 = {name:"tortoise", locomotion:"walking", food:"greens", range:"land, warm climates", noise: "unknown", lifeExpectancy: 150, WeightAverage: 30, length: 2 }; 
+
+    
+var errorTolerance = 0.5;
+    
+//Have the user enter the animal properties
+function enterAnimal(animal)
+{
+    //Someone has suggested prompt();
+    //Someone has suggested creating variables to save things to.
+    
+    animal.name = prompt("Choose your animal");
+    animal.locomotion = prompt ("Choose the method of locomotion");    
+    animal.food = prompt ("Choose the type of food"); 
+    animal.range = prompt ("Choose the range"); 
+    animal.noise = prompt ("Choose the noise"); 
+    animal.lifeExpentancy = prompt ("Choose life expectancy"); 
+    animal.WeightAverage = prompt ("Choose weight average"); 
+    animal.length = prompt ("Choose average length"); 
+
+}
+    
+// guess what the average life expectancy of the animal is
+function guessLifeExpectancy(animal)
+    {
+      var your_guess, alert_message, correctMsg, outMessage;
+    
+   
+    outMessage = "I am a " + animal.name + ". How long do I live?";
+        
+    your_guess = prompt(outMessage,"Average life span of Animal");
+        
+    if ((your_guess >= (animal.lifeExpectancy - (errorTolerance * animal.lifeExpectancy))) && (your_guess <= (animal.lifeExpectancy + (errorTolerance * animal.lifeExpectancy))))
+        {
+        correctMsg = " You are correct, with an error tolerance of " + (errorTolerance * 100) + "%";
+        }
+    else 
+        {
+        correctMsg = " You are NOT correct, with an error tolerance of " + (errorTolerance * 100) + "%";        }
+    
+    alert_message = "You guessed " + your_guess + ". I live an average of " + animal.lifeExpectancy + "." +  correctMsg;
+    
+    alert(alert_message);
+    //Writes the alert message to the webpage.
+    document.getElementById("demo").innerHTML = alert_message;   
+    }
+
+//The function guessAnimal prompts the user for a value and compares it to the parameter animal.  
+function guessAnimal(animal)
+{
+    var your_guess, animal_properties_message, alert_message, correctMsg;
+    
+    animal_properties_message = "I move by " + animal.locomotion + ", eat " + animal.food + ", live in or on " + animal.range +  ", and the noise I make is " + animal.noise  +  ", life expectancy is  " +  animal.lifeExpectancy + " weight average is" + animal.WeightAverage  + ", average length is " + animal.length + ". What am I?";
+    //Gathers user input.
+    your_guess = prompt(animal_properties_message,"Type of Animal");
+    if (your_guess == animal.name)
+        {
+        correctMsg = " You are correct.";
+        }
+    else 
+        {
+        correctMsg = " You are NOT correct.";
+        }
+    
+    alert_message = "You guessed " + your_guess + ". I am a " + animal.name + "." +  correctMsg;
+    
+    alert(alert_message);
+    //Writes the alert message to the webpage.
+    document.getElementById("demo").innerHTML = alert_message; 
+}   
+    
+</script>
+    
+<style>
+  body {background-color:lightgray}
+  h1   {color:darkred}
+  p    {color:darkred}
+</style>
+    
+</head>
+<body>
+<h1>Simple animal guessing game!</h1>
+ <img src="0805-california-mystery-animal.jpg" alt="mystery animal" height="240" width="360"> 
+<br>
+<br>
+<input type="button" onclick="guessLifeExpectancy(animal5)" value="1) Guess how long I live" />
+<br>
+<br>
+<input type="button" onclick="guessAnimal(animal2)" value="1) Guess what animal I am" />
+<br>
+<br>
+<input type="button" onclick="guessAnimal(animal1)" value="2) Guess what animal I am" />
+<br>
+<br>
+<!--What goes here?-->
+<input type="button" onclick="guessAnimal(animal3)" value="3) Guess what animal I am" />
+<br>
+<br>
+<input type="button" onclick="enterAnimal(animal4)" value="Enter your own animal" />
+<br>
+<br>
+<input type="button" onclick="guessAnimal(animal4)" value="4) Guess what animal I am" />
+<p id="demo"> Your guess and the answer will appear here.</p>
+</body>
+</html>
+
+ 

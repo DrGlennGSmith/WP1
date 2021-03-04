@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<!-- this is week 7 in-class example of JS object implementation, forms, bootstrap, etc. -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Week 7</title>
+    <style>
+        #container {
+            margin-top: 5%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        /* using CSS box model */
+        #output {
+            border: 15px;
+            padding: 20px;
+            margin: 20px;
+            margin-top: 1%;
+            text-align: center;
+            font-size: x-large;
+        }
+    </style>
+    <script>
+        // Patient Object definition
+        function Patient(fm) {
+            // constructor
+            this.name = fm.name.value;
+            this.email = fm.email.value;
+            this.age = Number(fm.age.value);
+            this.symptom1 = fm.symptom1.checked; // fever
+            this.symptom2 = fm.symptom2.checked; // cough
+            this.symptom3 = fm.symptom3.checked; // breath
+            this.risk1 = fm.risk1.checked; // travel
+            this.risk2 = fm.risk2.checked; // contact
+
+            // return potential severity color of this case
+            this.severity = function () {
+                // if all three symptoms and any one of risk factors are present
+                if (this.symptom1 && this.symptom2 && this.symptom3 && (this.risk1 || this.risk2)) {
+                    return "#e99883"; // high red
+                // if all three symptoms are present but NOT the risk factors
+                } else if (this.symptom1 && this.symptom2 && this.symptom3 && !(this.risk1 || this.risk2)) {
+                    return "#f1f0a3"; // medium yellow
+                // if any of the symptoms are present
+                } else if (this.symptom1 || this.symptom2 || this.symptom3) {
+                    return "#caeeca"; // low green
+                } else { // gray
+                    return "#dddddd";
+                }
+            }
+            // return recommendation text
+            this.diagnose = function () {
+                // if NONE of symptoms are present but they have been potentially exposed
+                if (!(this.symptom1 || this.symptom2 || this.symptom3) && this.risk2) {
+                    return "You do not show any symptoms, however, if you suspect that you might have been exposed to COVID-19 then please contact your local authories or call the CDC COVID-19 hotline at 555-555-5555.";
+                }
+                // if all three symptoms and any one of the risk factors are present
+                if (this.symptom1 && this.symptom2 && this.symptom3 && (this.risk1 || this.risk2)) {
+                    if (this.age == 65) { // elderly are at much higher risk
+                        return "Call your local emergency services immediately!";
+                    } else {
+                        return "Call the CDC COVID-19 hotline at 555-555-5555 immediately!";
+                    }
+                // if all three symptoms are present but NOT risk factors
+                } else if (this.symptom1 && this.symptom2 && this.symptom3 && !(this.risk1 || this.risk2)) {
+                    return "Stay home and monitor your symptoms. Contact your physician if the symptoms persist.";              
+                // if any of the symptoms are present and they have any risk factors
+                } else if ((this.symptom1 || this.symptom2 || this.symptom3) && (this.risk1 || this.risk2) ) {
+                    return "PLEASE STAY HOME! If you get any more symptoms then contact the CDC COVID-19 hotline at 555-555-5555!";
+                // if they have ANY symptoms at all (but not risk factors)
+                } else if (this.symptom1 || this.symptom2 || this.symptom3) {
+                    return "If you get any more symptoms or if your current symptoms get worse then contact your physician.";       
+                } else { // low virus threat
+                    return "You seem to be fine.  Keep washing your hands!";
+                }
+            }
+
+        }
+
+        function process_form() {
+            // get form object
+            var fm = document.getElementById("my_form");
+            // get output object
+            var out = document.getElementById("output");
+            // instantiate patient object
+            var patient = new Patient(fm);
+            //console.log("Debug:" + JSON.stringify(patient));
+
+            // set background color using patient object severity method
+            out.style.background = patient.severity();
+            // display recommendations based on input values using diagnose method
+            out.innerHTML = patient.diagnose();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>COVID-19 Informational Page Example</h1>
+        <form id="my_form">
+            <!-- individual info -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <select class="form-control" id="age">
+                    <option value="0">Please select your age category</option>
+                    <option value="1">1-12 years old</option>
+                    <option value="13">13-25 years old</option>
+                    <option value="26">26-40 years old</option>
+                    <option value="41">41-64 years old</option>
+                    <option value="65">65 and older</option>
+                </select>
+            </div>
+            <!-- symptoms -->
+            <h4>Please check all that apply:</h4>
+            <br>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="symptom1">
+                <label class="form-check-label" for="symptom1">I have fever.</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="symptom2">
+                <label class="form-check-label" for="symptom2">I am coughing.</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="symptom3">
+                <label class="form-check-label" for="symptom3">I have shortness of breath.</label>
+            </div>
+            <!-- risk assessment -->
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="risk1">
+                <label class="form-check-label" for="risk1">I recently traveled by airplane.</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="risk2">
+                <label class="form-check-label" for="risk2">I recently had contact with a COVID-19 patient.</label>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="process_form()">Submit</button>
+            <!-- recommendation output area -->
+            <div id="output">
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
