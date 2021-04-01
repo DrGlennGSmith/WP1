@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--EME6930 week 10 homework is building on my week 7 homework
+    Sound: Lines 29-41, 99-108, xxx to xxx and xxx add a piano key sound to the buttons that display the standards
+    Randomness: In the JS, Lines 261-278 and many more lines before. In the HTML, adds a button that displays a random but CPE-relevant image when clicked,
+                and a table for displaying the images on the page.
+    Time: TBD-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annette Robinson's Week 10 HW for EME 6930</title>
+  <link rel="stylesheet" type="text/css" href="css/styleWeek7.css">
+
+  <script src="randomnessTimeLibrary.js"></script>
+
+  <script type = "text/javascript">
+  
+   //Constructor function (upper case first letter for the function name)
+    function Standard (name, description, example) {
+        this.name = name;
+        this.description = description;
+        this.example = example;
+
+   //Function to define a string for the text that will be output from the parameters above
+    this.writeStandard = function() {
+          var str = this.name + ": " + this.description + "<br><br>" + "Example: " + this.example;
+          writeText(str, "standards");
+        }
+      };
+
+   //adapted from class Week 10
+    var player = new Audio(); // define a global audio object
+     
+     /*  a global array of sounds
+      */
+     var sounds = ["audio/do-c.m4a", "audio/re-d.m4a", "audio/mi-e.m4a", "audio/fa-f.m4a", "audio/sol-g.m4a", "audio/la-a.m4a", "audio/ti-b", "audio/octave-do-c"];
+
+   //from class Week 10: function to load and play sound where s is name of mp3 or wav file
+    /*function play(s) {
+        player.src = s;
+        player.load();
+        player.play();
+     }
+     */
+
+   //Function to write text out to html object
+    /* function writeText(txt, destination) {
+     document.getElementById(destination).innerHTML = txt;
+    }
+    */
+
+   //Variables creating objects by calling the "Standard" constructor function from above with the "new" keyword
+    var standard1 = new Standard("General Standard 1", 
+      "The overall design of the course is made clear to the learner at the beginning of the course.", 
+      "Instructions make clear how to get started and where to find various course components.");
+    var standard2 = new Standard("General Standard 2", 
+      "Learning objectives or competencies describe what learners will be able to do upon completion of the course.", 
+      "The course learning objectives, or course/program competencies, describe outcomes that are measurable.");
+    var standard3 = new Standard("General Standard 3", 
+      "Assessment strategies are integral to the learning process and are designed to evaluate learner progress in achieving the stated learning objectives or mastering the competencies.", 
+      "The assessments measure the stated learning objectives or competencies.");
+    var standard4 = new Standard("General Standard 4", 
+      "Instructional materials enable learners to achieve stated learning objectives or competencies.", 
+      "The instructional materials contribute to the achievement of the stated course and module/unit learning objectives or competencies.");
+    var standard5 = new Standard("General Standard 5", 
+      "Course activities facilitate and support learner interaction and engagement.", 
+      "The learning activities promote the achievement of the stated learning objectives or competencies.");
+    var standard6 = new Standard("General Standard 6", 
+      "Course technologies support learners’ achievement of course objectives or competencies.", 
+      "The tools used in the course support the learning objectives or competencies.");
+    var standard7 = new Standard("General Standard 7", 
+      "The course facilitates learner access to support services essential to learner success.", 
+      "The course instructions articulate or link to a clear description of the technical support offered and how to obtain it.");
+    var standard8 = new Standard("General Standard 8", 
+      "The course design reflects a commitment to accessibility and usability for all learners.", 
+      "Course navigation facilitates ease of use.");
+
+   //Function to load a response from user data input in the form
+    function writeFormResponses() {
+      var responses="Hello " + document.nameRoleConcern.name.value + ", in your role as " + document.nameRoleConcern.role.value
+       + " your biggest concern is " + document.nameRoleConcern.concern.value + ".";
+      writeText(responses, "formResponses");
+    }
+    
+   //lines 81-192 are from class Week 10, code for showing a random image
+       /*
+     * write image to one of the randomly picked areas desc1 - desc9 and the image is clickable
+     */
+     function writeRandomLocationImage()
+     {
+       var str = "desc";
+       var str2 = "desc";
+       var imageNumberNew = GetRandomRange(1, 9);
+       /* put the background color over the last location */
+
+       str += String(lastImageNumber);
+       /*alert("This is the string " + str); */
+       
+       txt =  "<img src='green.jpg' width='105' height='103'>"
+       document.getElementById(str).innerHTML=txt; 
+       /* put the new image in place */
+    
+       str2 += String(imageNumberNew);
+       /*alert("This is the string " + str2); */
+       
+       txt =  "<img src='class.jpg' width='105' height='103' onclick = writeTextRandomPraise()>"
+       document.getElementById(str2).innerHTML=txt;  
+       lastImageNumber = imageNumberNew;
+       
+      }
+      // global set of images. learningObjectives from https://www.flickr.com/photos/16584958@N00/5382909592, 
+      var moreImages = ["images/courseDesign.png","images/learningObjectives.jpg", "images/assessment.jpg","images/instructionalMaterials.png",
+       "images/learnerEngagement.png", "educationalTechnology.jpg", "poweranimalpolarbearcrop-105x103.jpeg", "HTUYM-105x103_1_.jpeg"];
+ 
+      /* Write a random image (images all the same size) to a random location
+       */
+      function writeRandomImageRandomLocation()
+      {
+        var str = "desc";
+        var str2 = "desc";
+        var imageNumberNew = GetRandomRange(1, 9);
+      /* put the background color over the last location */
+
+        str += String(lastImageNumber);
+      /*alert("This is the string " + str); */
+    
+        txt =  "<img src='green.jpg' width='105' height='103'>"
+        document.getElementById(str).innerHTML=txt; 
+      /* put the new image in place */
+ 
+        str2 += String(imageNumberNew);
+      /*alert("This is the string " + str2); */
+    
+        txt =  "<img src='" + randomStringFromArray(moreImages) + "' width='105' height='103' onclick = writeTextRandomPraise()>"
+        document.getElementById(str2).innerHTML=txt;  
+        lastImageNumber = imageNumberNew;
+    
+      }
+
+       /*
+      * Function to return an integer in a certain range that is speficied in range speficied by the two paramaters, upper and lower
+      */
+      function GetRandomRange(lower, upper)
+      {
+        var length, aNumber;
+
+        length = (upper - lower) + 1;
+        aNumber = Math.floor(Math.random() * length) + lower;
+ 
+      //  alert("GetRandomRange" + lower + " " + upper + " " + aNumber);
+ 
+        return aNumber;
+
+      }
+
+      /* initialize all the image areas
+       */
+      function intializeRandomLocationImage()
+      {
+        var str, i;
+       
+        txt =  "<img src='green.jpg' width='105' height='103'>"
+        /* put the background color over each location */
+        for (i = 1; i <= 9 ; i++)
+        {
+        str = "desc";
+        str += String(i);   
+        document.getElementById(str).innerHTML=txt;     
+        }   
+      }
+      /* initialize the place to write an image, put in an image with the background color. 
+       */
+      function initImageSpot()
+      {  
+       
+        txt =  "<img src='green.jpg' width='105' height='103' onclick = writeTextRandomPraise()>"
+        document.getElementById("desc0").innerHTML=txt;  
+        lastImageNumber = imageNumberNew;
+       
+      }
+
+         /*
+          * write image to the desc1 area
+          */
+      function writeImage()
+      {
+       var txt =  "<img src='class.jpg' width='105' height='103' onclick = writeTextRandomPraise()>"
+       document.getElementById("desc1").innerHTML=txt;
+      }
+         /*
+          * write image to the desc1 area
+          * We need a global
+          */
+       var lastImageNumber = 1;
+   
+         /* Write a random image to a location. So need an array of image names, and then randomly pick from that.. 
+          */
+      
+
+  </script>
+
+</head>
+
+<body>
+  
+  <div id="container">  
+    <header>
+      <h1 align="center">Web Programming 1 Assignments&mdash;Week 10&mdash;Add Sound & Randomness<br>Annette Robinson</h1>
+    </header>
+		<br>
+      <h2 align="center">Standards from the Quality Matters (QM) <a href="https://www.qualitymatters.org/qa-resources/rubric-standards/cpe-rubric" 
+        target="blank">Continuing and Professional Education (CPE) Rubric</a></h2>
+      <p>Click on each button to see what the standard is.</p>
+      <p>Full information is available on <a href="https://www.qualitymatters.org/sites/default/files/PDFs/StandardsfromtheQMContinuingandProfessionalEducationRubric.pdf" target="_blank">this page</a> of the Quality Matters website.</p>
+
+
+ <!--Buttons for calling out the text string for each "Standard" object defined in the head
+     For week 10, I am adding sound effects
+     source: https://freesound.org/people/PACWAY/sounds/?page=2-->
+  <input type = "button" onclick= 'play("audio/do-c.mp3"); standard1.writeStandard();' value = "Standard 1">
+  <input type = "button" onclick= 'play("audio/re-d.mp3"); standard2.writeStandard();' value = "Standard 2">
+  <input type = "button" onclick= 'play("audio/mi-e.mp3"); standard3.writeStandard();' value = "Standard 3">
+  <input type = "button" onclick= 'play("audio/fa-f.mp3"); standard4.writeStandard();' value = "Standard 4">
+  <input type = "button" onclick= 'play("audio/sol-g.mp3"); standard5.writeStandard();' value = "Standard 5">
+  <input type = "button" onclick= 'play("audio/la-a.mp3"); standard6.writeStandard();' value = "Standard 6">
+  <input type = "button" onclick= 'play("audio/ti-b.mp3"); standard7.writeStandard();' value = "Standard 7">
+  <input type = "button" onclick= 'play("audio/octave-do-c.mp3"); standard8.writeStandard();' value = "Standard 8">
+
+  <!--This paragraph positions the output text from the button clicks above-->
+  <p id="standards"></p>
+
+  <!--Form in a div for ease of CSS styling-->
+  <div>
+    <form name = "nameRoleConcern" onsubmit="return responsesFromForm();" method="post">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name"><br><br>
+      <!--drop down selector-->
+      <label>Role:</label><br>
+      <select name="role">
+        <option>Course Instructor</option>
+        <option>Instructional Designer</option>
+        <option>Business Professional</option>
+      </select>
+      <br><br>
+      <!--drop down selector-->
+      <label>What is your biggest concern in the design of your CPE course?</label><br>
+      <select name="concern">
+          <option>Learner Engagement</option>
+          <option>Accessibility and Usability</option>
+          <option>Assessment</option>
+      </select>
+      <br><br>
+      <input type = "button" onclick = "writeFormResponses(); return false" value = "Submit">
+      <input type="reset" value="Reset">
+      <input type="button" onclick="writeRandomImageRandomLocation()" value="Click to see a random CPE image">
+
+    </form>
+  </div>
+  <br>
+  
+      <!--This paragraph positions the output text from the user's responses in the form-->
+  <div id="responsesParagraph"> 
+    <p id="formResponses" ></p>
+  </div>
+
+   <!--this is the table where the images appear. copied from the Week 10 library of functions-->
+  <table width="656" height="221" border="0">
+    <tr>
+      <td><p id="desc1"> </p> &nbsp;</td>
+      <td><p id="desc2"> </p>&nbsp;</td>
+      <td><p id="desc3"> </p>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p id="desc4"> </p>&nbsp;</td>
+      <td><p id="desc5"> </p>&nbsp;</td>
+      <td><p id="desc6"> </p> </td>
+    </tr>
+    <tr>
+      <td><p id="desc7"> </p>&nbsp;</td>
+      <td><p id="desc8"> </p>&nbsp;</td>
+      <td><p id="desc9"> </p>&nbsp;</td>
+    </tr>
+  </table>
+
+    <footer>
+		  Copyright 2021, <a href="https://www.linkedin.com/in/annettefaithrobinson" target="_blank">Annette Robinson</a>
+    </footer>
+  </div>
+  
+</body>
+
+</html>

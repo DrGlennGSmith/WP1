@@ -1,0 +1,552 @@
+<html>
+<head>
+<script type="text/javascript">
+
+/*
+ * This program will test how quickly people can recognize random correct or incorrect sentences
+
+ A Simple Grammar: 
+
+	 Types of words
+	 Noun Ð N
+	 Proper noun - PN
+	 Verb - V
+	 Adjective Ð AJ
+	 Adverb - AV
+	 Interrogative Ð I : who what who how will (will may be needed to some of these.)
+	 Preposition Ð P
+	 Conjunction Ð C : like ÒandÓ
+
+	 Types of phrases:
+	 Noun phrase Ð NP
+	 Verb phrase - VP
+	 Interrogative Phrase Ð IP : what will, ?
+	 Prepositional Phrase Ð PP, in a basket, with a gun, etc.
+
+	 S ::= NP VP .  | NP VP ?  | IP VP ? | VP .
+
+	 NP ::= N | AJ N | N PP | NP C NP
+
+	 VP ::= V | V AV | V NP | V PP
+
+	 IP ::= I V | ??
+
+	 PP ::= P | P NP 
+
+ */
+
+ /* Now let's do it with GLOBAL VARIABLES AND ALLOW THE USER TO ADD TO LEXICONS
+  *
+  *  GLOBALS - the words, nouns, verbs, etc. 
+  * For more words see: https://gist.github.com/ijmacdowell/8325491
+  */
+	var properNouns = ["Barry","Alfredrick","Jennifer", "Mona"]; /*,"Katie", "Johan", "Melissa","Tom","Cindi", "Maria"]; */
+ 	var verbs = ["goes","tells","dances", "jumps","walks","talks","eats"]; /*, "eats", "sings", "knows","hits","sings", "learns", "swims"]; */
+ 	var pluralVerbs = ["go","tell", "jump"]; /*, "eat", "swim", "sleep"]; */
+ 	var adjectives = ["green","slimely","vociferous","hungry", "outrageous","healthy", "sick","silly", "sarcastic"];
+ 	var adverbs = ["quickly","slatternly","sadly", "weirdly", "stupidly"];
+ 	var interrogatives = ["who","what", "where", "when", "how"];
+ 	var prepositions = ["with","to", "on", "from"];
+ 	var conjunctions = ["and"];  /* Could add ,"for", "nor", "but", "or", "yet", "so" ? */
+ 	var nouns = [ "skink", "skunk","dog","student","doctor","professor","platypus", "accelerator", "accordion", "account", "accountant", "acknowledgment", "acoustic", "acrylic", "act", "action", "active", "activity", "actor", "actress", "adapter", "addition", "address", "adjustment", "adult", "advantage", "advertisement", "advice", "afghanistan", "africa", "aftermath", "afternoon", "aftershave", "afterthought", "age", "agenda", "agreement", "air", "airbus", "airmail", "airplane", "airport", "airship", "alarm", "albatross", "alcohol", "algebra", "algeria", "alibi", "alley", "alligator", "alloy", "almanac", "alphabet", "alto", "aluminium", "aluminum", "ambulance", "america", "amount", "amusement", "anatomy", "anethesiologist", "anger", "angle", "angora", "animal", "anime", "ankle", "answer", "ant", "antarctica", "anteater", "antelope", "anthony", "anthropology", "apartment", "apology", "apparatus", "apparel", "appeal", "appendix", "apple", "appliance", "approval", "april", "aquarius", "arch", "archaeology", "archeology", "archer", "architecture", "area", "argentina", "argument", "aries", "arithmetic", "arm", "armadillo", "armchair", "armenian", "army", "arrow", "art", "ash", "ashtray", "asia", "asparagus", "asphalt", "asterisk", "astronomy", "athlete", "atm", "atom", "attack", "attempt", "attention", "attic", "attraction", "august", "aunt", "australia", "australian", "author", "authorisation", "authority", "authorization", "avenue", "babies", "baboon", "baby", "back", "backbone", "bacon", "badge", "badger", "bag", "bagel", "bagpipe", "bail", "bait", "baker", "bakery", "balance", "balinese", "ball", "balloon", "bamboo", "banana", "band", "bandana", "bangladesh", "bangle", "banjo", "bank", "bankbook", "banker", "bar", "barbara", "barber", "barge", "baritone", "barometer", "base", "baseball", "basement", "basin", "basket", "basketball", "bass", "bassoon", "bat", "bath", "bathroom", "bathtub", "battery", "battle", "bay", "beach", "bead", "beam", "bean", "bear", "beard", "beast", "beat", "beautician", "beauty", "beaver", "bed", "bedroom", "bee", "beech", "beef", "beer", "beet", "beetle", "beggar", "beginner", "begonia", "behavior", "belgian", "belief", "believe", "bell", "belt", "bench", "bengal", "beret", "berry", "bestseller", "betty", "bibliography", "bicycle", "bike", "bill", "billboard", "biology", "biplane", "birch", "bird", "birth", "birthday", "bit", "bite", "black", "bladder", "blade", "blanket", "blinker", "blizzard", "block", "blood", "blouse", "blow", "blowgun", "blue", "board", "boat", "bobcat", "body", "bolt", "bomb", "bomber", "bone", "bongo", "bonsai", "book", "bookcase", "booklet", "boot", "border", "botany", "bottle", "bottom", "boundary", "bow", "bowl", "bowling", "box", "boy", "bra", "brace", "bracket", "brain", "brake", "branch", "brand", "brandy", "brass", "brazil", "bread", "break", "breakfast", "breath", "brian", "brick", "bridge", "british", "broccoli", "brochure", "broker", "bronze", "brother", "brother-in-law", "brow", "brown", "brush", "bubble", "bucket", "budget", "buffer", "buffet", "bugle", "building", "bulb", "bull", "bulldozer", "bumper", "bun", "burglar", "burma", "burn", "burst", "bus", "bush", "business", "butane", "butcher", "butter", "button", "buzzard", "c-clamp", "cabbage", "cabinet", "cable", "cactus", "cafe", "cake", "calculator", "calculus", "calendar", "calf", "call", "camel", "camera", "camp", "can", "canada", "canadian", "cancer", "candle", "cannon", "canoe", "canvas", "cap", "capital", "cappelletti", "capricorn", "captain", "caption", "car", "caravan", "carbon", "card", "cardboard", "cardigan", "care", "carnation", "carol", "carp", "carpenter", "carriage", "carrot", "cart", "cartoon", "case", "cast", "castanet", "cat", "catamaran", "caterpillar", "cathedral", "catsup", "cattle", "cauliflower", "cause", "caution", "cave", "cd", "ceiling", "celery", "celeste", "cell", "cellar", "cello", "celsius", "cement", "cemetery", "cent", "centimeter", "century", "ceramic", "cereal", "certification", "chain", "chair", "chalk", "chance", "change", "channel", "character", "chard", "charles", "chauffeur", "check", "cheek", "cheese", "cheetah", "chef", "chemistry", "cheque", "cherries", "cherry", "chess", "chest", "chick", "chicken", "chicory", "chief", "child", "children", "chill", "chime", "chimpanzee", "chin", "china", "chinese", "chive", "chocolate", "chord", "christmas", "christopher", "chronometer", "church", "cicada", "cinema", "circle", "circulation", "cirrus", "citizenship", "city", "clam", "clarinet", "class", "claus", "clave", "clef", "clerk", "click", "client", "climb", "clipper", "cloakroom", "clock", "close", "closet", "cloth", "cloud", "cloudy", "clover", "club", "clutch", "coach", "coal", "coast", "coat", "cobweb", "cockroach", "cocktail", "cocoa", "cod", "coffee", "coil", "coin", "coke", "cold", "collar", "college", "collision", "colombia", "colon", "colony", "color", "colt", "column", "columnist", "comb", "comfort", "comic", "comma", "command", "commission", "committee", "community", "company", "comparison", "competition", "competitor", "composer", "composition", "computer", "condition", "condor", "cone", "confirmation", "conga", "congo", "conifer", "connection", "consonant", "continent", "control", "cook", "cooking", "copper", "copy", "copyright", "cord", "cork", "cormorant", "corn", "cornet", "correspondent", "cost", "cotton", "couch", "cougar", "cough", "country", "course", "court", "cousin", "cover", "cow", "cowbell", "crab", "crack", "cracker", "craftsman", "crate", "crawdad", "crayfish", "crayon", "cream", "creator", "creature", "credit", "creditor", "creek", "crib", "cricket", "crime", "criminal", "crocodile", "crocus", "croissant", "crook", "crop", "cross", "crow", "crowd", "crown", "crush", "cry", "cub", "cuban", "cucumber", "cultivator", "cup", "cupboard", "cupcake", "curler", "currency", "current", "curtain", "curve", "cushion", "custard", "customer", "cut", "cuticle", "cycle", "cyclone", "cylinder", "cymbal", "dad", "daffodil", "dahlia", "daisy", "damage", "dance", "dancer", "danger", "daniel", "dash", "dashboard", "database", "date", "daughter", "david", "day", "dead", "deadline", "deal", "death", "deborah", "debt", "debtor", "decade", "december", "decimal", "decision", "decrease", "dedication", "deer", "defense", "deficit", "degree", "delete", "delivery", "den", "denim", "dentist", "deodorant", "department", "deposit", "description", "desert", "design", "desire", "desk", "dessert", "destruction", "detail", "detective", "development", "dew", "diamond", "diaphragm", "dibble", "dictionary", "dietician", "difference", "digestion", "digger", "digital", "dill", "dime", "dimple", "dinghy", "dinner", "dinosaur", "diploma", "dipstick", "direction", "dirt", "disadvantage", "discovery", "discussion", "disease", "disgust", "dish", "distance", "distribution", "distributor", "diving", "division", "divorced", "dock", "doctor", "dog", "dogsled", "doll", "dollar", "dolphin", "domain", "donald", "donkey", "donna", "door", "dorothy", "double", "doubt", "downtown", "dragon", "dragonfly", "drain", "drake", "drama", "draw", "drawbridge", "drawer", "dream", "dredger", "dress", "dresser", "dressing", "drill", "drink", "drive", "driver", "driving", "drizzle", "drop", "drug", "drum", "dry", "dryer", "duck", "duckling", "dugout", "dungeon", "dust", "eagle", "ear", "earth", "earthquake", "ease", "east", "edge", "edger", "editor", "editorial", "education", "edward", "eel", "effect", "egg", "eggnog", "eggplant", "egypt", "eight", "elbow", "element", "elephant", "elizabeth", "ellipse", "emery", "employee", "employer", "encyclopedia", "end", "enemy", "energy", "engine", "engineer", "engineering", "english", "enquiry", "entrance", "environment", "epoch", "epoxy", "equinox", "equipment", "era", "error", "estimate", "ethernet", "ethiopia", "euphonium", "europe", "evening", "event", "ex-husband", "ex-wife", "examination", "example", "exchange", "exclamation", "exhaust", "existence", "expansion", "experience", "expert", "explanation", "eye", "eyebrow", "eyelash", "eyeliner", "face", "facilities", "fact", "factory", "fahrenheit", "fairies", "fall", "family", "fan", "fang", "farm", "farmer", "fat", "father", "father-in-law", "faucet", "fear", "feast", "feather", "feature", "february", "fedelini", "feedback", "feeling", "feet", "felony", "female", "fender", "ferry", "ferryboat", "fertilizer", "fiber", "fiberglass", "fibre", "fiction", "field", "fifth", "fight", "fighter", "file", "find", "fine", "finger", "fir", "fire", "fired", "fireman", "fireplace", "firewall", "fish", "fisherman", "flag", "flame", "flare", "flat", "flavor", "flax", "flesh", "flight", "flock", "flood", "floor", "flower", "flugelhorn", "flute", "fly", "foam", "fog", "fold", "font", "food", "foot", "football", "footnote", "force", "forecast", "forehead", "forest", "forgery", "fork", "form", "format", "fortnight", "foundation", "fountain", "fowl", "fox", "foxglove", "fragrance", "frame", "france", "freckle", "freeze", "freezer", "freighter", "french", "freon", "friction", "friday", "fridge", "friend", "frog", "front", "frost", "frown", "fruit", "fuel", "fur", "furniture", "galley", "gallon", "game", "gander", "garage", "garden", "garlic", "gas", "gasoline", "gate", "gateway", "gauge", "gazelle", "gear", "gearshift", "geese", "gemini", "gender", "geography", "geology", "geometry", "george", "geranium", "german", "germany", "ghana", "ghost", "giant", "giraffe", "girdle", "girl", "gladiolus", "glass", "glider", "gliding", "glockenspiel", "glove", "glue", "goal", "goat", "gold", "goldfish", "golf", "gondola", "gong", "good-bye", "goose", "gore-tex", "gorilla", "gosling", "government", "governor", "grade", "grain", "gram", "granddaughter", "grandfather", "grandmother", "grandson", "grape", "graphic", "grass", "grasshopper", "gray", "grease", "great-grandfather", "great-grandmother", "greece", "greek", "green", "grenade", "grey", "grill", "grip", "ground", "group", "grouse", "growth", "guarantee", "guatemalan", "guide", "guilty"]; 
+]; /* "dog","cat", "teacher", "student", "store", "pool", */
+	var plural = false;
+
+	/* use variable arrays to add a noun to the lexicon.
+	 */
+	
+	function addNoun()
+	{
+		var newNoun;
+		newNoun = prompt("Please enter a new noun to add to the lexicon");
+		nouns[nouns.length] = newNoun;
+	}
+	
+	function replaceNoun()
+	{
+		var newNoun, i;
+		
+		newNoun = prompt("Please enter a new noun to add to the lexicon");
+		i = prompt("Enter the index for the noun to replace");
+		
+		nouns[Number(i)] = newNoun;
+	}
+	
+	function addVerb()
+	{
+		var newVerb;
+		newVerb = prompt("Please enter a new verb to add to the lexicon");
+		verbs[verbs.length] = newVerb;
+	}
+	
+/* Functions to return each of these categories
+ * Proper noun - PN
+ * Verb - V
+ * Adjective Ð AJ
+ * Adverb - AV
+ * Interrogative Ð I : who what who how will (will may be needed to some of these.)
+ * Preposition Ð P
+ * Conjunction Ð C : like ÒandÓ
+ */
+ function randomProperNoun()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(properNouns);
+
+ 	
+ 	return str1;	
+ }
+ 
+ function randomVerb()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(verbs);
+ 
+ 	
+ 	return str1;	
+ }
+ 
+ function randomPluralVerb()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(pluralVerbs);
+ 
+ 	
+ 	return str1;	
+ }
+ 
+ function randomAdjective()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(adjectives);
+ 	
+ 	return str1;	
+ }
+ 
+ function randomAdverb()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(adverbs);
+ 
+ 	
+ 	return str1;	
+ }
+ 
+ function randomInterrogative()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(interrogatives);
+ 
+ 	
+ 	return str1;	
+ }
+ 
+ function randomPreposition()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(prepositions);
+ 
+ 	
+ 	return str1;	
+ }
+ 
+ function randomPrepositionPhrase()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 += randomPreposition() + " " + randomArticle() + " " + randomNoun();	
+ 	return str1;	
+ }
+ 
+ function randomConjunction()
+ {
+ 
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(conjunctions);
+ 
+ 	
+ 	return str1;	
+ }
+ 
+ 
+ /* RETURN A RANDOM NOUN.. 
+ */
+ 
+ function randomNoun()
+ {
+ 	var str1 = " ";
+ 	
+ 	str1 = randomStringFromArray(nouns);
+
+ 	
+ 	return str1;	
+ }
+ 
+ /* RETURN A RANDOM ARTICLE.. 
+  */
+  
+  function randomArticle()
+  {
+  	var articles = ["a","the"];
+  	var str1 = " ";
+  	
+  	str1 = randomStringFromArray(articles);
+
+  	
+  	return str1;	
+  }
+ 
+/* write out a random noun
+*/
+
+function writeRandomNoun()
+{
+	 	var str1 = " ";
+	 	
+	 	str1 = randomNoun();
+
+	 	writeText(str1);	
+}
+
+
+/*
+ * return a random sentence
+
+ S ::= NP VP .  | NP VP ?  | IP VP ? | VP .
+
+ NP ::= N | AJ N | N PP | NP C NP
+
+ VP ::= V | V AV | V NP | V PP
+
+ IP ::= I V | ??
+
+ PP ::= P | P NP 
+ */
+function randomCorrectSentence()
+ {
+	var sentenceType, holdNounPhrase, sentence = "";
+	
+	sentenceType = GetRandomRange(1, 4);
+ 
+	/*alert("In function randomCorrectSentence. Sentence type is: " + sentenceType);
+	*/
+	
+	
+	switch (sentenceType) 
+	{
+	case 1:
+		/*alert("In switch - sentence type: " + sentenceType);
+		*/
+		sentence += randomNounPhrase() + " " ;
+		if (plural) 	
+			sentence +=  randomPluralVerbPhrase() + "."; 
+		else 
+			sentence +=  randomVerbPhrase() + ".";
+		
+		break;
+	
+	case 2:
+		/*alert("In switch - sentence type: " + sentenceType);
+		*/
+		sentence += randomNounPhrase() + " " ;
+		if (plural) 	
+			sentence +=  randomPluralVerbPhrase() + "?";	
+		else 
+			sentence +=  randomVerbPhrase() + "?";
+		break;
+		
+	case 3:
+		/*alert("In switch - sentence type: " + sentenceType);
+		*/
+		sentence += randomInterrogativePhrase() + " ";
+		
+		holdNounPhrase = randomNounPhrase();
+		if (plural)
+			sentence += randomPluralVerbPhrase() + " ";
+		else
+			sentence += randomVerbPhrase() + " ";
+		
+		sentence +=  holdNounPhrase + "?"
+		break;
+	
+	case 4:
+		/*alert("In switch - sentence type: " + sentenceType);
+		*/
+		sentence += randomPluralVerbPhrase() + "!";
+
+		
+		break;		
+	}
+	
+	
+	
+	return sentence;
+ }
+ 
+ /*
+  * NP ::= N | AJ N | N PP | N C N
+  * for now leaving out NP C NP, to avoid recursion
+  */
+ 
+  function randomNounPhrase()
+  {
+ 		var phraseType, phrase = "";
+ 		
+ 		phraseType = GetRandomRange(1, 5);
+ 	 
+ 		/*alert("In function randomNounPhrase. Phrase type is: " + phraseType);*/
+ 		
+ 		plural = false;
+ 		
+ 		switch (phraseType) 
+ 		{
+ 		case 1:
+ 			/*alert("In switch - sentence type: " + phraseType);
+ 			*/
+ 			phrase += randomArticle() + " " + randomNoun() + " ";
+ 			
+ 			break;
+ 		
+ 		case 2:
+ 			/*alert("In switch - sentence type: " + phraseType);
+ 			*/
+ 			phrase += randomArticle() + " " + randomAdjective() + " " + randomNoun() + " ";
+ 			
+ 			break;
+ 			
+ 		case 3:
+ 			/*alert("In switch - sentence type: " + phraseType);
+ 			*/
+ 			phrase += randomArticle() + " "  + randomNoun() + " " + randomPrepositionPhrase() + " ";
+
+ 			
+ 			break;
+ 		
+ 		case 4:
+ 			/*alert("In switch - sentence type: " + phraseType);
+ 			*/
+ 			phrase += randomArticle() + " " + randomNoun() + " " + randomConjunction() + " " + randomArticle() + " " + randomNoun();
+			plural = true;
+ 			
+ 			break;
+ 		case 5:
+ 			/*alert("In switch - sentence type: " + phraseType);
+ 			*/
+ 			phrase +=  randomProperNoun();
+
+ 			
+ 			break;
+ 		}
+ 		
+ 		
+ 		return phrase;
+  }
+  
+  /*
+   *  VP ->  V | V AV | V NP | V PP
+   */
+ 
+  function randomVerbPhrase()
+  {
+ 		var phraseType, phrase = "";
+ 		
+ 		phraseType = GetRandomRange(1, 4);
+ 	 
+ 		/* alert("In function randomVerbPhrase. Phrase type is: " + phraseType);
+ 		*/
+ 		
+ 		switch (phraseType) 
+ 		{
+ 		case 1:
+ 			
+ 			phrase += randomVerb() + " ";
+ 			
+ 			break;
+ 		
+ 		case 2:
+ 		
+ 			phrase += randomVerb() + " " + randomAdverb() + " ";
+ 			
+ 			break;
+ 			
+ 		case 3:
+ 		
+ 			phrase += randomVerb() + " " + randomNounPhrase() + " ";
+
+ 			
+ 			break;
+ 		
+ 		case 4:
+ 			
+ 			phrase += randomVerb() + " " + randomPrepositionPhrase() + " ";
+ 			
+ 			break;		
+ 		}
+ 		
+ 		
+ 		return phrase;
+  }
+ 
+   /*
+    *  VP ->  V | V AV | V NP | V PP
+    */
+  
+   function randomPluralVerbPhrase()
+   {
+  		var phraseType, phrase = "";
+  		
+  		phraseType = GetRandomRange(1, 4);
+  	 
+  		/* alert("In function randomVerbPhrase. Phrase type is: " + phraseType);
+  		*/
+  		
+  		switch (phraseType) 
+  		{
+  		case 1:
+  			
+  			phrase += randomPluralVerb() + " ";
+  			
+  			break;
+  		
+  		case 2:
+  		
+  			phrase += randomPluralVerb() + " " + randomAdverb() + " ";
+  			
+  			break;
+  			
+  		case 3:
+  		
+  			phrase += randomPluralVerb() + " " + randomNounPhrase() + " ";
+
+  			
+  			break;
+  		
+  		case 4:
+  			
+  			phrase += randomPluralVerb() + " " + randomPrepositionPhrase() + " ";
+  			
+  			break;		
+  		}
+  		
+  		
+  		return phrase;
+   }
+    
+ function randomInterrogativePhrase()
+ {
+	 return randomInterrogative();
+ }
+ 
+  
+/*
+ * write a random sentence
+ */
+
+function writeRandomCorrectSentence()
+ {
+
+ 	var str1 = " ";
+ 	
+ 	/*alert ("In writeRandomCorrectSentence");
+ 	*/
+ 	
+ 	str1 = randomCorrectSentence();
+
+ 	writeText(str1);	
+ 
+ }
+ 
+ 
+
+
+/*
+ * LIBRARY OF FUNCTIONS to be used for ASG 4, randomness and tiimers
+ */
+
+ /*
+  * Function to return an integer in a certain range that is speficied in range speficied by the two paramaters, upper and lower
+  */
+ function GetRandomRange(lower, upper)
+ {
+ var length, aNumber;
+
+ length = upper - lower;
+ aNumber = Math.random();
+ aNumber = aNumber * (length + 1);
+ while (aNumber >= (length + 1))
+ 	{
+ 	aNumber = Math.random();
+ 	aNumber = aNumber * (length + 1);
+ 	}
+ aNumber = Math.floor(aNumber + lower);
+ return aNumber;
+
+ }
+ 
+ 
+ /*
+  * Return random string from an array of strings
+  */
+  function randomStringFromArray(anArray)
+  {
+ 	var aString;
+ 	 
+ 	aString = anArray[GetRandomRange(0, (anArray.length - 1))];
+ 	/*
+ 	alert("the random string from an array of stings that will be returned is " + aString);
+ 	*/
+ 	return aString;
+  }
+  
+  
+
+   /*
+    * write test to the desc area
+    */
+   function writeText(txt)
+   {
+   document.getElementById("desc").innerHTML=txt;
+   }
+
+   
+  /*
+   * Also, need time out function(s)... 
+   */
+ 
+</script>
+</head>
+<!-- D8F0D4 -->
+<body  bgcolor="#D8F0D4">
+<img src ="HeadTest.jpg" width ="218" height ="241" alt="mechanical man"  />
+<h1>Write to me, Leonard, mechanical man!</h1>
+<BR>
+<!-- Here is where we will write text to -->
+<H2>
+<I>
+<p id="desc">Here is where sentences will appear.</p>
+</I>
+</H2>
+<!-- Here is a form in which we put buttons -->
+<FORM NAME="MyForm">
+
+	<BR>
+	Click here to get random sentence from a subset of English grammar<input type="button" onclick="writeRandomCorrectSentence()" value="Make Leonard write" />
+	<BR>
+	Click here to add a noun <input type="button" onclick="addNoun()" value="add a noun" />	
+	<BR>
+	Click here to add a verb <input type="button" onclick="addVerb()" value="add a verb" />	
+	<BR>
+	Click here to replace a noun <input type="button" onclick="replaceNoun()" value="replace a noun" />	
+</FORM>
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+
+<html>
+<head>
+    <!-- All those Javascript functions for randomness and time are in this include file, 
+        so it doesn't clutter your page/code-->
+    <script src="randomnessTimeLibrary.js"></script>
+
+
+</head>
+<!-- D8F0D4 -->
+<body  bgcolor="#D8F0D4" > <!--   onload="intializeRandomLocationImage()">   -->
+<BR>
+<!-- Here is where we will write text to -->
+
+<!--  <div id="div1">Here</div> <div id="div2">Here</div>
+<div id="div3">Here</div>
+<p id="desc0">Here is where sentences will appear.</p>
+-->
+<p id="desc">Here is where sentences will appear.</p>
+
+
+<table border="1">
+  <tr>
+    <th id="div1"> Here</th>
+    <th id="div2"> Here</th>
+    <th id="div3"> Here</th>
+  </tr>
+</table>
+
+<!-- Here is a form in which we put buttons -->
+
+<FORM NAME="MyForm">
+
+   <BR>
+    Click here for slotMachine <input type="button" onclick="slotMachine();" value="slot machine" />
+ 
+    <BR>
+    Click here alert w/ Math.random() <input type="button" onclick="alert(Math.random());" value="alert w/ Math.random()" />
+    <BR>
+    Click here to get random praise <input type="button" onclick="writeTextRandomPraise()" value="get random praise" /> 
+    <BR>
+    Click here to alert I like you & 2 random praises <input type="button" onclick="alertTwoRandomPraises()" value="alert I like you & 2 random praises" />
+    <BR>
+    Click here to alert with time in milliseconds since 1970 <input type="button" onclick="alert(callGetTime())" value="get milliseconds since 1970" />
+    <BR>
+    Click here to start timer <input type="button" onclick="startTimer()" value="start timer" />
+    <BR>
+    Click here to get elapsed time <input type="button" onclick="writeTextElapsedtime()" value="get elapsed time" />
+    <BR>
+    Click here to write image to random location<input type="button" onclick="writeRandomLocationImage()" value="write image" />
+    <BR>
+    Click here to write RANDOM image to random location<input type="button" onclick="writeRandomImageRandomLocation()" value="write random image random location" />    
+    <BR>
+    Click here to write RANDOM image to top<input type="button" onclick="writeRandomImage()" value="write random image top" />  
+    <BR>
+    Click here to initialize image areas <input type="button" onclick="intializeRandomLocationImage()" value="intialize image" />
+    <BR>
+    Click here to write praise <input type="button" onclick="writeRandomLocationPhrase()" value="random phrase II" />
+    <BR>    
+    Click here to hear random sound <input type="button" onclick="playRandomSound()" value="random sound" />
+    <BR>    
+    
+</FORM>
+
+
+<table width="656" height="221" border="0">
+  <tr>
+  <td>  <p id="desc1">Some text </p> &nbsp; </td>
+    <td><p id="desc2">Some text </p>&nbsp;</td>
+    <td><p id="desc3">Some text  </p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p id="desc4">Some text</p>&nbsp;</td>
+    <td><p id="desc5">Some text</p>&nbsp;</td>
+    <td><p id="desc6">Some text</p> </td>
+  </tr>
+  <tr>
+    <td><p id="desc7">Some text</p>&nbsp;</td>
+    <td><p id="desc8">Some text</p>&nbsp;</td>
+    <td><p id="desc9">Some text</p>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

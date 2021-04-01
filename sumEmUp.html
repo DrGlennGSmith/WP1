@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script type="text/javascript">
+        
+        function writeText(txt, id)
+        {
+            document.getElementById(id).innerHTML=txt;
+            alert("limit is " + limit);
+        } 
+        
+   // prompt the user for a number, and then add up all the numbers from 0 to that number
+      
+   var limit = parseInt(prompt("enter a number to sum to")); 
+   // var i = 0;
+   var total = 0;
+   /*
+   while (i <= limit)   //   i == 4, limit == 3, total == 6, TRUE
+           {
+           total = total + i; // total == 6
+           // i++;
+           i = i + 1; // i == 4
+           }
+*/
+
+/*
+do
+{
+  total = total + i; // total == 6
+  i = i + 1; // i == 4
+}
+while (i <= limit);
+*/
+
+        /* for loop version */
+        /*
+
+        for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+Statement 1 is executed (one time) before the execution of the code block.
+Statement 2 defines the condition for executing the code block.
+Statement 3 is executed (every time) after the code block has been executed.
+        */
+      
+       for (i = 0; i < limit; i = i + 1)
+         {
+         
+          total = total + i; 
+          alert("In for loop: i is " + i + " and total is " + total);
+
+          // i = i + 1
+         }
+         
+  alert("Out of the for loop: i is " + i + " and total is " + total);
+  alert("the total is " + total);
+      
+ 
+  </script>    
+  </head>
+  <body>
+    
+    <p id="txthere"></p>
+    
+  </body>
+</html>

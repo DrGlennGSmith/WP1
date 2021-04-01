@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Education</title>
+    <link rel="stylesheet" href="style8.css">
+    <script type="text/javascript">
+                  
+        function callGetTime() {   
+            var d = new Date();
+            return d.getTime();
+        }
+ 
+        // constructor problem with properties subject and amount
+        function Problem(subject, amount){
+            this.subject = subject;
+            this.amount = amount;
+            this.start = callGetTime();
+            this.showProbs = function (){
+
+                var problems = " " + this.amount + this.subject + " problems!";
+                writeText(problems, "problems");
+
+                if (this.amount == "5" && this.subject == "Addition"){
+                    $(document).ready(function(){
+                        var $quiz = $("<img src='https://jmhobbs29.github.io/WebProgrammging6930/Images/5add.jpg' width='50%>");
+                        $('#section2').append($quiz);
+                    });
+                }
+                else {
+                    $(document).ready(function(){
+                        var $quiz = $("<p>Document Not Available Yet. Check Back Later!</p>");
+                        $('#section2').append($quiz);
+                    });
+                }
+            }
+            this.elapsedTime = function () {
+                return ((callGetTime() - this.start)/60000).toFixed(0);
+            }
+            
+            this.start = function () {
+                writeText(startTime, "startTime")
+            }
+
+            this.stopWatch = function (){
+                var stopTime = callGetTime();
+                writeText(stopTime, "stopTime");
+
+                var timeSoFar = this.elapsedTime();
+                var overallTime = " "+ this.timesofar + " minutes.";
+                writeText(overallTime, "timer")
+            }
+
+
+        }
+
+        // globals
+        var problems;
+        var probs;
+        
+        // function to show problems in problembox
+        function showProblems () {
+  
+
+            probs = new Problem(document.getElementById("subject").value, 
+                document.getElementById("amount").value);
+            probs.showProbs();
+        }
+
+        function writeText(txt, destination){
+            document.getElementById(destination).innerHTML=txt;
+        }
+    </script>
+</head>
+<body>
+    <!-- <div class="image">
+        <img src="Images/math.jpg">
+    </div> -->
+
+    <!-- topbox has dropdowns to select subject and number of problems to complete -->
+    <div id="topbox"></div>
+        <form action='' name="frm">
+                <label for="subject">Select Math Subject:</label> 
+                <select id="subject">
+                    <option value="Addition">Addition</option>
+                    <option value="Division">Division</option>
+                    <option value="Multiplication">Multiplication</option>
+                    <option value="Subtraction">Subtraction</option>
+                </select>
+                <label id="problems">Select Number of Problems:</label> 
+                <select name="amount">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+                <input type = "button"
+                            value = "Get Problems"
+                            onclick = "showProblems();" />
+        </form>
+        <p id="problems">You want to do: </p>
+    </div>
+    <div id="problembox">
+        <!-- button to store current time -->
+        <input type = "button"
+                    value = "Start Quiz"
+                    onclick="probs.start();" />
+        <!-- Worksheet based on requested number of problems. -->
+        <p id="startTime">Your start time is: </p>
+        <div id="section2"></div>
+        <!-- button to get current time then subtract from start time for total time -->
+        <input type = "button"
+                    value = "Done!"
+                    onclick = "probs.stopWatch();" />
+                    <p id="stopTime">Your stop time is: </p>
+                    <p id="timer">In total you took: </p>
+    </div>
+    
+</body>
+<footer>
+    <div class="buttons">
+        <button class="button button0"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk0';">HMWK 0</button>
+        <button class="button button1"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk1';">HMWK 1</button>
+        <button class="button button2"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/index';">HMWK 2</button>
+        <button class="button button3"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk3';">HMWK 3</button>
+        <button class="button button4"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk4';">HMWK 4</button>
+        <button class="button button5"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk5';">HMWK 5</button>
+        <button class="button button6">HMWK 6</button>
+        <button class="button button7"onclick="window.location.href='https://jmhobbs29.github.io/WebProgramming6930/hmwk7';">HMWK 7</button>
+        <button class="button button8">HMWK 8</button>
+        <button class="button button9">HMWK 9</button>
+    </div>
+</footer>
+</html>

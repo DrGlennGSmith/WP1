@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<!-- this is week 8 in-class example of JS arrays and loops as well as XML file load -->
+<!-- 
+NOTICE: This code contains some advanced examples which are not meant to serve as a template for
+your next assignment.
+
+However, you may use forementioned code should you decide to load some content from an external XML file
+in your final project.  If you do, you may have to deal with CORS-related issues, so let me know.
+-->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Week 8</title>
+    <style>
+        #container {
+            margin-top: 5%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        /* using CSS box model */
+        #details {
+            height: 50px;
+            text-align: center;
+            font-size: medium;
+        }
+
+        /* using CSS box model */
+        #output {
+            border: 15px;
+            padding: 20px;
+            margin: 20px;
+            margin-top: 1%;
+            text-align: center;
+            font-size: x-large;
+        }
+    </style>
+    <script>
+        var symptoms = new Array(); // this is a global variable for symptom defnitions
+        var risks = new Array(); // this is a global array for risk factor definitions
+
+        // Symptom Object definition
+        function Symptom(id, weight, name, label, description) {
+            this.id = id;
+            this.weight = weight;
+            this.name = name;
+            this.label = label;
+            this.description = description;
+        }
+        // Risk Object definition
+        function Risk(id, weight, name, label, description) {
+            this.id = id;
+            this.weight = weight;
+            this.name = name;
+            this.label = label;
+            this.description = description;
+        }
+        // Patient Object definition
+        function Patient(fm) {
+            // constructor
+            this.symptom = new Array(); // array of true/false values corresponding to symptoms
+            this.risk = new Array(); // array of true/false vales corresponding to risk factors
+
+            this.name = fm.name.value;
+            this.email = fm.email.value;
+            this.age = Number(fm.age.value);
+            /*  since syptom and riks checkboxes are now created dynamically,
+                we will use arrays instead of variables to store this data
+            */
+            // extract a list of checkboxes from the div
+            var list_symptom = document.querySelectorAll("#container_symptoms input[type='checkbox']");
+            // traverse the list and set patient's symptom to true/false value
+            for (var x=0; x < list_symptom.length; x++) {
+                this.symptom[x] = list_symptom[x].checked;
+            }
+            // do the same for risks
+            var list_risk = document.querySelectorAll("#container_risks input[type='checkbox']");
+            // traverse the list and set patient's risk to true/false value
+            for (var x=0; x < list_risk.length; x++) {
+                this.risk[x] = list_risk[x].checked;
+            }
+            //console.log(this.symptom);
+            //console.log(this.risk);
+
+            // return potential severity color of this case
+            this.severity = function () {
+                // if all three symptoms and any one of risk factors are present
+                if (this.symptom[0] && this.symptom[1] && this.symptom[2] && (this.risk[0] || this.risk[1])) {
+                    return "#e99883"; // high red
+                    // if all three symptoms are present but NOT the risk factors
+                } else if (this.symptom[0] && this.symptom[1] && this.symptom[2] && !(this.risk[0] || this.risk[1])) {
+                    return "#f1f0a3"; // medium yellow
+                    // if any of the symptoms are present
+                } else if (this.symptom[0] || this.symptom[1] || this.symptom[2]) {
+                    return "#caeeca"; // low green
+                } else { // gray
+                    return "#dddddd";
+                }
+            }
+            // return recommendation text
+            this.diagnose = function () {
+                /*  NOTE: We have changed the initial code to load SYMPTOMS and RISKS from an XML file.
+                    The original logic below hasn't changed and it EXPECTS:
+                        symptom [0]=fever, [1]=cough, [2]=breath, AND risk [0]=travel, [1]=contact.
+                    All other risks are currently not used to determin threat levels and make recommendations.
+
+                    The following logic/code would have to change accomodate a variable (and potentially large) number of SYMPTOMS and RISKS as mentioned in class.
+                    One possible approach would be to use weights with decision trees.
+                    Another approach might involed deep learning with neural networks.
+                    Both of these are advanced topics which will not be covered in this course, but are worth exploring by those
+                    students who are interested in pursuing software development careers.
+
+                    I will leave any modificatios of this method to student who are ready for this type of challenge.
+                */
+
+                // if NONE of symptoms are present but they have been potentially exposed
+                if (!(this.symptom[0] || this.symptom[1] || this.symptom[2]) && this.risk[1]) {
+                    return "You do not show any symptoms, however, if you suspect that you might have been exposed to COVID-19 then please contact your local authories or call the CDC COVID-19 hotline at 555-555-5555.";
+                }
+                // if all three symptoms and any one of the risk factors are present
+                if (this.symptom[0] && this.symptom[1] && this.symptom[2] && (this.risk[0] || this.risk[1])) {
+                    if (this.age == 65) { // elderly are at much higher risk
+                        return "Call your local emergency services immediately!";
+                    } else {
+                        return "Call the CDC COVID-19 hotline at 555-555-5555 immediately!";
+                    }
+                    // if all three symptoms are present but NOT risk factors
+                } else if (this.symptom[0] && this.symptom[1] && this.symptom[2] && !(this.risk[0] || this.risk[1])) {
+                    return "Stay home and monitor your symptoms. Contact your physician if the symptoms persist.";
+                    // if any of the symptoms are present and they have any risk factors
+                } else if ((this.symptom[0] || this.symptom[1] || this.symptom[2]) && (this.risk[0] || this.risk[1])) {
+                    return "PLEASE STAY HOME! If you get any more symptoms then contact the CDC COVID-19 hotline at 555-555-5555!";
+                    // if they have ANY symptoms at all (but not risk factors)
+                } else if (this.symptom[0] || this.symptom[1] || this.symptom[2]) {
+                    return "If you get any more symptoms or if your current symptoms get worse then contact your physician.";
+                } else { // low virus threat
+                    return "You seem to be fine.  Keep washing your hands!";
+                }
+            }
+            // return patient potential threat score (real number) - this is just an example of what you can do with symptom and risk weights.
+            this.score = function () {
+                var score_s = 0.0;
+                var score_r = 0.0;
+                // for all symptoms (loaded from the XML file)
+                for (var x = 0; x < symptoms.length; x++) {
+                    if (this.symptom[x]) { // if patient has this symptom
+                        score_s += Number(symptoms[x].weight); // then add the weight to their total
+                    }
+                }
+                // for all risks (loaded from the XML file)
+                for (var x = 0; x < risks.length; x++) {
+                    if (this.risk[x]) { // if patient has this risk
+                        score_r += Number(risks[x].weight); // then add the weight to their total
+                    }
+                }
+                // These scores could be used in some logic, for example to determine threat levels.  For now we just output them to console.
+                console.log("DEBUG: score_s=" + score_s + " score_r=" + score_r);
+                return score_s + score_r;
+            }
+        }
+
+        // process the form data upon submit
+        function process_form() {
+            // get form object
+            var fm = document.getElementById("my_form");
+            // get output object
+            var out = document.getElementById("output");
+            // instantiate patient object
+            var patient = new Patient(fm);
+            //console.log("Debug:" + JSON.stringify(patient));
+
+            // set background color using patient object severity method
+            out.style.background = patient.severity();
+            // display recommendations based on input values using diagnose method
+            out.innerHTML = patient.diagnose();
+            var score = patient.score();
+        }
+
+        // load symptom and risk data from the xml file - executed automatically when body is loaded
+        function load_data() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    //console.log(this.responseXML);
+                    var sm = this.responseXML.getElementsByTagName("symptom");
+                    for (var x = 0; x < sm.length; x++) {
+                        var symptom = new Symptom(
+                            sm[x].attributes['id'].value,
+                            sm[x].attributes['weight'].value,
+                            sm[x].attributes['name'].value,
+                            sm[x].attributes['label'].value,
+                            sm[x].innerHTML);
+                        symptoms.push(symptom); // symptoms is defined under a global scope
+                    }
+                    //console.log(symptoms);
+                    var rk = this.responseXML.getElementsByTagName("risk");
+                    for (var x = 0; x < rk.length; x++) {
+                        var risk = new Risk(
+                            rk[x].attributes['id'].value,
+                            rk[x].attributes['weight'].value,
+                            rk[x].attributes['name'].value,
+                            rk[x].attributes['label'].value,
+                            rk[x].innerHTML);
+                        risks.push(risk); // symptoms is defined under a global scope
+                    }
+                    //console.log(risks);
+
+                    // dynamically generate HTML symptoms checkboxes
+                    var sms = "";
+                    for (var x = 0; x < symptoms.length; x++) {
+                        sms = sms + "<div class='form-group form-check' onmouseover='display_description(" + x + ", 0)' onmouseout='display_description(-1,0)'>";
+                        sms = sms + "<input type='checkbox' class='form-check-input' id='symptom" + symptoms[x].id + "'>";
+                        sms = sms + "<label class='form-check-label' for='symptom" + symptoms[x].id + "'>" + symptoms[x].label + "</label></div>";
+                    }
+                    document.getElementById("container_symptoms").innerHTML = sms;
+                    // dynamically generate HTML risk factors checkboxes
+                    var rks = "";
+                    for (var x = 0; x < risks.length; x++) {
+                        rks = rks + "<div class='form-group form-check' onmouseover='display_description(" + x + ",1)' onmouseout='display_description(-1,1)'>";
+                        rks = rks + "<input type='checkbox' class='form-check-input' id='risk" + risks[x].id + "'>";
+                        rks = rks + "<label class='form-check-label' for='risk" + risks[x].id + "'>" + risks[x].label + "</label></div>";
+                    }
+                    document.getElementById("container_risks").innerHTML = rks;
+                }
+            };
+            xhttp.open("GET", "data.xml", true);
+            xhttp.send();
+        }
+        // use general output area to display symptom details
+        function display_description(idx, type) {
+            if (Number(idx) >= 0) {
+                if (type == 0) {
+                    document.getElementById("details").innerHTML = symptoms[idx].description;
+                } else {
+                    document.getElementById("details").innerHTML = risks[idx].description;
+                }
+            } else {
+                document.getElementById("details").innerHTML = "";
+            }
+        }
+    </script>
+</head>
+
+<body onload="load_data()">
+    <div id="container">
+        <h1>COVID-19 Informational Page Example</h1>
+        <form id="my_form">
+            <!-- individual info -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <select class="form-control" id="age">
+                    <option value="0">Please select your age category</option>
+                    <option value="1">1-12 years old</option>
+                    <option value="13">13-25 years old</option>
+                    <option value="26">26-40 years old</option>
+                    <option value="41">41-64 years old</option>
+                    <option value="65">65 and older</option>
+                </select>
+            </div>
+            <!-- symptoms -->
+            <h4>Please check all that apply:</h4>
+            <!-- recommendation output area -->
+            <div id="details">
+            </div>
+            <div id="container_symptoms">
+            </div>
+            <!-- risk assessment -->
+            <div id="container_risks">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="process_form()">Submit</button>
+            <!-- recommendation output area -->
+            <div id="output">
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<covid-19>
+    <symptoms>
+        <symptom id="1" weight="0.50" name="feaver" label="I have feaver.">
+            Your body temperature is several degrees above the normal range of 36–37° Centigrade (98–100° Fahrenheit).
+        </symptom>
+        <symptom id="2" weight="0.25" name="cough" label="I am coughing.">
+            An occasional cough is normal and healthy. However, uncontrollable cough could be a sign of underlying illness.
+        </symptom>
+        <symptom id="3" weight="1.00" name="breath" label="I have shortness of breath.">
+            Common breathing problems include chronic sinusitis, allergies, and asthma. These problems can cause a host of symptoms such as nasal congestion, runny nose, itchy or watery eyes, chest congestion, cough, wheezing, labored breathing, and shallow breathing.
+        </symptom>
+    </symptoms>
+    <risks>
+        <risk id="1" weight="0.25" name="travel" label="I have recently traveled by airplane.">
+            People who have traveled by airplane, especially abroad, are at higher risk of COVID-19 infection.
+        </risk>
+        <risk id="2" weight="1.00" name="contact" label="I recently had contact with a COVID-19 patient.">
+            People who had contact with CONFIRMED COVID-19 patients or share the same space are at much higher risk of infection.
+        </risk>
+        <risk id="3" weight="1.00" name="smoker" label="I smoke.">
+            People who smoke are at higher risk.
+        </risk>
+    </risks>
+</covid-19>

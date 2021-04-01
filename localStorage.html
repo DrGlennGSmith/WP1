@@ -1,0 +1,44 @@
+
+<html>
+
+<head>
+<script type="text/javascript">
+
+/*
+ * Here is a function that users local storage across browser sessions to get the user's 
+ * name and greet them. This html5 local storage capability is supposed to be
+ * better than cookies.
+ */
+function welcomeBack()
+{
+if (typeof(Storage)!== "undefined") // is local storage undefined by browser
+    {
+     // browser supports local storage, so lets see if they've visited the web site before.
+    
+        // if haven't been here before, let's get your name
+	if ((typeof localStorage.userName == "undefined") || (localStorage.userName == null))
+		{
+        // writing to local storage for the first time
+		localStorage.userName = prompt("Welcome, what is your name?");        
+		}
+        
+     // either you just wrote it out, or you're coming.
+     // reading from local storage later
+  	document.getElementById("result").innerHTML = "Welcome  " + localStorage.userName;
+  	}
+	else
+  	 {
+  	 document.getElementById("result").innerHTML="Sorry, your browser does not support web storage... so I can not greet you by name.";
+  	 } 
+ 
+  /* supposedly alternate way to do local storage
+  localStorage.setItem('myKey', 'myValue');
+  var myVar = localStorage.getItem('myKey');
+  */
+}
+</script>
+</head>
+<body onload="welcomeBack()">
+<div id="result"></div>
+</body>
+</html>

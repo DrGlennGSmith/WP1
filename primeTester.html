@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script type="text/javascript">
+   // prompt the user for a number, and then add up all the numbers from 0 to that number
+      
+   var limit = parseInt(prompt('enter a number to test if it is prime')); 
+   
+   var i = 2;
+   //var total = 0;
+    prime = true;
+   while (i < limit)     
+           {
+           
+           if ((limit % i) == 0)
+             {
+              prime = false; 
+             }
+           i = i + 1;
+           }
+           
+      /* for loop version
+
+      var total = 0;
+
+       for (i = 0; i < limit; i++)
+         {
+         if ((limit % i) == 0)
+             {
+              prime = false; 
+             }        
+         }
+         */
+//           
+//    document.getElementById("txt").innerHTML= total;
+       if (prime)
+         {
+        alert( limit + " is prime");
+         }
+      	else
+        	{
+       	 	alert( limit + " is NOT prime");
+        	}
+    
+  </script>    
+  </head>
+  <body>
+    
+    <p id="txt">hi</p>
+    
+  </body>
+</html>

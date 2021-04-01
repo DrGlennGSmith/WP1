@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     //Jennifer
+     <script type = "text/javascript">
+     //Renyu
+         var names = ["Alison", "Bobby", "Chloe", "David", "Elizabeth"];
+		 var gradebook = new Array(); //Melissa
+
+		//  make a loop for prompting for the grades for each person.
+        for (i = 0; i < names.length; i++)
+        {  
+          gradebook[i] = parseInt( prompt("Enter the grade for " + names[i]));
+        }         
+    //Rome
+	 //Jennifer
+
+     var str;
+     
+		function doCalcAvg ()
+			{
+			var i = 0;
+			var total = 0;
+        	 do {
+
+  					total = total + gradebook[i];
+  					i++;
+				}
+			 while (i < gradebook.length); 
+            
+            return (total / gradebook.length);
+			}
+
+//Kara
+		alert("The students are " + names );
+		alert("The individual grades are " + gradebook );
+		alert("The average grade is " + doCalcAvg() );
+
+       
+		// Doesn't work here" writeText ("The average grade is " + doCalcAvg() , "txthere");
+
+// compute the average score for the class
+
+
+// write the average score out.
+
+//Kara
+	function writeText (txt, id)
+	{
+	document.getElementById(id).innerHTML = txt;
+	}
+  
+    </script>
+  </head>
+  
+  <body style= "background-color: rgb(184, 219, 184);">
+  
+    <header>
+    <h1 align="center">Gradebook Array</h1>
+	</header>
+   
+		<p style="color:blue" id="txthere"></p>
+        <br>
+        <button onclick="writeText ('The average grade is  ' + doCalcAvg() , 'txthere');">
+            Show me the average: </button>
+       
+   
+  </body>
+  
+  </html>
+ 
+  
