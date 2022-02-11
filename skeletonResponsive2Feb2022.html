@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--  For this to work on mobile, need initial scaling  of 1.0  -->
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        
+        <style>
+
+     /* This part above the media query is for smart phones  */
+            #great {
+                background: #f8f8f8;
+                display: block;
+                }
+
+                        
+            #great-food {
+                background: #f8f8f8;
+                display: none;
+                }
+
+            #great-drink {
+                background: #f8f8f8;
+                display: none;
+                }
+     
+        @media screen and (min-width: 600px) {
+            /* This part above the media query is for tablets */
+            #great {
+                background: #f8f8f8;
+                display: none;
+                }
+       
+                        
+            #great-food {
+                background: #f8f8f8;
+                display: block;
+                }
+            
+            #great-drink {
+                background: #f8f8f8;
+                display: none;
+                }
+        }
+
+        @media screen and (min-width: 900px) {
+            /* This part above the media query is for larger than tablets */
+            #great {
+                background: #f8f8f8;
+                display: none;
+                }
+                        
+            #great-food {
+                background: #f8f8f8;
+                display: block;
+                }
+            
+            #great-drink {
+                background: #f8f8f8;
+                display: block;
+                }
+
+        }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="great">GREAT</div>
+    
+        <div id="great-food">GREAT FOOD</div>
+
+        <div id="great-drink">GREAT DRINK</div>
+
+    </body>
+
+</html>
