@@ -1,0 +1,537 @@
+@charset "UTF-8";
+/* Colors: 
+Ravenclaw Blue: #00165e rgb(0, 22, 94)
+Gryffindor Red: #9c1203 rgb(156, 18, 3)
+Hufflepuff Yellow: #e3a000 rgb(227, 160, 0)
+Slytherin Green: #033807 rgb(3, 56, 7)
+Gray: #D8D8D8
+*/
+
+/*NOTWORKING - downloaded and uploaded into a webfont toolkit, added to GitHub to be hosted - 
+@font-face {
+    font-family: 'Harry P';
+    src: url(/FinalProject/FontKit/HARRYP__.TTF);
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/HARRYP__.TTF') format('truetype'), url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/HarryP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lumos';
+    src: url(/FinalProject/FontKit/LUMOS.TTF);
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/Lumos.woff') format('woff'), url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/LUMOS.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Parisienne';
+    src: url(/FinalProject/FontKit/Parisienne-Regular.ttf);
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/Parisienne-Regular.woff') format('woff'), url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/Parisienne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url(/FinalProject/FontKit/EBGaramond.woff);
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/EBGaramond.otf') format('otf'), url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/EBGaramond.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+*/
+/*Google fonts
+font-family: 'EB Garamond', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Mountains of Christmas', cursive;
+font-family: 'Parisienne', cursive;
+*/
+
+  
+
+/*General style areas*/
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    background-image: url("Images/HPBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+p {
+  font-family: 'EB Garamond';
+  font-size: 20px;
+  color: #D8D8D8;
+  text-align: justify;
+  display: inside;
+  overflow-wrap: normal;
+}
+h1 {
+  font-family: 'IM Fell English SC'; /*Was Harry P*/
+  font-size: 60px;
+  color: #D8D8D8;
+  text-align: center;
+}/*Heading at top of pages*/
+h2 {
+  font-family: 'Mountains of Christmas'; /*Was Lumos*/
+  font-size: 35px;
+  color: #D8D8D8;
+  text-align: center;  
+}/*Smaller Heading - Lumos font - gray*/
+h3 {
+    font-family: 'Mountains of Christmas'; /*Was Lumos*/
+    font-size: 50px;
+    color: #00165e;
+    text-align: center;  
+
+}/*Question heading - lumos font - blue */
+h4 {
+    font-family: 'Parisienne';
+    font-size: 30px;
+}
+#header {
+    background-image: linear-gradient(to right, rgb(156, 18, 3), rgb(227, 160, 0),rgb(3, 56, 7),rgb(0, 22, 94));
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+#header img {
+    width: 700px;
+    height: 150px;
+}
+#footer {
+    background-image: linear-gradient(to right, rgb(156, 18, 3), rgb(227, 160, 0),rgb(3, 56, 7),rgb(0, 22, 94));
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+}
+#footer a {
+    font-family: 'Mountains of Christmas'; /*was Lumos*/
+    color: #D8D8D8;
+    font-size: 20px;
+}
+/*Footer links on hover*/
+#footer a:hover {
+    background-color: #9c1203;
+    color: #D8D8D8;
+}
+
+
+/*Side Navigation menu*/
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #033807;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    font-family: 'IM Fell English SC'; /*Was Harry P*/
+    font-size: 20px;
+}
+/*Sidebar links*/
+.sidebar a {
+    display: block;
+    color: #D8D8D8;
+    padding: 10px;
+    text-decoration: none;
+}
+/*Active and current link*/
+.sidebar a.active {
+    color: #D8D8D8;
+    background-color: #e3a000;
+}
+/*Links on hover*/
+.sidebar a:hover:not(.active) {
+    background-color: #9c1203;
+    color: #D8D8D8;
+}
+
+
+/*Main content - responsive box that resizes with sidebar*/
+.content {
+    width: 80%;
+    margin: 0 auto;
+    align-content: center;
+    height: 100%;
+}
+.content:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+div.content {
+    margin-left: 200px;
+    padding: 10px;
+    height: 100%;
+}
+img {
+    width: 200px;
+    height: 200px;
+}
+
+
+/*FINISHED! - Row with 4 columns*/
+.grid1 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-column-gap: 10px;
+	margin: 2%;
+    float: left;
+    align-content: center;
+    width: 80%;
+    height:fit-content;
+}
+.grid1 div {
+    text-align: center;
+    padding: 5%;
+    box-sizing: border-box;
+    font-size: 30px;
+    text-align: center;
+    height: fit-content;
+    width:fit-content;
+}
+.grid1:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*FINISHED! - Box with 1 row and light gray background*/
+.box1 {
+    display: inline-block;
+    background-color: #D8D8D8;
+    border: 3px solid #e3a000;
+    margin: 2%;
+    padding: 10px;
+    text-align: center;
+    width: 90%;
+}
+.box1 p {
+    font-family: 'EB Garamond';
+    font-size: 25px;
+    color: #00165e;
+    text-align: center;
+    display: inside;
+    overflow-wrap: break-word;
+}
+.box1 img {
+    width: 90%;
+    height: 15%;
+    margin-bottom: 1%;
+}
+
+/*House Pages: Row with 2 columns, 1 twice as big, no preset background color -style in HTML*/
+.grid2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 10px;
+    margin-top: 2%;
+    width: 85%;
+    height: fit-content;
+}
+.grid2 article {
+    border: 1px solid #D8D8D8;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+}
+.grid2 aside {
+    border: 1px solid #9c1203;
+    background-color: #D8D8D8;
+    padding: 10px;
+    box-sizing: border-box;
+    display: block;
+    align-content: center;
+    text-align: center;
+    height: fit-content;
+}
+.grid2 a { 
+    color:black;
+    font-family: 'IM Fell English SC';
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+/*Page 2: Quiz content*/
+/*Box that holds pictures for quiz answers*/
+.answerBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 2px;
+    margin: 2%;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+}
+.answerBox:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* Hides radio buttons - don't use display: hide because it affects accessibility*/
+.input-hidden {
+    position: absolute;
+    left: -9999px;
+}
+/*Adds border around selected pictures*/
+input[type=radio]:checked +label>img {
+    border: 3px solid #9c1203;
+    box-shadow: 0 0 5px 5px #033807;
+}
+/*Sizes for images within answer boxes*/
+input[type=radio] +label>img {
+    height: 200px;
+    width: 200px;
+}
+
+
+/*Page 3: Box to hold image map - hidden on tablets and phones*/
+.mapBox {
+    display: inline-block;
+    background-color: #D8D8D8;
+    border: 2px solid #9c1203;
+    margin: 2%;
+    padding: 10px;
+    text-align: center;
+    width: auto;
+}
+.mapBox img {
+    width: 1000px;
+    height: 1000px;
+    margin-bottom: 1%;
+}
+
+/*Page 3: Box that displays on tablets/phones instead of imagemap- 1 row, 4 columns - similar to grid1*/
+.respBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    margin: 2%;
+    float: left;
+    align-content: center;
+}
+.respBox div {
+    height: auto;
+    text-align: center;
+    padding: 5%;
+    box-sizing: border-box;
+}
+.respBox:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/*Styling to make image with text overlay*/
+.imageContainer {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto;
+}
+.imageContainer img {
+    vertical-align: middle;
+}
+.imageText {
+    position: absolute;
+    top: 0;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #D8D8D8;
+    width: 85%;
+    padding: 20px;
+}
+
+/*Styling for iframe - video*/
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/*Button styling*/
+button {
+    width: 150px;
+    height: 100px;
+    color:rgb(0, 0, 0);
+    font-size: 20px;
+    font-family: 'Mountains of Christmas';
+}
+
+button:hover{
+    background-color: #D8D8D8;
+}
+
+.button2 {
+    width: 200px;
+    height: 100px;
+    color:rgb(0, 0, 0);
+    font-size: 30px;
+    font-family: 'Mountains of Christmas';
+}
+
+.button2:hover{
+    background-color: #D8D8D8;
+}
+
+
+
+
+/*MEDIA QUERIES*/
+/* This targets PHONES */
+@media screen and (max-width: 640px) {
+
+    #header {
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        height: 50%;
+        font-size: 50px;
+    }
+    #header img {
+        width: 300px;
+    }
+
+    #footer {
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        height: 50%;
+    }
+    
+   /*Make sidebar into topbar with links vertical*/
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 2px;
+    }
+    div.content {
+        margin-left: 0;
+    }
+
+    img {
+        width: 50%;
+        height: 50%;
+    }
+
+    /* Makes content display stacked vertical */
+    .grid1, .grid2, .respBox, .box1 {
+        width: 100%;
+        display: block;
+    }
+
+    .grid1, .grid2, .respBox, .box1, .answerBox::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .answerBox {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5px;
+    }
+
+
+    
+/*Hides image map*/
+    .mapBox {
+        display: none;
+    }
+
+}
+
+
+
+
+/* This targets TABLETS */
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    #header {
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        height: 75%;
+        font-size: 70px;
+    }
+    #header img {
+        width: 80%;
+    }
+
+    #footer {
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        height: 75%;
+    }
+/*Makes grid smaller*/
+    .grid1, .grid2, .respBox {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .grid1, .grid2, .respBox div {
+        text-align: center;
+        padding: 5%;
+        box-sizing: border-box;
+    }
+    .grid1, .grid2, .respBox ::after {
+        content: "";
+        clear: both;
+        display: grid;
+    }
+
+    input[type=radio] +label>img {
+        height: 150px;
+        width: 150px;
+    }/*Images for quiz answers*/
+
+
+
+
+/*Make sidebar into topbar with links horizontal*/
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+
+    img {
+        width: 75%;
+        height: 75%;
+    }
+
+/*Hides image map*/
+    .mapBox {
+        display: none;
+    }
+
+}
+
+
+
+/* this targets DESKTOPS */
+@media screen and (min-width: 1024px) {
+    .respBox {
+        display: none;
+    }/*Hides the box for images that replaces image map*/
+}

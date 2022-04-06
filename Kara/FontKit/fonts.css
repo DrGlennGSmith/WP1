@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Harry P';
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/HARRYP__.TTF') format('ttf'),
+        url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/HarryP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lumos';
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/Lumos.woff') format('woff'),
+        url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/LUMOS.TTF') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Parisienne';
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/Parisienne-Regular.woff') format('woff'),
+        url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/Parisienne-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/EBGaramond.otf') format('otf'),
+        url('https://github.com/karak3/WebProgramming1/blob/bb550c2ee6786ada199d8c0cfac28cab7577e6bd/FinalProject/FontKit/EBGaramond.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
