@@ -1,0 +1,72 @@
+<html>
+<head>
+<script>
+
+// Set up a global array of cities
+//                    0           1         2        3            4
+var city_names = ["Aberdeen", "Abilene", "Akron", "Albany", "Albuquerque"];
+
+var city;
+      
+/*
+Some array methods
+*/
+
+function arrayMethods ()
+    {
+    city_names[city_names.length] = prompt("Add another city to the end of the array");       
+    alert("the cities are " + city_names );
+
+    city_names.push(prompt("Push another city to the end of the array"));
+    alert("After push the cities are " + city_names );
+
+    city = city_names.pop();
+    alert("We popped off " + city + " After pop the cities are " + city_names );
+        
+    city_names.unshift(prompt("Unshift another city to the beginning of the array"));
+    alert("After unshift the cities are " + city_names );
+
+    city = city_names.shift();
+    alert("We shifted off " + city + " After shift the cities are " + city_names );
+    }
+
+/* 
+    prompt the user for a city name and see if its in the list.
+*/
+function IsCityInArray ()
+    {
+     
+    var newCity = prompt("Enter a city and we will see if it is the list of cities");
+    var foundIt = false;
+    for (i = 0; i < city_names.length; i = i + 1)
+        {
+        if (newCity == city_names[i])
+            {
+            foundIt = true;
+            alert("Hey! We found " + newCity);
+            }
+        }
+        
+        if ( foundIt == false)
+            {
+            alert("Bummer! We did not find " + newCity + " but we are adding it.");
+            city_names.push(newCity)
+            }
+
+    }
+   
+</script>
+
+</head>
+<body>
+
+<h2> Cities and arrays playground</h2>
+<br>
+<button onclick="IsCityInArray()">Input a city. Is it in a list?</button>
+<br>
+<br>
+<button onclick="arrayMethods()">Let's play with array methods.</button>
+
+
+</body>
+</html>

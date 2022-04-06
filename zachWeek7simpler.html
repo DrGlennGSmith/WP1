@@ -1,0 +1,213 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Week 7 - Pick Your Pasta</title>
+<script>
+    /*This website will use constructors and functions to allow users to custom-order pasta dishes, they will be able to choose their pasta,
+    their sauce, their veggies, their meats, a vegetarian option, their cheese, and if they would like an individual or a family portion*/
+    function Pasta (pasta, sauce, veggies, meat, cheese, portion) {
+        this.pasta = pasta;
+        this.sauce = sauce;
+        this.veggies = veggies;
+        this.meat = meat;
+        this.cheese = cheese;
+        this.portion = portion;
+
+        this.showOrderAndPrice = function () {
+            var price;
+
+            if (this.portion == "individual") /*check to see if this is the correct syntax for parentheses*/
+                price = "$9.99";
+
+            if (this.portion == "family")
+                price = "$25.99";         /* no 'else' statement used, will this be a problem?*/
+            
+            var OrderString = "Your order is a(n) " + this.portion + "pasta plate with " + this.pasta + ", " + this.sauce + ", " + this.veggies + ", " + this.meat + ", and " + this.cheese + ". Your total for this orer will be " + price + ". Enjoy!"
+                writeText(OrderString, "order");
+        }
+    }
+/* THis will *hopefully* write the user's order to an html element, and the text and id of the html element will be the parameters*/
+
+function writeText(txt, destination) /*is this right? or should 'id' be one of the parameters?*/
+    {
+    document.getElementById(destination).innerHTML=txt; /*where is 'txt' defined?*/
+    }
+/*now comes a 'global variable'*/
+var myPasta;
+/*this function will get the values from the order form and process them, so that .showOrderAndPrice can do its thing */
+function processForm() {
+    myPasta = new Pasta(
+        document.Pasta.pasta.value,
+        document.Pasta.sauce.value,
+        document.Pasta.veggies.value,
+        document.Pasta.meat.value,
+        document.Pasta.cheese.value,
+        document.Pasta.portion.value);
+
+    myPasta.showOrderAndPrice (); /*this should get the info from the order form and return the order and price to user*/
+}
+
+</script>
+<style>
+/*style stuff will all go here......*/
+.bg {
+/* This is the image used, which was downloaded from pexels.com */
+      background-image: url("images/pasta.jpg");
+    
+/* This makes the image take up more than the full height of the screen, allowing scrolling*/
+      height: 220%; 
+    
+/* This centers and scales the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+.container {
+        position:absolute;
+        left: 25px;
+        top: 0;
+        color:darkred;
+        margin-left: 10px;
+} 
+.form-group {
+    background-color: blanchedalmond;
+    width: 30%;
+}
+.header {
+    position: fixed;
+    background-color: black;
+    display: none;
+}    
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-----<header class="header">
+    <h1>Ristorante Famiglia Goldoni</h1>
+    <h3>"Our Pasta is more than just food, it's Pure Art."</h3>
+</header>-------->
+<!----This is where I will place a background image-->
+<div class="bg"></div>
+<!----This form is a mash-up of a Bootstrap example from w3schools and our in-class Week 7 example-->
+
+  <h2>Pick Your Pasta!</h2>
+  <form id="Pasta">
+    
+      <label for="pasta">Choose Your Noodle:</label> <!-- document.Pasta.pasta.value, -->
+      <!-- <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="pasta" data-toggle="dropdown">Pasta
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" value="Spaghetti">Spaghetti</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" value="Linguine">Linguine</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" value="Fusilli">Fusilli</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" value="Farfalle">Farfalle</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" value="Penne">Mezze Penne</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.jessicagavin.com/types-of-pasta/">About Our Pasta</a></li>
+        </ul>
+      </div> -->
+
+      <select name = "pasta">
+        <option value="Spaghetti">Spaghetti
+        <option value="Linguine">Linguine
+        <option value="Fusilli">Fusilli
+        <option value="Farfalle">Farfalle
+        <option value="Fusilli">Fusilli
+        <option value="Penne">Mezze Penne
+        </select>
+    
+        <!-- 
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="sauce" data-toggle="dropdown">Sauce
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" value="Ragù alla Bolognese">Ragù alla Bolognese (Meat-Based)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" value="Carbonara">Carbonara (Meat-Based)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" value="Pesto">Pesto (Vegetarian)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" value="Alfredo">Alfredo (Vegetarian)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" value="Pasta al Pomodoro">Pasta al Pomodoro (Vegan)</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://unocasa.com/blogs/tips/types-of-pasta-sauce">About Our Sauces</a></li>
+          </ul>
+        -->
+
+        <select name = "sauce">
+            <option value="Ragù alla Bolognese">Ragù alla Bolognese 
+            <option value="Carbonara">Carbonara
+            <option value="Pesto">Pesto
+            </select>
+
+        </div>
+     
+
+    
+      <label for="veggies">Choose Your Veggies:</label>
+      <!-- <div class="checkbox"  class="form-control" id="veggies" name="veggies">
+        <label><input type="checkbox">Mushrooms</label><br>
+        <label><input type="checkbox">Zucchini</label><br>
+        <label><input type="checkbox">Eggplant</label><br>
+        <label><input type="checkbox">Asparagus</label><br>
+        <label><input type="checkbox">Roasted Bell Peppers</label><br>
+        <label><input type="checkbox">Sundried Tomatoes</label><br>
+        <label><input type="checkbox">Artichoke Hearts</label><br>
+      -->
+
+      <select name = "veggies">
+        <option value="Mushrooms">Mushrooms
+        <option value="Zucchini">Zucchini
+        </select>
+
+    
+        <!--<div class="checkbox"  class="form-control" id="meat" name="meat">
+          <label><input type="checkbox">Chicken</label><br>
+          <label><input type="checkbox">Meatballs</label><br>
+          <label><input type="checkbox">Italian Sausage</label><br>
+          <label><input type="checkbox">Marinated Tofu</label><br>  
+        -->
+
+          <select name = "meat">
+            <option value="Chicken">Chicken
+            <option value="Meatballs">Meatballs
+            </select>
+      
+        <!--
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="cheese" data-toggle="dropdown">Cheese
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Parmigiano Reggiano</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pecorino</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grana Padano</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Asiago</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mozzarella</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.cooksinfo.com/italian-cheeses#:~:text=The%20four%20most%20popular%20Italian,local%20character%20to%20the%20cheeses.">About Our Cheeses</a></li>
+          </ul>
+          -->
+
+          <select name = "cheese">
+            <option value="Mozzarella">Mozzarella
+            <option value="Pecorino">Pecorino
+            </select>
+        
+
+        <select name = "portion">
+            <option value="individual">individual
+            <option value="family">family
+            </select>
+        
+  
+
+    <button type="submit" class="btn btn-default" onclick="document.getElementById(myPasta).innerHTML = processForm()">Submit</button>
+  </form>
+  <p id="myPasta">Your Order will appear here:</p>
+
+
+</body> 
+</html>

@@ -1,0 +1,92 @@
+
+<html>  
+    <style>
+
+body {
+    background-color: #d6f6f8;
+    margin: 0;
+    padding: 2%;
+  }
+
+  nav {
+width: 100%;
+overflow: auto;
+
+  }
+
+button {
+    color: #FF69B4;
+    background-color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  }
+    </style>
+<head> 
+ 
+<script>  
+
+function ageCalculator() 
+{  
+    var userinput = document.getElementById("bd").value;  
+
+    var bd = new Date(userinput);  
+
+    if(userinput==null || userinput=='') 
+    {  
+      document.getElementById("message").innerHTML = "You have to at least remember your birthdate - this isn't a carnival game.";    
+      return false;   
+    } else {  
+      
+    //month variance 
+    var month_diff = Date.now() - bd.getTime();  
+      
+    //age month differece 
+    var age_dt = new Date(month_diff);   
+      
+    //minus year  
+    var year = age_dt.getUTCFullYear();  
+      
+    //age  
+    var age = Math.abs(year - 1970);  
+      
+    //total age 
+    return document.getElementById("result").innerHTML =    
+             "You are " + age + " years old. ";  
+    }  
+
+}  
+</script>  
+
+
+
+</head>  
+<body>  
+           
+<center>  
+    <br>
+    <br>
+<h2 style="color: FF69B4" align="center"> Did you forget how old you are again? <br> <br> </h2>   
+  
+<b> DATE OF BIRTH <input type=date id = bd> </b>  
+<span id = "message" style="color:rgb(0, 4, 255)"> </span> <br><br>    
+  
+<button type="submit" onclick = "ageCalculator()"> Submit </button> <br><br>  
+
+<h3 style="color:FF69B4" id="result" align="center"></h3>   
+</center>  
+
+<center>
+<iframe src="https://giphy.com/embed/1wQOVmrrb7EmAtMA1C" width="300" height="390" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/SkyTV-aladdin-youre-old-but-so-1wQOVmrrb7EmAtMA1C"></a></p>
+</center>  
+
+
+
+</body>  
+</html>  

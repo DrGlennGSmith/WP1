@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+/* fixed header */
+header { 
+    position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color:darkslateblue;
+	color:gold;
+	box-sizing: border-box;
+	clear: both;
+	z-index: 1;
+	height: 75px;
+}
+/* navigation bar */
+.topnav {
+   overflow:hidden;
+}
+.topnav a {
+   float:right;
+   color:gold;
+   display:block;
+   padding: 14px 16px;
+}
+.topnav input[type=text] {
+   float: right;
+}
+/* pleasing color gradient */
+ body {
+     margin-top: 100px;
+     background: #005AA7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:darkslateblue;
+ }
+ /*prevents form from being covered by header */
+ form {
+     margin: top 125px;
+ }
+/*styling input fields*/
+ input [type=text], select {
+    padding: 10px 20px;
+    margin: 8px;
+    border: 1px darkslateblue;
+    padding: 10px 20px;
+    background-color: lightgoldenrodyellow;
+ }
+ 
+
+ input  [type=color], select {
+    padding: 10px 20px;
+    border: 1px darkslateblue
+    box-sizing: border-box;
+    background-color: lightgoldenrodyellow;
+ }
+
+ input  [type=radio], select {
+    padding: 10px 20px;
+    border: 1px darkslateblue
+    box-sizing: border-box;
+    background-color: lightgoldenrodyellow;
+ }

@@ -1,0 +1,208 @@
+
+<html>
+<head>
+<title>Week 5 - School Choice Form</title>
+
+<!------This form will be for parents hoping to enroll their children in one of three Tacoma Public Schools-->
+<script>
+    function getOption () {
+
+    var obj = document.getElementById ("mySelect_2");
+    
+    /* document.getElementById("SchoolInfo").innerHTML =
+    obj.options[obj.selectedIndex].value; 
+    */
+
+/* 
+    if (obj.selectedIndex == 0) 
+        {
+            document.getElementById("SchoolInfo").innerHTML =
+                "Blix Elementary is the only school in Tacome with a dual language immersion.";
+        } 
+        else if (obj.selectedIndex == 1)
+                {
+                    document.getElementById("SchoolInfo").innerHTML =
+                "Point Defiance is great for nature lovers.";
+                }
+                else if (obj.selectedIndex == 2)
+                      {
+                        document.getElementById("SchoolInfo").innerHTML =
+                "Tacoma Online let's you learn from at home.";
+
+                      }
+                      else 
+                      {
+                          alert("What is happening?");
+                      }
+                     
+            */          
+
+/* Anther way to do this */
+
+switch(obj.selectedIndex) {
+  case 0:
+    // code block
+    document.getElementById("SchoolInfo").innerHTML =
+    "Blix Elementary is the only school in Tacome with a dual language immersion.";
+    break;
+
+  case 1:
+    // code block
+    document.getElementById("SchoolInfo").innerHTML =
+                "Point Defiance is great for nature lovers.";
+    break;
+
+   case 2:
+    // code block
+    document.getElementById("SchoolInfo").innerHTML =
+                "Tacoma Online let's you learn from at home.";
+    break;
+
+  default:
+    // code block
+}             
+
+}
+/*---------Put other slideshow stuff for [slideshow_container]-------------------------*/
+</script>
+<link href="stylesheet3.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <h1>Tacoma Public Schools</h1>
+<!---------Put a searchbar in [topnav]------------------------->
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <input type="text" placeholder="Search..">
+        </div>
+    </header>
+<!---------Put a slideshow in [slideshow_container]------------------------->
+<form action="/action_page.php">
+    <label for="#">Student's Eye Color:</label><!--------this is a joke :-)-->
+    <input type="color" id="#" name="#">
+    <input type="submit"><br><br>
+<!-----Student’s name----[input type: text]---------------->
+    <label for="sfname">Student's First Name:</label>
+    <input type="text" id="sfname" name="sfname"><br><br>
+    <label for="sfname">Student's Last Name:</label>
+    <input type="text" id="sfname" name="sfname">
+    <br><br>
+<!-----Parent/Guardian name------- [input type: text]-------------->
+    <label for="pgfname">Parent/Guardian's First Name:</label> 
+    <input type="text" id="pgfname" name="pgfname"><br><br>
+    <label for="pgfname">Parent/Guardian's Last Name:</label> 
+    <input type="text" id="pgfname" name="pgfname">
+    <br><br>
+ <!-------Parent/Guardian phone------[input type: tel]------------->   
+    <label for="pgphone">Parent/Guardian phone number:</label>
+    <input type="tel" id="pgphone" name="pgphone">
+    <br><br>
+<!-------Parent/Guardian email------[input type: tel]------------->
+    <label for="pgemail">Parent/Guardian email:</label> 
+    <input type="email" id="pgemail" name="pgemail">
+    <br><br>
+<!-----Student’s age------[input type: number] --------------->
+    <label for="age">Student's age:</label> 
+    <input type="number" id="age" name="age" min="0">
+    <br><br>
+<!----Student’s date of birth------ [input type: date]---------------->
+    <label for="dob">Student's date of birth</label>
+    <input type="date" id="dob" name="dob">
+    <br><br>
+<!-----Student’s gender-------[input type: radio]-------------->
+    Choose the gender identity that your child uses: <br>
+    <input type="radio" id="male" name="gender_choice" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender_choice" value="Female">
+    <label for="female">Female</label>
+    <input type="radio" id="nb" name="gender_choice" value="Non-binary">
+    <label for="nb">Non-binary</label>
+    <br><br>
+<!-------Student’s race/ethnicity-----[input type: checklist - Actually, checkbox....]-------------->
+    <p>Which of the following best describes your child's race/ethnicity? (Check all that apply)</p>
+    <input type="checkbox" id="aapi" name="aapi" value="AAPI">
+    <label for="aapi">Asian, Asian American or Pacific Islander</label><br>
+    <input type="checkbox" id="aaB" name="aaB" value="AAB">
+    <label for="aaB">Black or African American</label><br>
+    <input type="checkbox" id="hola" name="hola" value="HOLA">
+    <label for="hola">Hispanic or Latin American</label><br>
+    <input type="checkbox" id="alna" name="alna" value="ALNA">
+    <label for="alna">Alaskan Native or Native American</label><br>
+    <input type="checkbox" id="wyt" name="wyt" value="WYPIPO">
+    <label for="wyt">White, Caucasian or Euro American</label><br>
+    <input type="checkbox" id="mix" name="mix" value="MIX">
+    <label for="mix">Multiracial or Biracial</label><br>
+    <input type="checkbox" id="non" name="non" value="Not listed">
+    <label for="non">A race or ethnicity not listed here</label><br>
+    <input type="checkbox" id="no" name="no" value="No response">
+    <label for="no">I prefer not to disclose</label><br>
+    <br><br>
+<!---Student’s upcoming grade level-----[input type: range]------------------>
+    Select your child's upcoming grade level:
+    <select id="mySelect_1">
+      <option>Kindergarten</option>
+      <option>1st Grade</option>
+      <option>2nd Grade</option>
+      <option>3rd Grade</option>
+      <option>4th Grade</option>
+      <option>5th Grade</option>
+    </select>
+    <br><br>
+<!-------School Choice-------------->
+
+<input type="button" onclick="getOption()" value="Give me info. about my selected school">
+<p id="SchoolInfo">  School info will go here.</p>
+
+    Which school are you interested in enrolling your child in? <br>
+    <select id="mySelect_2">
+      <option>Blix Elementary School</option>
+      <option>Point Defiance Elementary School</option>
+      <option>Tacoma Online</option>
+    </select>
+    <br><br>
+
+</form>
+
+
+<!-------------------------->
+<!-------------------------->
+<!-------------------------->
+<!-------------------------->
+<!-------------------------->
+<!-------------------------->
+<!-------------------------->
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

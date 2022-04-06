@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jeff's Functions</title>
+<body>
+<h2>Let's Do Some Math</h2>
+
+<script>
+function sumItUp(aNumber)  
+{
+ var sum = 0; 
+ var i = 1; 
+
+ alert("aNumber is " + aNumber);
+
+ while (i <= aNumber) 
+ {
+
+sum = sum + i; 
+alert ("Sum is now " + sum + " and i is "  + i); 
+i = i + 1;
+ }
+
+ document.getElementById("sum1").innerHTML = 
+ "Your sum is " + sum;  
+ 
+
+ }
+
+</script>    
+
+
+
+</head>
+<body>
+
+<h2>Input a number and then click on a button, which calls a function to sum up from 1 to that number</h2>    
+<form>
+<input type="number" id="number1" >
+
+</form>
+
+
+<input type="button" onclick="sumItUp(document.getElementById('number1').value)" value="Click to get sum">    
+
+<p id="sum1"> The sum goes here</p>
+</body>
+</html>

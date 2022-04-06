@@ -8,7 +8,7 @@
   <script type = "text/javascript">
                 
     function country (name, continent, population, capital, climate, area){
-           
+          
       /* Rome - climate Kara Jennifer */
 
                   this.name = name; 
@@ -46,6 +46,7 @@
       var country4 = new country("Costa Rica", "North America", 5000000, "San Jose", 
       "Perfect but rains a lot", 19700); 
       var country5 = new country("Vatican City", "Europe", 825, "None", "Mediterranean", 10); 
+      var Moldavia = new country("Moldavia", "Europe", 5000000, "Zarifa", "Mountainous", 15000000); 
 
   </script>
 </head>                  
@@ -65,20 +66,23 @@
     <!--  Dr. Smith  --> 
    <input type="button" value = "write Country2" onclick= "country2.writeCountry();" 
    name="write country2"/>
-
+   <br>
    <input type="button" value = "write Country3" onclick= "country3.writeCountry();" 
    name="write country3"/>
- 
+   <br>
   <!-- Rome - button   -->
  <input type="button" value = "write capital Country3" 
  onclick= "writeText(country3.capital,'textArea2');" name="write country3"/>
- 
+ <br>
  <input type="button" value = "write capital Country4" onclick= 
  "writeText(country4.capital,'textArea2');" name="write country4"/>
- 
+ <br>
 <input type="button" value = "write density Country5" 
 onclick= "writeText(country5.density(),'textArea2');" name="write country5"/>                                                                                                                                
-  
+  <br>
+<input type="button" value = "write density Moldavia" 
+onclick= "writeText(Moldavia.density(),'textArea2');" name="write Moldavia"/>                                                                                                                                
+
          <!--  Dan -->                                                                                                    
 
     <p id="textArea">  Text goes here: </p>

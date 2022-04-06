@@ -1,0 +1,103 @@
+
+<html>
+    <head>
+    <title>Week 5B - Temperature Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    
+        @font-face {
+        font-family: OriginTech;
+        src: url(fonts/OriginTech\ personal\ use.otf);  
+        }
+        
+        .bg {
+    /* This is the image used, which was downloaded from pexels.com */
+          background-image: url("images/ice_ice_baby.jpg");
+        
+    /* This makes the image take up the full height of the screen*/
+          height: 100%; 
+        
+    /* This centers and scales the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+    /* This fixes the text to the top left corner, with a nice margin and places it in front of the background image*/
+        .text {
+            position:absolute;
+            left: 25px;
+            top: 0;
+            color:antiquewhite;
+        }
+    /* This is the same font I used for the header of my index page */
+        h1 {
+            font-family: OriginTech;
+        }
+        </style>
+    <script>
+    /* This function will convert Celsius to Fahrenheit, using the formula: (_°C x 1.8) + 32 = _°F */
+        function CtempConvert (tempC)
+        {
+            var obj = document.getElementById "tempC");
+            return (tempC * 1.8) + 32;
+            console.log(TempFahrenheit);
+            document.getElementById(result1).innerHTML = "Your temperature in Fahrenheit is" + TempF;
+    
+        }
+    /* This function will convert Fahrenheit to Celsius, using the formula: (_°F - 32) x 0.55555555556 = _°C */
+        function FtempConvert (TempF)
+        {
+            var obj = document.getElementById ("tempF");
+            return (tempF - 32) * 0.55555555555556;
+            console.log(TempFahrenheit);
+            document.getElementById(result1).innerHTML = "Your temperature in Celsius is" + TempC;
+        }
+    </script>
+    <link href="stylesheet4.css" rel="stylesheet" type="text/css">
+    
+    
+    
+    
+    </head>
+    
+    <body>
+    <div class="bg"></div>
+    <div class="text">
+        <header>
+        <h1>C°/F° Converter</h1>
+        </header>
+    <form action="#">
+        <h3>Enter a value in F° to convert to C°</h3>
+            <label for="tempF">Temperature in F°:</label> 
+            <input type="number" id="tempF" name="tempF">
+            <br><br>
+            <input type="button" onclick="FtempConvert()" value="Click to convert">
+    
+        <p id="result1"> The results will go here</p>
+     
+        <h3>Enter a value in C° to convert to F°</h3> 
+            <label for="tempC">Temperature in C°:</label> 
+            <input type="number" id="tempC" name="tempC">
+            <br><br>
+            <input type="button" onclick="CtempConvert()" value="Click to convert">
+    
+        <p id="result1"> The results will go here</p>
+    </form>
+    </div>
+    
+    
+    
+    
+    </body>
+    
+    
+    
+    
+    
+    
+    </html>

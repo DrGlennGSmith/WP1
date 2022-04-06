@@ -1,0 +1,41 @@
+body {
+    background-color: #ffc1d4;
+    margin: 0;
+    padding: 2%;
+  }
+   /* button */
+button {
+    border: none;
+    color: white;
+    background-color: #d8345d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+ 
+   /* headings */
+  h1 {
+    background-color: #d8345d;
+    font-size: larger;
+    color: white;
+    text-align: center;
+  }
+
+  h2 {
+    background-color: none;
+    font-size: medium;
+    color: #020202;
+    text-align: left;
+  }
+  
+   /* logo */
+  logo {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+  }

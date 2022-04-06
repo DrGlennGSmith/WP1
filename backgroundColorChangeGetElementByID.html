@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            
+            /*
+            This is a function to allow the user to change the background 
+            color of the page.
+            */
+            function backGroundColorChange() {
+
+                /*  declaration of a local variable to hold a number and also a variable to get an element in the html. 
+                 variable assignment and then an if to make a decision 
+                 to writing to the web page
+                 */
+                var colorChoiceVar, myElement;
+
+                /*
+                Input something from the user and put it into the variable.
+                */
+                colorChoiceVar = Number(prompt("Input a 1 to change the color"));
+                /*
+
+                */
+              if (colorChoiceVar == 1)
+                {
+                /* It was a 1, so the boolean is true. We execute this code. */
+                alert("It was 1, so we will change the background color.")
+
+                var myElement = document.getElementById("div1");
+
+                myElement.style.backgroundColor = "#e3eaff";
+                }
+              else
+                {
+                /* It was NOT a 1, so the boolean is false. We execute this other code. */
+                alert("It was not 1, so we do nothing.");
+                }
+            
+            }
+            
+            </script>
+    </head>
+<body>
+
+<h1>Background color change</h1>
+
+<br>
+<br>
+
+<!-- Here is a button with an event handler to call the function backGroundColorChange -->
+<button type="button" onclick="backGroundColorChange()">Set background color</button>
+
+<br>
+<br>
+
+<!-- This div will hold a table. Can we change the background color of just this div? -->
+<div id="div1">
+
+  <table>
+    <tr>
+      <th>Company</th>
+      <th>Contact</th>
+      <th>Country</th>
+    </tr>
+    <tr>
+      <td>Alfreds Futterkiste</td>
+      <td>Maria Anders</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <td>Centro comercial Moctezuma</td>
+      <td>Francisco Chang</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <td>Ernst Handel</td>
+      <td>Roland Mendel</td>
+      <td>Austria</td>
+    </tr>
+    <tr>
+      <td>Island Trading</td>
+      <td>Helen Bennett</td>
+      <td>UK</td>
+    </tr>
+    <tr>
+      <td>Laughing Bacchus Winecellars</td>
+      <td>Yoshi Tannamuri</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <td>Magazzini Alimentari Riuniti</td>
+      <td>Giovanni Rovelli</td>
+      <td>Italy</td>
+    </tr>
+  </table>
+
+</div>
+
+
+</body>
+</html>

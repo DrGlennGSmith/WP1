@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--About Page
+    All 3 pages have:
+        Left accordion menu with javascript for medium and small screens
+        Bottom dropdown menu with javascript for smallest screens
+        Header with a responsive background for smallest screens
+    About page provides an introduction to the website creator, and a css-styled flex box that holds links to the EME 6930 class assignments-->
+
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Annette Robinson's Final Project (EME 6930)</title>
+   <link rel="stylesheet" type="text/css" href="css/styleFinalProject.css">
+    <script type = "text/javascript">
+
+      /* Script for the bottom dropdown menu (smallest screens), adapted from w3schools.com
+         The myFunction function is called out by the onlick event handler line 122 (the Menu drop button) 
+         When the user clicks on the button, toggle between hiding and showing the dropdown content in the 
+         "myDropdown" div (see html below) */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        /* Close the dropdown if the user clicks outside of it
+            - defines a window onclick function with a property called 'event'.
+            If the event target (where the mouse is clicked) does not (signified by logical operator !) match the css 'dropbtn' class,
+             then - where dropdowns is declared as accessing the dropdown-content, a for loop is executed to remove the dropdown 'show' class
+              - that is, not to show the dropdown-content */
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+
+    </script>
+ </head>
+
+ <body>
+   <div id="container">  
+     <header>
+       <div id="who">
+       <h1>Who Am I?</h1>
+      </div>
+     </header>
+     <br>
+     
+     <div id="left-menu">
+       <!--Accordion menu with 3 links in 1 panel. Medium and large screens only
+             *Javascript immediately below-->
+        <button class="accordion">Menu</button>
+       <div class="panel">
+        <h3><a href="indexFinalProject.html">Home</a></h3>
+        <h3><a href="characters.html">The Characters</a></h3>
+        <h3><a class="active" href="about.html">About This Site</a></h3>
+        <h3><a href="resources.html">Resources</a></h3>
+        <br>
+       </div>
+
+      </div>
+
+        <!--Script for the left accordion menu (medium and larger screen size)
+        Toggle between adding and removing the "active" and "show" classes when the user clicks on the accordion menu button.
+         The "active" class is used to add a background color to the current button when its belonging panel is open.
+         The "show" class is used to open the specific accordion panel (in this case, only one panel)
+          - so, is the for loop needed when there are not multiple panels to loop through?
+          (and a comment re. positioning - the accordion button above only seems to work when positioned ABOVE the script) -->
+        <script type = "text/javascript">
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+    
+            for (i = 0; i < acc.length; i++) {
+              acc[i].onclick = function(){
+                this.classList.toggle("active");
+                this.nextElementSibling.classList.toggle("show");
+              }
+            }
+          </script>
+
+     <div id="mainContent">
+
+       <h2>About This Website</h2>
+       <p>And - who am <strong>I</strong> ?! When I'm not Piglet or Rabbit, I'm Annette Robinson...</p> 
+       <p><img src="images/annette.png" style="border: 2px solid #342309; border-radius: 30%; height: 200px;" alt="Photo of Annette Robinson"/></p>
+       <p>...a student in the <a href="https://www.usf.edu/education/areas-of-study/instructional-technology/learning-design-and-technology/index.aspx"
+            target="_blank">Learning Design and Technology</a> program at the University of South Florida.</p>
+       <p>This website is the final project for Dr. Glenn Smith's EME 6930 Web Programming I class.</p>
+       <p>Here are links to other assignments in the class.</p>
+
+       <!--CSS flex box - flex container with child items. See styling that begins on line 276 of the css stylesheet-->
+       <div class="flex-container">
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek0.html" target="_blank">Week 0</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek1.html" target="_blank">Week 1</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek2.html" target="_blank">Week 2</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek3.html" target="_blank">Week 3</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek4.html" target="_blank">Week 4</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek5.html" target="_blank">Week 5</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek6.html" target="_blank">Week 6</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek7.html" target="_blank">Week 7</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek8.html" target="_blank">Week 8</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek9.html" target="_blank">Week 9</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexWeek10.html" target="_blank">Week 10</a></div>
+         <div><a class="active" href="https://afrobinson.github.io/AnnetteRobinson/indexFinalProject.html" target="_blank">Final</a></div>
+         <div><a href="https://afrobinson.github.io/AnnetteRobinson/indexExtra1.html" target="_blank">Extra</a></div>
+       </div>
+
+      </div>
+
+     <div id="bottom-menu">
+
+        <!--Placement of the bottom dropdown menu (javascript is in the head and styling/positioning in the css)
+            onclick event handler calls out the myFunction function from above, when Menu button is clicked-->
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Menu</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="indexFinalProject.html">Home</a>
+            <a href="characters.html">The Characters</a>
+            <a class="active" href="about.html">About This Site</a>
+            <a href="resources.html">Resources</a>
+          </div>
+        </div>
+
+     </div>
+
+     <footer>
+		  Copyright 2021, <a href="https://www.linkedin.com/in/annettefaithrobinson" target="_blank">Annette Robinson</a>
+     </footer>
+
+   </div>
+ 
+  </body>
+</html>

@@ -111,8 +111,8 @@ function pizza_choice ()
 
     var OrderString;
 
-    orders[num_orders] = new Pizza(document.frm.size.value,   document.frm.cheese.value,document.frm.meat.value, 
-    document.frm.veggies.value, document.frm.sauce.value,document.frm.PickUpOrDelivery.value);
+    orders[num_orders] = new Pizza(document.frm.size.value,   document.frm.cheese.value, document.frm.meat.value, 
+    document.frm.veggies.value, document.frm.sauce.value, document.frm.PickUpOrDelivery.value);
    
     orders[num_orders].showOrder();
     ++num_orders;   
@@ -149,7 +149,7 @@ function writeText(txt, destination)
     <td>Pick up or Delivery</td>
     </h2>
   </tr>
-  <tr>
+  <tr>   
     <td>    
        <select name = "cheese">
        <option value = "mozzerrela" > mozzerrela

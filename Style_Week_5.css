@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */ 
+
+body {
+	
+	background-color: #FFF6E8;
+	font-family: sans-serif; 	
+    } 
+div {
+		margin: 0 auto; 
+		width: 800px;
+		height: 1000px;
+		padding: 10px; 
+		} 
+
+img {
+    margin: 5px; 
+	border: 4px;
+}
+
+h1 {
+	font-family: font-family: 'Anton', sans-serif;
+}
+
+  

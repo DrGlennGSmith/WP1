@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+<style>
+
+body{
+	background: #fff2e6;
+	font-family: 'Nunito Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
+	font-family: 'Questrial', sans-serif;
+	font-family: 'Shippori Antique', sans-serif;
+}
+
+h2{
+	font-size: 20px;
+}
+h2, h3{
+	color: #414754;
+}
+
+#wholepage{
+	
+	width: 1024px;
+	margin: 0 auto;
+}
+
+
+ .container {
+  display: grid;
+  width: 1200px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px;
+  grid-gap: 1rem;
+}
+
+
+.title {
+	text-align: center;
+	padding-left: 20px;
+    padding-top: 40px;
+	padding-bottom: 30px;
+	height: 60px;
+	border-radius: 25px;
+    }
+
+
+</style>
+
+        <!-- Here will be my javascript -->
+        <script>
+            
+            /*
+            This is a function to allow the user to change the background 
+            color of the page.
+            */
+            function backGroundColorChange() {
+
+                /*  declaration of a local variable to hold a number and also a variable to get an element in the html. 
+                 variable assignment and then an if to make a decision 
+                 to writing to the web page
+                 */
+                var age, myElement;
+
+                /*
+                Input the ages of the user and put it into the variable. */
+                age = Number(prompt("Please enter your age, under 10 is kid."));
+                
+                /* get a pointer to the header element */
+                myElement = document.getElementById("title1");
+
+                
+              if (age > 10)
+                {
+                /* If this person is old enough to want to be perceived as an adult, put in adult color */
+                myElement.style.backgroundColor = "#FCBB9F";
+                document.body.style.backgroundColor = "#e3eaff"
+    
+                }
+              else                 
+                {
+                /* If this person is young enough, give them a kiddy color*/
+                myElement.style.backgroundColor = "#99bbff";
+                document.body.style.backgroundColor = "#99ff99"
+                }
+            
+            }
+            
+            </script>
+    </head>
+<body onload="backGroundColorChange()">
+
+<h2>
+
+<div class="container">
+    <div class="item item1"></div>
+    <div id = "title1" class="title">Background Color Change</div>
+    <div class="item item3"></div>
+</div>
+
+</h2>
+
+<br>
+<br>
+
+<!-- Here is a button with an event handler to call the function backGroundColorChange -->
+<button type="button" onclick="backGroundColorChange()">Set color scheme by age.</button>
+
+<br>
+<br>
+
+
+
+
+</body>
+</html>

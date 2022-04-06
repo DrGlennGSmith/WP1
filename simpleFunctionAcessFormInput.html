@@ -6,7 +6,9 @@
     function HowMuch (taxRate) 
        {   
             var  chair_amount;
-            var name = document.order_form.fname.value + " " +  document.order_form.lname.value;
+            var name;
+
+            name = document.order_form.fname.value + " " +  document.order_form.lname.value;
            
            /* 30 dollars per chair */
            chair_amount = document.order_form.chair.value * 30;
@@ -14,8 +16,9 @@
 
            // alert("Your cost for chairs will be $" + chair_amount);
            // write it to the page
-            document.getElementById("demo").innerHTML = name + ", " + "your cost for chairs will be $" + chair_amount;
+            document.getElementById("paymentDue").innerHTML = "<h3>" + name + ", " + "your cost for chairs will be $" + chair_amount + "</h3>";
       
+       
            
         }
 </script>
@@ -33,13 +36,14 @@
   <br>
     Enter number of chairs you want by clicking on up arrow on input below. Each chair costs $30.<br>
      
-
+<!--  -->
+<!--  -->
 
     <input type="number" name="chair" min="0" size="3" placeholder="0">
      <br>
     <input type="button" name="button" onclick="HowMuch(.15)"value="Estimate total"/>
      Your total:
-     <p id="demo">      </p>
+     <p id="paymentDue"> This is where the price goes.    </p>
      <p id="BlueCar">      </p>
   </form>
 </body>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<script>
+var my_dog = {
+	name: "Rover",
+	color: "black",
+    breed: "dachshund",
+    age: 5, /*methods are coming*/
+    gender: "male",
+  
+  describeDog: function ()
+  {
+  
+  return ("My dog is named " + this.name +  ".  It is " +   this.color  + this.breed);
+  } 
+};
+
+var your_dog = {
+	  color: "black",
+    breed: "dachshund",
+    age: 5, /*methods are coming*/
+    gender: "male",
+  
+  describeDog: function ()
+  {
+  
+  return ("My dog is named " + this.name +  ".  It is " +   this.color  + this.breed);
+  } 
+};
+
+</script>
+
+</head>
+<body>
+
+ <p id="doggyPlace"> Dog info will go here</p>
+ 
+ <button onclick="document.getElementById('doggyPlace').innerHTML = my_dog.describeDog()">Button to get my dog info. </button>
+
+ <button onclick="document.getElementById('doggyPlace').innerHTML = your_dog.describeDog()">Button to get your dog info. </button>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            
+            /*
+            This is a function to allow the user to change the background 
+            color of the page.
+            */
+            function backGroundColorChange() {
+
+                /*  declaration of a local variable to hold a number,  
+                 variable assignment and then an if to make a decision 
+                 to writing to the web page
+                 */
+                var colorChoiceVar;
+
+                /*
+                Input something from the user and put it into the variable.
+                */
+                colorChoiceVar = Number(prompt("Input a 1 to change the color"));
+                /*
+
+                */
+              if (colorChoiceVar == 1)
+                {
+                /* It was a 1, so the boolean is true. We execute this code. */
+                alert("It was 1, so we will change the background color.")
+                document.body.style.backgroundColor = "#e3eaff";
+                }
+              else
+                {
+                /* It was NOT a 1, so the boolean is false. We execute this other code. */
+                alert("It was not 1, so we do nothing.");
+                }
+            
+            }
+            
+            </script>
+    </head>
+<body>
+
+<h1>Background color change</h1>
+
+<!-- Here is a button with an event handler to call the function backGroundColorChange -->
+<button type="button" onclick="backGroundColorChange()">Set background color</button>
+
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<title> Array and loop simple example</title>
+<script type="text/javascript">
+
+    
+    // global
+    
+    var myVariable = 0;
+    
+/* a global variable, an array of apartment occupants */
+    //                  0                       1                           2
+var HollywoodApartments = ["letter from mom", "Letter from girlfriend", "Letter1 million dollars"];
+    
+    //   if (HollywoodApartments [ ]  ==   ??  )     ..  HollywoodApartments [ ] =  ?
+    
+    // HollywoodApartments.length == ??
+    
+    /* function that puts a flier in each mailbox */
+    
+function putFlyerInAllMailboxes(anArray, toPutInEachMailbox)
+    {
+       var i = 0;
+    
+        alert("In putFlyerInAllMailboxes, anArray.length is " + anArray.length);
+        
+       /*
+        while ( i < anArray.length )
+            {
+              alert("Loop" + " i is " + i);
+              anArray[i] = anArray[i] + ", " + toPutInEachMailbox;
+              alert("Loop" + " i is " + i + "anArray[i] is " + anArray[i]);
+              i = i + 1; 
+            }
+        alert("out of Loop");
+        */
+              
+        /* Now do it with a for loop. */ 
+        
+    
+        
+       for (i = 0;  i < anArray.length ; i = i + 1)
+            {
+              alert("Loop" + " i is " + i);
+              anArray[i] = anArray[i] + ", " + toPutInEachMailbox;
+              alert("Loop" + " i is " + i + "anArray[i] is " + anArray[i]);
+            }
+           alert("out of Loop");
+    }
+    
+/* Function Print out the array. */   
+    
+function printArray(anArray)     
+    {
+        
+    var str = "Here is what is in the mailboxes";
+        
+      for (i = 0;  i < anArray.length; i++)
+            {
+              str = str + "<br> => Apartment " + i + " " + anArray[i];    
+            }
+        
+    writeText(str, "textArea")
+    }
+    
+/* Function to move someone into a new apartment. */   
+    
+/* Function to move someone out the apartment. */  
+        
+/*
+Write some text out to an html element. The text to write and the id of the html
+element to write to are parameters.
+*/
+function writeText(txt, destination)
+   {
+   document.getElementById(destination).innerHTML=txt;
+   }
+</script>
+
+</head>
+<body>
+
+<p id="textArea">  Text goes here: </p>
+<br>
+
+<input type="button" onclick= "putFlyerInAllMailboxes(HollywoodApartments,'come to a potluck this Saturday at 4PM, in front of party room');" value="put flyer in mailboxes" name="flyerMailboxes"/>
+<br>
+<input type="button" onclick= "printArray(HollywoodApartments);" value="Print what is in mailboxes" name="flyerMailboxes"/>
+
+
+
+</body>
+</html>

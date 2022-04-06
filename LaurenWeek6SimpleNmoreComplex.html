@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+ <div class = "logo"><a href = #><img src = "images/3520291.jpg"></a></div>
+ <title>Bakery Order Form</title>
+ </head>
+
+ <script>
+// Customer Object definition
+function Customer(fm) {
+
+// constructor
+this.name = fm.name.value;
+this.email = fm.email.value;
+this.occassion = Number(fm.occasion.value);
+this.topping1 = fm.topping1.checked; // cookies
+this.topping2 = fm.topping2.checked; // macarons
+this.topping3 = fm.topping3.checked; // lollipops
+this.icing1 = fm.icing1.checked; // whipped icing
+this.icing2 = fm.icing2.checked; // buttercream icing
+
+
+// return recommendation text
+this.choice = function () {
+
+// if NONE of toppings are present but they have selected an icing
+if (!(this.topping1 || this.topping2 || this.topping3) && this.icing2) {
+return "Thank you for your order";
+}
+
+// if all three toppings are selected, but no icing
+else if (this.topping1 && this.topping2 && this.topping3 && !(this.icing1 || this.icing2)) {
+return "All three toppings will be an additional $30. Please make sure to select an icing type.";              
+
+// if all three toppings and one icing
+} else if ((this.topping1 || this.topping2 || this.topping3) && (this.icing1 || this.icing2)) {
+return "All three toppings will be an additional $30.";
+
+// if they have ANY toppings but no icing selected
+} else if ((this.topping1 || this.topping2 || this.topping3) && (!this.icing1 || this.icing2) ){
+return "Each topping will be an additional $10. Please make sure to select and icing type.";       
+}
+}
+
+}
+
+function process_form() {
+            // get form object
+            var fm = document.getElementById("my_form");
+           
+            // get output object
+            var out = document.getElementById("output");
+           
+            // instantiate customer object
+            var customer = new Customer(fm);
+            
+            //console.log("Debug:" + JSON.stringify(customer));
+            // display recommendations based on input values using diagnose method
+            out.innerHTML = customer.choice();
+        }
+
+   
+    </script>
+
+</head>
+
+<body>
+<div id="container">
+<h1>Sheet Cake Orders
+    <br>
+    All sheet cakes are 18 x 26 and will feed approximately 100 people.
+</h1>
+<form id="my_form">
+
+<!-- Order Information -->
+<div class="form-group">
+<label for="name">Name</label>
+<input type="text" class="form-control" id="name">
+</div>
+<br>
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+<small id="emailHelp" class="form-text text-muted"></small>
+</div>
+<br>
+<div class="form-group">
+<label for="occasion">Occasion</label>
+<select class="form-control" id="occasion">
+<option value="0">Please select your occasion category</option>
+<option value="1">birthday</option>
+<option value="2">anniversary</option>
+<option value="3">wedding</option>
+<option value="4">baby shower</option>
+<option value="5">engagement</option>
+<option value="6">retirement</option>
+<option value="7">other</option>
+</select>
+<br>
+<br>
+<div class="form-group">
+    <label for="type">Cake Flavors</label>
+    <select class="form-control" id="flavor">
+    <option value="0">Please select your flavor category</option>
+    <option value="1">chocolate</option>
+    <option value="2">vanilla</option>
+    <option value="3">strawberry</option>
+    </select>
+<br>
+
+<div class="form-datetime-local"></div>
+<h2>
+Choose your date/time for pick up:
+<br>
+<input type="datetime-local" id="Test_DatetimeLocal">
+</h2>
+
+</div>
+<!-- Cake Toppings -->
+<h2>Please select cake toppings and 1 type of icing:</h2>
+<div class="form-group form-check">
+<input type="checkbox" class="form-check-input" id="topping1">
+<label class="form-check-label" for="topping1">Cookies</label>
+</div>
+<div class="form-group form-check">
+<input type="checkbox" class="form-check-input" id="topping2">
+<label class="form-check-label" for="topping2">Macarons</label>
+</div>
+
+<div class="form-group form-check">
+<input type="checkbox" class="form-check-input" id="topping3">
+<label class="form-check-label" for="topping3">Lollipops</label>
+</div>
+
+<!-- Icing -->
+<div class="form-group form-check">
+<input type="checkbox" class="form-check-input" id="icing1">
+<label class="form-check-label" for="icing1">Whipped Icing</label>
+</div>
+
+<div class="form-group form-check">
+<input type="checkbox" class="form-check-input" id="icing2">
+<label class="form-check-label" for="icing2">Buttercream icing</label>
+</div>
+<br>
+<button type="button" class="btn btn-primary" onclick="process_form()">Submit</button>
+
+<!-- Output-->
+<div id="output">
+</div>
+
+</form>
+</div>
+
+
+</body>
+
+</html>

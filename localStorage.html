@@ -11,7 +11,7 @@
  */
 function welcomeBack()
 {
-if (typeof(Storage)!== "undefined") // is local storage undefined by browser
+if (typeof(Storage)!== "undefined") // is local storage undefined by browser, !== means not equal value or not equal type
     {
      // browser supports local storage, so lets see if they've visited the web site before.
     
@@ -22,8 +22,8 @@ if (typeof(Storage)!== "undefined") // is local storage undefined by browser
 		localStorage.userName = prompt("Welcome, what is your name?");        
 		}
         
-     // either you just wrote it out, or you're coming.
-     // reading from local storage later
+     // either you just wrote it out in an earlier session, or you just did...
+     // We will read from local storage and welcomen the person.
   	document.getElementById("result").innerHTML = "Welcome  " + localStorage.userName;
   	}
 	else

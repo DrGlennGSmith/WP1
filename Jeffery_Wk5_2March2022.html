@@ -1,0 +1,67 @@
+
+<html>
+<head><h2>Welcome to school selector!</h2></head>
+<link href="Style_Week_5.css" rel="stylesheet" type="text/css">
+
+
+
+<p>Our website can get your child on the waiting list of the finest schools in the greater Tampa Bay area. Click on the buttons below to learn more about them.</p> 
+
+<body>
+
+<title>School Selector</title>
+
+<!-- -->
+
+<form name="order_form">
+<br>
+<br>
+<label for="fname">First name:</label><br>
+<input type="text" id= "fname" name="fname"><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="lname"><br>
+<label for="age">Age:</label><br>
+<input type="text" id="age" name="age"><br>
+<label for="Upcoming Grade">Grade:</label><br>
+<input type="text" id="upcoming grade" name="upcoming grade"><br>
+<label for="Gender">Gender:</label><br>
+<input type="text" id="gender" name="gender"><br>
+</form>
+<h3>What School is right for your child?</h3>
+
+
+<h3>The list below includes the best private k-12 schools in the greater Tampa Bay area.</h3>
+<br>Wesley Chapel Academy
+<p id="Wesley"></p>
+
+<button type="button" onclick='document.getElementById("Wesley").innerHTML = "This is the finest secular private school in the Tampa Bay area."'>Wesley Chapel Academy</button></br>
+<br>Rodger Pines Academy.
+<p id="Rodger"></p>
+
+<button type="button" onclick='document.getElementById("Rodger").innerHTML = "This is the oldest and most prestigious religious school in the Tampa area. It also is the home of some of the finest Florida pine trees in the state."'>Rodger Pines Academy</button></body><br>
+
+<br>Jeff's Jedi Academy.
+<p id="Jedi"></p>
+
+<button type="button" onclick='document.getElementById("Jedi").innerHTML = "An elite institution where the faculty and staff are dedicated to the teachings of the Jedi Temple and the great Ken Wilbur."'>Jeff's Jedi Academy</button></body><br>
+
+
+
+
+
+
+<p>Choose which school you would like to place your child on the waiting list for.</p>
+<form action="/action_page.php">
+  <label for="cars">Choose a school:</label>
+  <select id="cars" name="school">
+    <option value="volvo">Wesley Chapel Academy</option>
+    <option value="saab">Roger Pines Academy</option>
+    <option value="fiat">Jeff's Jedi Academy</option>    
+  </select>
+  <input type="submit">
+</form>
+
+
+</body> 
+</html>
+

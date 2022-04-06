@@ -27,14 +27,24 @@ alert("Yes, city_names[1] is ???. See? " +  city_names[1]);
 //Loop through the array, and prompt the user for which country, and add the states to the city
 
 
-      /*
-      for (i = 0; i < city_names.length; i++)
-        {
-          states[i] = prompt("In which state is the city " + city_names[i]);
-        }
-
-      */
       
+      for (i = 0; i < city_names.length; i++)
+          states[i] = prompt("In which state is the city " + city_names[i]);
+
+
+          city_names[city_names.length] = prompt("Add another city to the end of the array");
+
+         
+          alert("the cities are " + city_names );
+
+          city_names.push(prompt("Push another city to the end of the array"));
+          alert("After push the cities are " + city_names );
+      
+          city_names.unshift(prompt("Unshift another city to the beginning of the array"));
+          alert("After unshift the cities are " + city_names );
+   
+
+      /*
       var i = 0;
       while (i < city_names.length)
         {
@@ -42,7 +52,8 @@ alert("Yes, city_names[1] is ???. See? " +  city_names[1]);
 
          i++; 
         }
-        
+        */
+
       /* do while.. do wop, do wop
         do
         {
@@ -55,8 +66,7 @@ alert("Yes, city_names[1] is ???. See? " +  city_names[1]);
 // Print out the array again. 
 
         for (i = 0; i < city_names.length; i++)
-        	{
-          
+        	{  
           alert("We think that " + city_names[i] + " is in " + states[i]);
         	}
     

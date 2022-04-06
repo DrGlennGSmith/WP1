@@ -1,0 +1,1020 @@
+﻿ /* =================================================================
+    CSS stylesheet for EME6930 Final Project *one stylesheet for all three pages
+    Responsive style for smallest screens starts on line 112
+    Responsive style for medium screens starts on line 420
+    Responsive style for larger screens starts on line 722
+    Fonts:
+        Headings are Raleway https://www.fontsquirrel.com/fonts/raleway
+        Text is Merriweather https://github.com/EbenSorkin/Merriweather 
+    Colors:
+        Color scheme from https://visme.co/blog/website-color-schemes/ (Natural and Earth)
+            Pale cream #fbeec1 for page background and the form div
+            Dark cream #bc986a for button hover
+            Light blue #659dbd for elements of the header
+            Warm brown #8d6141 for the header, buttons, and menu buttons
+        URL links: white for unclicked link, dark brown #342309 for active page link, #bc986a for link hover (with a bit of yellow for fun)
+    ================================================================= */
+
+ body {
+    background-image: linear-gradient(#fbeec1, #8d6141);
+    background-color: #fbeec1;
+    }
+
+ @font-face {
+	font-family:"Raleway";
+	src: url('../assets/fonts/raleway/Raleway-Regular.ttf') format('truetype');
+    }
+
+ @font-face {
+	font-family:"Raleway Bold";
+	src: url('../assets/fonts/raleway/Raleway-Bold.ttf') format('truetype');
+    }
+
+ @font-face {
+    font-family:"Merriweather";
+    src: url('../assets/fonts/merriweather/Merriweather-Regular.otf') format('opentype');
+    }
+
+ h1 {
+	font-family: "Raleway Bold", arial, sans-serif;
+    text-shadow: 4px 4px #659dbd; /* adds a 4px colored shadow to the text */
+    font-size: 50px;
+    }
+
+ h2 {
+	margin-top: 20px;
+	margin-bottom: 20px;	
+	font-family: "Raleway", arial, sans-serif;
+    font-size: 24px;
+    color: #342309;
+    text-shadow: 1px 1px #8d6141;
+    text-align: center;
+    font-weight: bold;
+    /*padding: 10px;*/
+    }
+
+  h3 {
+    font-family: "Raleway", arial, sans-serif;
+    font-size: 20px;
+    color: #342309;
+    text-shadow: 1px 1px #8d6141;
+    font-weight: bold;
+    padding: 3px;
+    text-align: center;
+    }
+
+ h4 {
+    font-family: "Raleway Bold", arial, sans-serif;
+    color: #342309;
+    text-shadow: 2px 2px #8d6141;
+    font-size: 35px;
+    }
+
+ h5 {
+    font-family: "Raleway", arial, sans-serif;
+    font-size: 20px;
+    color: #342309;
+    text-shadow: 1px 1px #8d6141;
+    font-weight: bold;
+    padding: 3px;
+    text-align: left;
+    }
+
+ p {
+	font-family: "Merriweather", Helvetica, arial, sans-serif;
+	font-size: 18px;
+    text-align: center;
+    color: #342309;
+    text-shadow: 1px 1px #8d6141; 
+    }
+
+ /* Styling for the URL links */
+ a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    }
+ a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    } 
+ a:hover {
+    color: yellow; /* for contrast! */
+    background-color: transparent;
+    text-decoration: underline;
+    }
+ a.active {
+     color: #342309;
+ }
+
+ /* ================================================================= 
+    This section of css is for smaller screens: Up to 640px wide (designed down to 320px smallest phone size)
+    Menu is at the bottom instead of on the left (replacing the footer)
+    Main content fills the width.
+    ================================================================= */ 
+
+@media screen and (max-width: 640px) {
+ 
+    /* Styling for the outer container */ 
+    #container {
+      position: relative;
+      /*background-color: #659dbd;*/
+      background-image: url("../images/forestPS50.png"); /* semitransparent image replaces background color */
+      background-size: cover; /* image stretches to fill the container, relieves the 'white' space */
+      min-height: 1350px;
+      width: 95%;
+      border-radius: 5px;
+      padding: 1%;
+      margin: auto;
+      display: block;
+      }  
+
+    header {
+      background-image: url("../images/bannerQuestions3.png"); /* my own image created in Photoshop. Font is Papyrus */
+      background-size: contain; /* scales the image - displays better for the small screen size */
+      width: 100%;
+      padding: 1%;
+      margin-top: 0%;
+      position: relative;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      box-sizing:border-box; /* keeps specified height and width regardless of padding etc. */
+      display: block;
+      }
+
+    /* It seems to work better NOT using the #who div on small size screen */
+
+    #left-menu {
+      float:left;
+      width:20%;
+      min-height: 400px;
+      padding: 1%;
+      box-sizing:border-box;
+      font-family: "Raleway", arial, sans-serif;
+      text-align: center;
+      display: none; /* display:none means this div will not be visible on the smaller screen size.
+                        Left menu is replaced with bottom menu for screens under 641px wide */
+      }
+
+    #mainContent {
+      /* float:right; (commented out as mainContent is full width for the smaller screen size) */
+      width: 100%;
+      min-height:1000px;
+      padding:1%;
+      box-sizing:border-box;
+      font-family: "Raleway", arial, sans-serif;
+      text-align: center;
+      display: block;
+      }
+
+    /* --------------------------------------------
+        Begin styling for form elements (Home page) */   
+    #characterForm {
+      position: relative;
+      width: 75%;
+      border-radius: 5px;
+      background-color: #fbeec1;
+      padding: 15px;
+      margin: auto;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      display: block;
+      }
+
+    input[type=text], select {
+      width: 85%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      }
+
+    /* Styling for the Submit button */   
+    input[type=button] {
+      padding: 5px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #8d6141;
+      color: white;
+      font-weight: bold;
+      font-size: 14.5px;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      }
+
+    input[type=button]:hover {
+      background-color: #bc986a;
+      }
+   
+    /* Styling for the Reset button */     
+    input[type=reset] {
+      padding: 5px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #8d6141;
+      color: white;
+      font-weight: bold;
+      font-size: 14.5px;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      }
+        
+    input[type=reset]:hover {
+      background-color: #bc986a;
+      }
+
+    /* End styling for form elements (Home page)
+       ----------------------------------------- */ 
+
+    /* Styling for a div that positions each character (Characters page) */
+    .characters {
+      float: left;
+      width: 18.5%;
+      padding: 1.5px;
+      }
+      
+    /* responsive class to scale the character images (max-width prevents scaling larger than original size) */
+    .responsive {
+      max-width: 100%;
+      height: auto;
+      }
+  
+    /* Styling for the text output paragraph */ 
+    #outputParagraph {
+      width: 95%;
+      max-height: 100px;
+      /*background-color: #659dbd;*/
+      color:white;
+      font-weight: bold;
+      padding: 2px;
+      margin: 0px auto 0px auto;
+      text-align: center;
+      /*font-weight: bold;*/
+      /*overflow: scroll; /*(in case needed)*/
+      display: block;
+      }
+
+    #formResponses {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      }
+
+    #characterOutput {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      }
+
+      /* ---------------------------------------
+       Begin styling for flex box on the About page
+       This is the flex container that holds the links to class assignments */
+
+   .flex-container {
+      width: 90%;
+      height: 70%;
+      margin-top: 20px;
+      margin-right: auto;
+      margin-left: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      justify-content: space-around;
+      }
+
+  /* This is styling for the child div items (each class assignment link is a child item inside the flex container) */
+   .flex-container div {
+     margin: 8px 0;
+     width: 75px;
+     height: 50px;
+     line-height: 50px;
+      /* Vertically align text in the child div by making the line height the same as the div height
+         https://stackoverflow.com/questions/6055412/center-text-in-div */
+     margin: 1%;
+     border: 1px solid white;
+     border-radius: 4px;
+     box-sizing: border-box;
+     text-align: center;
+     color: white;
+     background-color: #8d6141;
+     font-weight: bold;
+     font-size: 14.5px;
+     font-family: "Merriweather", Helvetica, arial, sans-serif;
+     }
+
+  /* These pieces are styling for the child div URL links */
+   .flex-container a {
+     color: white;
+     font-family: "Raleway", arial, sans-serif;
+     }
+  .flex-container div:hover {
+    background-color: #bc986a;
+    }
+
+    /* End styling for flex box on the About page
+       ------------------------------------------ */
+
+    /* Styling for the media box holding the YouTube trailer (Resources page) */
+    #media1box {
+      position: absolute;
+      top: 300px;
+      left: 30px;
+      width: 400px;
+      height: 300px;
+      line-height: 30px;
+      padding: 5px;
+      }
+
+    /* ---------------------------------------
+       Begin styling for the bottom dropdown menu (small size screens only) */
+    
+    /*  Setting position:absolute and a bottom margin sets this div at the bottom of the container */
+    #bottom-menu {
+      width:90%;
+      min-height: 230px;
+      position: absolute;
+      padding: 1%;
+      left: 5%; /* setting an appropriate left margin to center this div in the container */
+      bottom: 5px;
+      box-sizing: border-box;
+      text-align: left;
+      margin: auto;
+      font-family: "Raleway", arial, sans-serif;
+      display: block;
+      }
+
+    /* Dropdown menu elements for the BOTTOM menu, adapted from w3schools.com */
+        .dropbtn {
+          background-color: #8d6141;
+          color: white;
+          padding: 16px;
+          font-size: 18px;
+          border: none;
+          cursor: pointer;
+          }
+        
+        .dropbtn:hover, .dropbtn:focus {
+          background-color: #fbeec1;
+          color: black;
+          font-weight: bold;
+          }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #8d6141;
+          min-width: 200px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1; /* places the dropdown piece in front of other elements */
+          }
+        
+        .dropdown-content a {
+          color: white;
+          font-weight: bold;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          }
+        
+        .dropdown-content a:active {
+            color: #342309;
+            }
+
+        .dropdown a:hover {background-color: #bc986a;}
+        
+        .show {display: block;}
+      
+    /* End styling for the bottom dropdown menu
+       --------------------------------------- */
+
+    footer {
+	  position: absolute;
+      margin: auto;
+	  height: 5%;
+	  width: 100%;
+      padding: 1%;
+	  color: white;
+	  bottom: 0px;
+	  font-family: "Raleway Bold", Helvetica, sans-serif;
+	  font-size: 14px;
+	  text-align: center;
+      box-sizing:border-box;
+      display: none; /* replacing footer with the bottom menu for the small screen size */
+      }
+}
+
+ /* =================================================================
+    This section of css is for medium screens: Between 641px and 1007px
+    Menu floats left, main content floats right, some text and elements are smaller
+    ================================================================= */
+
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+
+      /* Styling for the outer container */ 
+      #container {
+        position: relative;
+        /*background-color: #659dbd;*/
+        background-image: url("../images/forestPS50.png"); /* semitransparent image replaces background color */
+        background-size: cover; /* image stretches to fill the container, relieves the 'white' space */
+        min-height: 1120px;
+        width: 95%;
+        border-radius: 5px;
+        padding: 1%;
+        margin: auto;
+        }  
+  
+      header {
+        background-image: url("../images/bannerQuestions3.png"); /* my own image created in Photoshop. Font is Papyrus */
+        /*background-size: contain; (not needed for the medium and larger screen sizes) */
+        width: 100%;
+        padding: 1%;
+        margin-top: 0%;
+        position: relative;
+        /*background-color: #8d6141;*/
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        box-sizing:border-box;
+        display: block;
+        }
+  
+      #who {  /* div to keep space between the title and the header background image, for medium and larger screens */
+        max-width: 30%;
+        margin: 1px auto;
+        padding: 1px;
+        background-color: #8d6141;
+        left: 35%;
+        }
+  
+      #left-menu {  /* left menu for medium and larger screen sizes that can display 2 columns */
+        float:left;
+        width:22%;
+        min-height: 400px;
+        padding: 1%;
+        box-sizing:border-box; 
+        font-family: "Raleway", arial, sans-serif;
+        text-align: center;
+        display: block;
+        }
+  
+      /* -------------------------------------------
+         Begin styling for the accordion pieces for the left menu (medium and larger screen sizes only) */
+  
+          button.accordion {
+            background-color: #8d6141;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: center;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            font-family: "Raleway", arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            }
+          
+          button.accordion.active, button.accordion:hover {
+            background-color: #fbeec1;
+            color: black;
+            }
+          /* Panel for the accordion menu */
+          .panel {
+            padding: 0 5px;
+            background-color: #8d6141;
+            color: white;
+            max-height: 0;
+            overflow: auto;
+            transition: 0.6s ease-in-out;
+            opacity: 0;
+            font-family: "Raleway", arial, sans-serif;
+            }
+
+          .panel.show {
+            opacity: 1;
+            max-height: 250px; /* Keep this more than the height of the content */
+            font-size: 16px;
+            color: white;
+            }
+
+          /* End styling for the accordion pieces
+             -------------------------------------- */
+  
+      #mainContent {
+        float: right; /* right hand column for medium and large screens */
+        width: 75%;
+        min-height: 920px;
+        padding: 1%;
+        font-family: "Raleway", arial, sans-serif;
+        text-align: center;
+        display: block;
+        }
+  
+    /* --------------------------------------------
+        Begin styling for form elements (Home page) */  
+
+      #characterForm {
+        position: relative;
+        width: 65%;
+        border-radius: 5px;
+        background-color: #fbeec1;
+        padding: 20px;
+        margin: auto;
+        font-family: "Merriweather", Helvetica, arial, sans-serif;
+        display: block;
+        }
+  
+      input[type=text], select {
+        width: 85%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: "Merriweather", Helvetica, arial, sans-serif;
+        }
+  
+      /* Styling for the Submit button */   
+        input[type=button] {
+        padding: 5px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #8d6141;
+        color: white;
+        font-weight: bold;
+        font-size: 14.5px;
+        font-family: "Merriweather", Helvetica, arial, sans-serif;
+        }
+  
+      input[type=button]:hover {
+        background-color: #bc986a;
+        }
+  
+      /* Styling for the Reset button */   
+      input[type=reset] {
+        padding: 5px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #8d6141;
+        color: white;
+        font-weight: bold;
+        font-size: 14.5px;
+        font-family: "Merriweather", Helvetica, arial, sans-serif;
+        }
+          
+      input[type=reset]:hover {
+        background-color: #bc986a;
+        }
+  
+        /* End styling for form elements (Home page)
+           ----------------------------------------- */ 
+
+    /* Styling for a div that positions each character (Characters page) */
+      .characters {
+        float: left;
+        width: 19%;
+        padding: 2px;
+        }
+  
+        /* responsive class to scale the character images (max-width prevents scaling larger than original size) */
+        .responsive {
+          max-width: 100%;
+          height: auto;
+          }
+  
+      /* Styling for the text output paragraph */ 
+      #outputParagraph {
+        width: 75%;
+        color:white;
+        font-weight: bold;
+        padding: 2px;
+        margin: 0px auto 0px auto;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        /* overflow: scroll; (in case needed) */
+        display: block;
+        }
+
+      #formResponses {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        }
+
+      #characterOutput {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        }
+  
+    /* ---------------------------------------
+       Begin styling for flex box on the About page
+       This is the flex container that holds the links to class assignments */
+  
+        .flex-container {
+          width: 80%;
+          height: 70%;
+          margin-top: 20px;
+          margin-right: auto;
+          margin-left: auto;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          justify-content: space-around;
+          }
+        
+          /* This is styling for the child div items (each class assignment link is a child item inside the flex container) */
+          .flex-container div {
+            margin: 8px 0;
+            width: 75px;
+            height: 50px;
+            line-height: 50px;
+              /* Vertically align text in the child div by making the line height the same as the div height
+                 https://stackoverflow.com/questions/6055412/center-text-in-div */
+            margin: 1%;
+            border: 1px solid white;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: center;
+            color: white;
+            background-color: #8d6141;
+            font-weight: bold;
+            font-size: 14.5px;
+            font-family: "Merriweather", Helvetica, arial, sans-serif;
+            }
+        
+          /* These pieces are styling for the child div URL links */
+          .flex-container a {
+            color: white;
+            font-family: "Raleway", arial, sans-serif;
+            }
+          .flex-container div:hover {
+            background-color: #bc986a;
+            }
+            
+    /* End styling for flex box on the About page
+       ------------------------------------------ */
+        
+    /* Styling for the media box holding the YouTube trailer (Resources page) */
+    #media1box {
+      position: absolute;
+      top: 300px;
+      left: 30px;
+      width: 400px;
+      height: 300px;
+      line-height: 30px;
+      padding: 5px;
+      }
+              #bottom-menu {
+                width:90%;
+                min-height: 20px;
+                position: absolute;
+                padding: 1%;
+                left:5%;
+                bottom: 5px;
+                box-sizing:border-box;
+                /*border: 1px solid #342309;*/
+                text-align: center;
+                margin: auto;
+                font-family: "Raleway", arial, sans-serif;
+                display: none; /* bottom menu is replaced with left menu for the larger screen size */
+                }
+  
+    footer {
+      position: absolute;
+      margin: auto;
+      height: 5%;
+      width: 100%;
+      padding: 1%;
+      box-sizing:border-box;
+      color: white;
+      bottom: 0px;
+      font-family: "Raleway Bold", Helvetica, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      display:block;
+      }
+  
+}
+
+ /* =================================================================
+    This section of css is for larger screens: 1008px wide and greater.
+    Menu floats left, main content floats right.
+    ================================================================= */
+
+@media screen and (min-width: 1008px) {
+
+    /* Styling for the outer container */ 
+    #container {
+      position: relative;
+      /*background-color: #659dbd;*/
+      background-image: url("../images/forestPS50.png"); /* semitransparent image replaces background color */
+      background-size: cover; /* image stretches to fill the container, relieves the 'white' space */
+      min-height: 1100px;
+      width: 95%;
+      border-radius: 5px;
+      padding: 1%;
+      margin: auto;
+      }  
+
+    header {
+      background-image: url("../images/bannerQuestions3.png"); /* my own image created in Photoshop. Font is Papyrus */
+      /*background-size: contain; (not needed for the medium and larger screen sizes) */
+      width: 100%;
+      padding: 1%;
+      margin-top: 0%;
+      position: relative;
+      /*background-color: #8d6141;*/
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      box-sizing:border-box;
+      display: block;
+      }
+
+    #who {  /* div to keep space between the title and the header background image, for medium and larger screens */
+      max-width: 30%;
+      margin: 1px auto;
+      padding: 1px;
+      background-color: #8d6141;
+      left: 35%;
+      }
+
+    #left-menu {
+      float:left;
+      width:20%;
+      min-height: 400px;
+      padding: 1%;
+      box-sizing:border-box; 
+      font-family: "Raleway", arial, sans-serif;
+      text-align: center;
+      display: block;
+      }
+
+      /* -------------------------------------------
+         Begin styling for the accordion pieces for the left menu (medium and larger screen sizes only) */
+
+        button.accordion {
+          background-color: #8d6141;
+          color: white;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          text-align: center;
+          border: none;
+          outline: none;
+          transition: 0.4s;
+          font-family: "Raleway", arial, sans-serif;
+          font-size: 24px;
+          font-weight: bold;
+        }
+        button.accordion.active, button.accordion:hover {
+          background-color: #fbeec1;
+          color: black;
+        }
+        /* Panel for the accordion menu */
+        .panel {
+          padding: 0 5px;
+          background-color: #8d6141;
+          color: white;
+          max-height: 0;
+          overflow: auto;
+          transition: 0.6s ease-in-out;
+          opacity: 0;
+          font-family: "Raleway", arial, sans-serif;
+          font-size: 20px;
+        }
+        .panel.show {
+          opacity: 1;
+          max-height: 250px; /* Keep this more than the height of the content */
+          font-size: 20px;
+        }
+
+          /* End styling for the accordion pieces
+             -------------------------------------- */
+
+    #mainContent {
+      float: right; /* right hand column for medium and large screens */
+      width: 70%;
+      min-height: 900px;
+      margin-right: 5%;
+      padding: 1%;
+      font-family: "Raleway", arial, sans-serif;
+      text-align: center;
+      display: block;
+      }
+
+    /* --------------------------------------------
+        Begin styling for form elements (Home page) */  
+
+    #characterForm {
+      position: relative;
+      width: 60%;
+      border-radius: 5px;
+      background-color: #fbeec1;
+      padding: 20px;
+      margin: auto;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      display: block;
+      }
+
+    input[type=text], select {
+      width: 75%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      }
+
+    /* Styling for the Submit button */   
+      input[type=button] {
+      padding: 5px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #8d6141;
+      color: white;
+      font-weight: bold;
+      font-size: 14.5px;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      }
+
+    input[type=button]:hover {
+      background-color: #bc986a;
+      }
+
+    /* Styling for the Reset button */   
+    input[type=reset] {
+      padding: 5px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #8d6141;
+      color: white;
+      font-weight: bold;
+      font-size: 14.5px;
+      font-family: "Merriweather", Helvetica, arial, sans-serif;
+      }
+        
+    input[type=reset]:hover {
+      background-color: #bc986a;
+      }
+
+    /* End styling for form elements (Home page)
+       ----------------------------------------- */ 
+
+    /* Styling for a div that positions each character (Characters page) */
+    .characters {
+      float: left;
+      width: 19%;
+      padding: 3px;
+      }
+
+      /* responsive class to scale the character images (max-width prevents scaling larger than original size) */
+      .responsive {
+        max-width: 100%;
+        height: auto;
+      }
+
+    /* Styling for the text output paragraph */ 
+    #outputParagraph {
+      width: 75%;
+      color:white;
+      font-weight: bold;
+      padding: 2px;
+      margin: 0px auto 0px auto;
+      text-align: center;
+      font-weight: bold;
+      /* overflow: scroll; (in case needed) */
+      display: block;
+      }
+
+    #formResponses {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      }
+
+    #characterOutput {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      }
+
+    /* ---------------------------------------
+       Begin styling for flex box on the About page
+       This is the flex container that holds the links to class assignments */
+
+    .flex-container {
+      width: 80%;
+      height: 70%;
+      margin-top: 20px;
+      margin-right: auto;
+      margin-left: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      justify-content: space-around;
+      }
+      
+    /* This is styling for the child div items (each class assignment link is a child item inside the flex container) */
+      .flex-container div {
+        margin: 8px 0;
+        width: 75px;
+        height: 50px;
+        line-height: 50px;
+            /* Vertically align text in the child div by making the line height the same as the div height
+               https://stackoverflow.com/questions/6055412/center-text-in-div */
+        margin: 1%;
+        border: 1px solid white;
+        border-radius: 4px;
+        box-sizing: border-box;
+        text-align: center;
+        color: white;
+        background-color: #8d6141;
+        font-weight: bold;
+        font-size: 14.5px;
+        font-family: "Merriweather", Helvetica, arial, sans-serif;
+        }
+      
+    /* These pieces are styling for the child div URL links */
+      .flex-container a {
+        color: white;
+        font-family: "Raleway", arial, sans-serif;
+        }
+      .flex-container div:hover {
+        background-color: #bc986a;
+        }
+   
+    /* End styling for flex box on the About page
+       ------------------------------------------ */
+      
+    /* Styling for the media box holding the YouTube trailer (Resources page) */
+    #media1box {
+      position: absolute;
+      top: 300px;
+      left: 30px;
+      width: 400px;
+      height: 300px;
+      line-height: 30px;
+      padding: 5px;
+      }
+    
+            #bottom-menu {
+              width:90%;
+              min-height: 20px;
+              position: absolute;
+              padding: 1%;
+              left:5%;
+              bottom: 5px;
+              box-sizing:border-box;
+              /*border: 1px solid #342309;*/
+              text-align: center;
+              margin: auto;
+              font-family: "Raleway", arial, sans-serif;
+              display: none; /* bottom menu is replaced with left menu for the larger screen size */
+              }
+
+    footer {
+	  position: absolute;
+      margin: auto;
+	  height: 5%;
+	  width: 100%;
+      padding: 1%;
+      box-sizing:border-box;
+	  color: white;
+	  bottom: 0px;
+	  font-family: "Raleway Bold", Helvetica, sans-serif;
+	  font-size: 16px;
+	  text-align: center;
+      display:block;
+    }
+
+}

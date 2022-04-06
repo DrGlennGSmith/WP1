@@ -1,0 +1,149 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Sandwich Order Form</title>
+<script>
+
+/* a super simple constructor example */
+    
+function Sandwich(size, bread, meat, cheese, veggie1, veggie2, condiment) {
+    this.size = size;
+    this.bread = bread;
+    this.meat = meat;
+    this.cheese = cheese;
+    this.veggie1 = veggie;
+    this.veggie2 = veggie2;
+    this.condiment= condiment;
+    
+    
+    this.showOrderNprice = function () {
+
+    var price;
+
+    if (this.size = "half sub") 
+    		price = "$4.99";
+      else
+      	price = "$7.99";
+    
+    var OrderString =  "Your order is a " + this.size + " sandwich with Bread: " + this.bread +  " Meat: " + this.meat + " Cheese: " + this.cheese + " Veggie1: " + this.veggie1 + " Veggie2: " + this.veggie2 + " and this Condiment " + this.condiment + " and the price is " + price;
+
+        writeText(OrderString, "order"); 
+    }
+
+    }
+    
+/*
+Write some text out to an html element. The text to write and the id of the html
+element to write to are parameters.
+*/
+
+function writeText(txt, destination)
+   {
+   document.getElementById(destination).innerHTML=txt;
+   }
+
+/* global */
+
+var mySandwich;
+
+function process_form() {
+            
+            var mySandwich = new Sandwich(
+            document.sand.size.value, 
+            document.sand.bread.value,
+            document.sand.meat.value,
+            document.sand.cheese.value,
+            document.sand.veggie1.value,
+            document.sand.veggie2.value,
+            document.sand.condiment.value);
+            
+            mySandwich.showOrderNprice ();
+   
+  }         
+
+</script>
+
+</head>
+
+
+
+
+<body>
+
+<!-- Make a form to sandwich, use a form to order a sandwich -->
+
+	<form id="sand">
+ <div class="form-group">
+    <label for="size">size</label>
+    <select class="form-control" id="size">
+    <option value="0">Please select your sandwich size</option>
+    <option value="1">half sub</option>
+    <option value="2">foot long</option>
+    </select>
+    
+<div class="form-group">
+    <label for="bread">bread</label>
+    <select class="form-control" id="bread">
+    <option value="0">Please select your bread</option>
+    <option value="white">white</option>
+    <option value="wheat">wheat</option>
+    <option value="3">9-grain</option>
+    </select>
+
+<div class="form-group">
+    <label for="meat">meat</label>
+    <select class="form-control" id="meat">
+    <option value="0">Please select your meat</option>
+    <option value="1">ham</option>
+    <option value="2">turkey</option>
+    <option value="3">roast beef</option>
+    </select>
+    
+<div class="form-group">
+    <label for="cheese">cheese</label>
+    <select class="form-control" id="cheese">
+    <option value="0">Please select your cheese</option>
+    <option value="1">american cheddar</option>
+    <option value="2">swiss</option>
+    <option value="3">provolone</option>
+     <option value="4">none</option>
+    </select>
+
+<div class="form-group">
+    <label for="veggie1">veggie1</label>
+    <select class="form-control" id="veggie1">
+    <option value="0">Please select your firstveggie</option>
+    <option value="1">tomatoes</option>
+    <option value="2">onions</option>
+    <option value="3">lettuce</option>
+    </select>
+
+<div class="form-group">
+    <label for="veggie">veggie2</label>
+    <select class="form-control" id="veggie2">
+    <option value="0">Please select your second veggie</option>
+    <option value="1">tomatoes</option>
+    <option value="2">onions</option>
+    <option value="3">lettuce</option>
+    </select>
+    
+<div class="form-group">
+    <label for="condiment">condiment</label>
+    <select class="form-control" id="condiment">
+    <option value="0">Please select your condiment</option>
+    <option value="1">mayo</option>
+    <option value="2">oil and vinegar</option>
+    <option value="3">salt and pepper</option>
+    </select>
+
+<button type="button" onclick="process_form()">Submit</button>  
+  </form>
+  
+</body>
+
+<br>
+<p id="order">  Your Order: </p>
+
+</html>
