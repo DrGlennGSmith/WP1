@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;
+    color: #111;
+  }
+  
+  .draggable-elements {
+    display: flex;
+    justify-content: center;
+  }
+  .draggable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: opacity 0.2s;
+  }
+  .draggable:hover {
+    opacity: 0.5;
+  }
+  .dragging {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  .droppable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px dashed #111;
+    transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
+  }
+  .droppable span {
+    font-size: 1.25rem;
+    pointer-events: none; /* The element is never the target of pointer events */
+  }
+  
+  /* Drag and Drop Related Styling */
+  
+  .droppable.droppable-hover {
+    /* background-color: #bee3f0; */
+    border-width: 5px;
+    transform: scale(1.1);
+  }
+  .droppable.dropped {
+    
+  }
+  .droppable.dropped span {
+    margin-top: 0.5rem;
+  }
+  .droppable.dropped i {
+    pointer-events: none;
+  }
+  .draggable.dragged {
+    display: none;
+  }
+  .draggable.dragged:hover {
+    opacity: 0.1;
+  }
+  
+  @media (max-width: 600px) {
+    html { font-size: 14px; }
+    .draggable-elements { margin: 1.5rem; }
+  }
+  #periodic-table {
+      position: absolute;
+      width: 1200px;
+      margin-top: 20px;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -40%);
+  }
+  .row {
+      display: flex;
+      text-align: center;
+      height: 70px;
+      justify-content: center;
+  }
+  .cell {
+      display: flex;
+      font-weight: bold;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      color: black;
+      box-sizing: border-box;
+      border-radius: 3px;
+      margin: 1px;
+      text-decoration: none;
+  }
+      .cell span {
+          height: 68px;
+          width:58px;
+          padding-top:20px;
+      }
+      #tile-dispenser {
+          position: absolute;
+          top: 10px;
+          left: 300px;
+          width: 120px;
+          height: 180px;
+          overflow: hidden;
+          background-image:url('img/diagonal-lines.jpg');
+          background-size: contain;
+      }
+      #tile-dispenser .dragmesign {
+          width: 121px;
+          height: 30px;
+          background-color:darkgreen;
+          color: #CBECFB;
+          text-align: center;
+          line-height: 30px;
+      }
+      #mistake-counter {
+          position: absolute;
+          top: 10px;
+          left: 450px;
+          width: 120px;
+          height: 180px;
+          color: darkgreen;
+          font-size: 18px;
+      }
+      .tile {
+          background:linear-gradient(rgba(124, 195, 30, 0.8), rgba(0,89,43, 0.8)), url('img/diagonal-lines.jpg');
+          width:100px;
+          height: 130px;
+          padding-top:40px;
+          margin: 10px;
+          font-size: 14px;
+          display: inline-block;
+          text-align: center;
+          text-transform: capitalize;
+          color: #fff;
+      }
+      .tile span {
+          line-height: 60px
+      }
+      
+      /* Diatomic Nonmetal Elements  */
+      .Hydrogen, .Nitrogen, .Oxygen, .Fluorine, .Chlorine, .Bromine, .Iodine{
+          background-color: #FDC7FE;
+          border:solid 1px #FDC7FE;
+      }
+      
+      /* Noble Gases */
+      .Helium, .Neon, .Argon, .Krypton, .Xenon, .Radon, .Oganesson {
+          background-color: #CBECFB;
+          border:solid 1px #CBECFB;
+      }
+      
+      /* Metalloids */
+      .Boron, .Silicon, .Germanium, .Arsenic, .Antimony, .Tellurium, .Astatine, .Tennessine {
+          background-color: #AFFFB5;
+          border:solid 1px #AFFFB5;
+      }
+  
+      /* Polyatomic Nonmetal */
+      .Carbon, .Phosphorus, .Sulfur, .Selenium {
+          background-color: #D0C1FF;
+          border:solid 1px #D0C1FF;
+      }
+  
+      /* Alkali Metal */
+      .Lithium, .Sodium, .Potassium, .Rubidium, .Caesium, .Francium {
+          background-color: #D0C1FF;
+          border:solid 1px #D0C1FF;
+      }
+  
+      /* Alkaline Earth Metal */
+      .Beryllium, .Magnesium, .Calcium, .Strontium, .Barium, .Radium {
+          background-color: #FFE5AA;
+          border:solid 1px #FFE5AA;
+      }
+      
+      /* Post-Transition Metal */
+      .Aluminum, .Gallium, .Indium, .Tin, .Thallium, .Lead, .Bismuth, .Polonium, .Flerovium, .Nihonium, .Moscovium, .Livermorium {
+          background-color: #FFFAA9;
+          border:solid 1px #FFFAA9;
+      }
+  
+      /* Transition Metal */
+      .Scandium, .Titanium, .Vanadium, .Chromium, .Manganese, .Iron, .Cobalt, .Nickel, .Copper, .Zinc, .Yttrium, .Zirconium, .Niobium, .Molybdenum, .Technetium, .Ruthenium, .Rhodium, .Palladium, .Silver, .Cadmium, .Hafnium, .Tantalum, .Tungsten, .Rhenium, .Osmium, .Iridium, .Platinum, .Gold, .Mercury, .Rutherfordium, .Dubnium, .Seaborgium, .Bohrium, .Hassium, .Meitnerium, .Darmstadtium, .Roentgenium, .Copernicium {
+          background-color: #F0FEAB;
+          border:solid 1px #F0FEAB;
+      }
+  
+     /* Lanthanides */
+     .Lanthanum, .Cerium, .Praseodymium, .Neodymium, .Promethium, .Samarium, .Europium, .Gadolinium, .Terbium, .Dysprosium, .Holmium, .Erbium, .Thulium, .Ytterbium {
+        background-color: #DDFDAA;
+        border:solid 1px #DDFDAA;
+    }
+
+     /* Actinides */
+    .Actinium, .Thorium, .Protactinium, .Uranium, .Neptunium, .Plutonium, .Americium, .Curium, .Berkelium, .Californium, .Einsteinum, .Fermium, .Mendelevium, .Nobelum {
+        background-color: #CAFEA9;
+        border:solid 1px #DDFDAA;
+    }
+      
+
+  .droppable.dropped span {
+      line-height: 0;
+  }
+      .merged {
+          font-size:9px;
+      }
+  .popup {
+      display: block;
+  }
+  .popup .overlay {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vw;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+  }
+  .popup .popupcontent {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background-image:url('img/dragme.png');
+      z-index: 2;
+  }
+  .letsplay {
+      position: absolute;
+      top: 200px;
+      left: 50%;
+      width: 301px;
+      height: 103px;
+      margin-left: -150px;
+      background-image: url('img/letsplay.png');
+      cursor: pointer;
+  }
+  .letsplay:hover {
+      background-image: url('img/letsplay-hover.png');
+  }
+  #legend {
+      position: absolute;
+      bottom: 40px;
+      left:90px;
+      color: #F0FEAB;
+  }
+  .hide {
+      display: none;
+  }
