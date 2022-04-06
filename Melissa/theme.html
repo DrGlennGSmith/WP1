@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FINAL</title>
+        <link rel="stylesheet" href="css/final1.css"> <!-- Link to CSS Stylesheet -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For responsive webapge styling -->
+        <meta charset="utf-8">
+
+        <script type="text/javascript">
+            /*JS for the side nav */
+                /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+                function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                }
+
+                /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+                function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                }
+
+        </script>
+    </head>
+
+    <body>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="games.html">Board Games</a>
+            <a href="theme.html">Games by Theme</a>
+            <a href="mechanism.html">Games by Mechanism</a>
+            <a href="quiz.html">Take the Quiz</a>
+            <a href="feedback.html">Feedback</a>
+          </div>
+          
+          
+          <span onclick="openNav()"><img src="images/final/menu.png" style="height: 30px;"></span> <!-- Use three hortizontal lines to toggle open the sidenav -->
+          
+        <div id="main"> <!-- allows for the content to move when the side nav opens/closes -->
+            <div class="content">
+                <h1><img src="images/final/thinking.png" style="height: 100px; float: inline-start;"> Themes.</h1>
+                    <div class="row questions">
+                        <div class="col-4 col-s-6" style="text-align: center; background-color:#ec9c34; height: 350px;">
+                            <h2>Abstract Strategy</h2>
+                            <img src="images/final/heading.png" style="height: 100px;"> <!-- All game data from boardgamegeek.com -->
+                            <p>Azul</p>
+                            <p>Santorini</p>
+                                                    </div>
+                        <div class="col-4 col-s-6" style="text-align: center; background-color:#d4cc5c; height: 350px;">
+                            <h2>Card Games</h2>
+                            <img src="images/cards.png" style="height: 100px;">
+                            <p>Disney Villainous</p>
+                            <p>Everdell</p>
+                            <p>Wingspan</p>
+                        </div>
+                        <div class="col-4 col-s-6" style="text-align: center; background-color: #44b4bc; height: 350px;">
+                            <h2>City Building</h2>
+                            <img src="images/building.png" style="height: 100px;">
+                            <p>7 Wonders</p>
+                            <p>Everdell</p>
+                            <p>Kingdomino</p>
+                        </div>
+                        <div class="col-4 col-s-6" style="text-align: center; background-color: #fadc8e; height: 350px;">
+                            <h2>Fantasy</h2>
+                            <img src="images/fantasy.png" style="height: 100px;">
+                            <p>Disney Villainous</p>
+                            <p>Everdell</p>
+                            <p>Near and Far</p>
+                        </div>
+
+                    <div class="col-4 col-s-6" style="text-align: center; background-color: #89bd9a; height: 350px; align-content: center;">
+                        <h2>Maps</h2>
+                        <img src="images/maps.png" style="height: 100px;">
+                        <p>Horrified</p>
+                        <p>Parks</p>
+                        <p>Ticket to Ride</p>
+                                            </div>
+                    <div class="col-4 col-s-6" style="text-align: center; margin: auto; background-color: #d4cc5c; height: 350px;">
+                        <h2>Party Games</h2>
+                        <img src="images/party.png" style="height: 100px;">
+                        <p>Codenames</p>
+                        <p>Hues and Cues</p>
+                        <p>Just One</p>
+                        <p>Sushi Go Party!</p>
+                    </div>
+              
+              </div>
+                </div>
+            
+                <h3 style="font-family: 'Grand Hotel', cursive; text-align: center;">Copywrite 2021 | Melissa Kemm</h3>
+            
+            </div>
+
+    </body>
+</html>

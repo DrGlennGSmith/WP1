@@ -1,0 +1,197 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Candal&family=Grand+Hotel&family=Open+Sans&display=swap');
+
+@viewport { 
+    width: device-width;
+    zoom: 1;}
+
+
+h1 {
+    font-size: 4em;
+    color: #1c94ab;
+    text-shadow:black 1px 1px;
+    font-family: 'Candal', sans-serif;
+    margin-top: 0em;
+}
+
+h2 {font-family: 'Candal', sans-serif; }
+
+h3 {font-family: 'Grand Hotel', cursive; }
+
+p, label, button, a {font-family: 'Open Sans', sans-serif;}
+
+
+html { background-color: #fcf3e7;}
+
+
+/* Slider from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider */
+.slidecontainer {
+    width: 80%; 
+  }
+  
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #1c94ab;
+    cursor: pointer;
+  }
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+
+
+/* Style the form */
+#myForm {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 40px;
+  width: 80%;
+  min-width: 300px;
+}
+
+/* Style the input fields */
+input, select, option {
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+button {
+  background-color: #89bd9a;
+  padding: 5px;
+  border: none;
+  box-sizing: border-box;
+  color: white;
+  font-size: 1em;
+  width: 50%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.library {
+  width: 200px;
+}
+
+/* From https://www.w3schools.com/howto/howto_js_sidenav.asp*/
+/* The side navigation menu */
+    .sidenav {
+        height: 100%; /* 100% Full-height */
+        width: 0; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: #1c94ab; /* teal*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 60px; /* Place content 60px from the top */
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+      }
+      
+/* The navigation menu links */
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        transition: 0.3s;
+      }
+      
+/* When you mouse over the navigation links, change their color */
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+      
+/* Position and style the close button (top right corner) */
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+      #main {
+        transition: margin-left .5s;
+        padding: 20px;
+      }
+      
+
+/* Responsive Layouts */
+
+/*Responsive Grid-View from https://www.w3schools.com/css/css_rwd_grid.asp*/
+* { box-sizing: border-box; }
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+
+
+/*Padding so that the menus do not obscure any of the page content*/
+.content {
+    padding: 1.5em;
+    align-content: center;
+}
+
+/* For portrait view mobile phones: */
+[class*="col-"] { width: 100%;}
+  
+@media only screen and (min-width: 641px) {
+    /* For tablets or landscape view mobile phones: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+
+@media only screen and (min-width: 1080px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FINAL</title> <!-- inspired by boardgamemenu.com -->
+        <link rel="stylesheet" href="css/final1.css"> <!-- Link to CSS Stylesheet -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For responsive webapge styling -->
+        <meta charset="utf-8">
+
+        <script>
+            /*JS for the side nav - from https://www.w3schools.com/howto/howto_js_sidenav.asp*/
+                /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+                function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                }
+
+                /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+                function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                }
+
+        </script>
+    </head>
+
+    <body>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="games.html">Board Games</a>
+            <a href="theme.html">Games by Theme</a>
+            <a href="mechanism.html">Games by Mechanism</a>
+            <a href="quiz.html">Take the Quiz</a>
+            <a href="feedback.html">Feedback</a>
+          </div>
+          
+          <!-- Use any element to open the sidenav -->
+          <span onclick="openNav()"><img src="images/final/menu.png" style="height: 30px;"></span>
+          
+          <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+          <div id="main">
+            
+            <div class="content">
+            <h1><img src="images/final/heading.png" style="height: 100px; float: inline-start;"> The Game Night Helper App.</h1> <!-- This could be adapted to recommend educational games, but to allow for more varied outputs in the quiz, regular baord games were used -->
+                <div class="row questions">
+                    <div class="col-4 col-s-12" style="text-align: center; background-color: #89bd9a; height: 300px;">
+                        <img src="images/final/box.png" style="height: 100px;">
+                        <h2>Tired of playing the same games?</h2><p>There are so many new games in stores for you to try! <br>Click the <img src="images/final/menu.png" style="height: 12px;"> to browse by theme or mechanism.</p>
+                    </div>
+                    <div class="col-4 col-s-12" style="text-align: center; background-color: #ec9c34; height: 300px;">
+                        <img src="images/final/problem.png" style="height: 100px;">
+                        <h2>Scared of picking a lame game? </h2><p>No lame games here! <br>Click the <img src="images/final/menu.png" style="height: 12px;"> to browse all of our recommendations.</p>
+                    </div>
+                    <div class="col-4 col-s-12" style="text-align: center; background-color: #d4cc5c; height: 300px;">
+                        <img src="images/final/doubt.png" style="height: 100px;">
+                        <h2>Not sure where to start?</h2><p>Let us suggest something new to play! <br>Click the <img src="images/final/menu.png" style="height: 12px;"> to take our short quiz for a customized suggestion.</p>
+                    </div>
+              
+        </div></div>
+    <br><br><br>
+    <h3 style="font-family: 'Grand Hotel', cursive; text-align: center;">Copywrite 2021 | Melissa Kemm </h3>
+    
+    </div>
+
+    </body>
+</html>
