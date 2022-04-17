@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" type="text/css" href="css/styleLaurentWeek11.css">
+
+    <title>Inner Planets</title>
+
+    <body>
+    
+ /** Drop Zone Code **/
+<div id="dropZone">
+  <div
+    id="dropBox1"
+    ondrop="drop(event)"
+    ondragover="allowDrop(event)"
+  >
+ // Mercury Space **/
+    <p>Mercury</p>
+  </div>
+  <div
+    id="dropBox2"
+    ondrop="drop(event)"
+    ondragover="if (globalId  == 'venus') { allowDrop(event); } else {console.log(globalId + 'is not venus'); alert(globalId + 'is not venus');}"
+
+  >
+   <!-- // Venus Space **/     -->
+    <p>Venus</p>
+  </div>
+  <div
+    id="dropBox3"
+    ondrop="drop(event)"
+    ondragover="allowDrop(event)"
+      >
+   <!-- // Earth Space  -->
+    <p>Earth</p>
+  </div>
+  <div
+    id="dropBox4"
+    ondrop="drop(event)"
+    ondragover="allowDrop(event)"
+  >
+      
+    <!-- // Mars Space **/    -->
+    <p>Mars</p>
+  </div>
+</div>
+ 
+   /** Planet Drag Zone Code **/ 
+<div
+  id="planets"
+  ondrop="drop(event)"
+  ondragover="allowDrop(event)"
+>
+   /** Mercury Image **/ 
+  <img
+    id="mercury"
+    src="images/mercury.png"
+    draggable="true"
+    ondragstart="globalId = event.target.id; drag(event)"
+    width="80"
+  />
+    
+ /** Venus Image **/ 
+<img
+    id="venus"
+    src="images/venus.png"
+    draggable="true"
+    ondragstart="globalId = event.target.id; drag(event)"
+    width="150"
+  />
+    
+ /** Earth Image **/ 
+<img
+    id="earth"
+    src="images/earth.png"
+    draggable="true"
+    ondragstart="globalId = event.target.id; drag(event)"
+    width="120"
+  />
+    
+ /** Mars Image **/ 
+<img
+    id="mars"
+    src="images/mars.png"
+    draggable="true"
+    ondragstart="globalId = event.target.id; drag(event)"
+    width="100"
+  />
+</div>
+
+</body>
+
+     /** Drop Drag Functions  **/ 
+<script>
+
+var globalId;
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+function drag(event) {
+  event.dataTransfer.setData("text", event.target.id);
+}
+function drop(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text");
+  event.target.appendChild(document.getElementById(data));
+}
+
+
+</script>
+</head>
+</html>

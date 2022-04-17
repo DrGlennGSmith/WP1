@@ -1,0 +1,29 @@
+
+#dropZone,
+#planets {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  min-height: 150px;
+  margin-bottom: 20px;
+}
+#dropBox1,
+#dropBox2,
+#dropBox3,
+#dropBox4 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  border: 1px solid #aaaaaa;
+  padding: 1rem;
+}
+
+
+img {
+    height: 150px;
+    object-fit: cover;
+    width: 150px;
+  }

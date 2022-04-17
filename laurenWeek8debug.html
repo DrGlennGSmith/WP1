@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" type="text/css" href="style/style2.css">
+
+ <title>Cloud Types</title>
+ </head>
+
+ <script>
+// Set up a global array of clouds //         
+var cloud_names = ["cirrus", "cirrostratus", "cirrocumulus","altocumulus", "altostratus", "nimbostratus", "cumulus", "stratus", "cumulonimbus"];
+var lowcloud_names = ["cirrus", "cirrostratus", "cirrocumulus"];
+var middlecloud_names = ["altocumulus", "altostratus", "nimbostratus"];
+var highcloud_names = ["cumulus", "stratus", "cumulonimbus"];
+
+
+/*  prompt the user for a cloud name and see if its in the list. */
+
+function IsCloudInArray ()
+    {
+     
+    var newCloud = prompt("Enter a cloud name and we'll see if it's in our list of common clouds");
+    var foundIt = false;
+    for (i = 0; i < cloud_names.length; i = i + 1)
+        {
+        if (newCloud == lowcloud_names[i])
+          {foundIt = true;
+            alert("YAY! We found "+newCloud +"! This is a low cloud. Low clouds are found at less than 6,500 feet.");
+            }
+            else if (newCloud == middlecloud_names[i])
+          {foundIt = true;
+            alert("YAY! We found "+newCloud +"! This is a mid-level cloud. Mid-level clouds are found between 6,500-23,000 feet.");
+            }
+            else if (newCloud == highcloud_names[i])
+          {foundIt = true;
+            alert("YAY! We found "+newCloud +"! This is a high cloud. High level clouds are found at 16,500-45,000 feet.");
+            }
+            
+        }
+        if (foundIt == false)
+            {
+            alert("We did not find " + newCloud + ". Try again!");
+            cloud_names.push(newCloud)
+            }
+    }
+        
+        
+   
+</script>
+
+
+<body>
+        <div class = "background-image"><a href = #><img src = "clouds.jpg"></a></div>
+        <h1>Clouds </h1>
+<h2> Input a cloud name to find out what type of cloud it is </h2>
+<br>
+<button onclick="IsCloudInArray()"><h2> CLICK HERE TO: Input a cloud name to find out what type of cloud it is </h2></button>
+<br>
+<br>
+
+
+</body>
+</html>
