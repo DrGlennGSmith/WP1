@@ -29,9 +29,13 @@ if($_POST["submit"]) {
     <?=$thankYou ?>
 
     <!-- Got this code at:   https://htmldog.com/techniques/formtoemail/
-Got this code at:   -->
+Got this code at: I substituted FormToPhpToEmail.php for 
+contact.php in two places as the name of the file 
+, FormToPhpToEmail.php instead of contact.php, and 
+in the html portion, action="FormToPhpToEmail.php" intead of
+action="contact.php".   -->
 
-    <form method="post" action="contact.php">
+    <form method="post" action="FormToPhpToEmail.php">
         <label>Name:</label>
         <input name="sender">
 
