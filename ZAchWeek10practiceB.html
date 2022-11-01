@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Week 10 practice</title>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script type="text/javascript">
+// Our array of objects, userPersonas
+    var userPersonas = [" Aziz Ansari", " Benjamin Button", " Camilla Cabello", " Desmond Dekkar", ];
+// This function simply shows the arrray of userPersonas
+    function showUsers () {
+        document.getElementById("users").innerHTML = "Here are the names of people currently using clsss: " + userPersonas;
+    }
+
+// This is a constructor function which will create new Persona objects
+    function Persona(first, last, age, L1, L2) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.L1 = L1;
+        this.L2 = L2;
+// This is a method which will write the properties of each Persona
+    this.writePersona = function() {
+            var str = "";
+            str = str + this.firstName;
+            str = str + this.lastName;
+            str = str + this.age;
+            str = str + this.L1;
+            str = str + this.L2;
+        return str;
+        }
+    }
+/*    function match(Persona1,Persona2){
+
+        if persona1.L2 == persona2.L2 == //this is where we left off
+    }
+
+    function writePersonas() {
+    var str = "";
+            
+            
+    for (i = 0; i < userPersonas.length; i++) {
+        str = str + userPersonas[i].writePersona();
+        }
+
+    document.getElementById("objects").innerHTML = str;
+
+}*/
+//  var userPersonas = []
+/*function createPersonas() {
+    userPersonas [userPersonas.length] = new Persona("Aziz", "Ansari", 37, "English", "Italian");
+    userPersonas [userPersonas.length] = new Persona("Benjamin", "Button", 100, "English", "German");
+    userPersonas [userPersonas.length] = new Persona("Camilla", "Cabello", 27, "English", "German");
+    userPersonas [userPersonas.length] = new Persona("Desmond", "Dekkar", 67, "English", "Italian");
+   // userPersonas [userPersonas.length] = new Persona("", "", 37, "", "Italian");    
+    }
+*/
+    var Persona1 = new Persona("Aziz", "Ansari", 37, "English", "Italian");
+    var Persona2 = new Persona("Benjamin", "Button", 100, "English", "German");
+
+    function twoPersonas() {
+        document.getElementById("match").innerHTML = "Your best match is " + Persona2.firstName + " " +Persona2.lastName;
+    }
+
+    function addName() {
+        userPersonas[userPersonas.length] = prompt("Add your name to the list")
+    }
+</script>
+</head>
+<body>
+    <h1><em>Welcome to clsss!</em></h1>
+                        <h3>To begin connecting with other learners, please fill out the form below.</h3>
+                        <form action="#" id="clsssForm">
+                            <div>
+                                <label for="fname">First Name:</label><br><br>
+                                <input class="inputBox" type="text" id="fname" name="fname"><br><br>
+                                <label for="lname">Last Name:</label><br><br>
+                                <input class="inputBox" type="text" id="lname" name="lname"><br><br>
+                                <label for="age">Age:</label><br><br>
+                                <input class="inputBox" type="number" id="age" name="age"><br><br>
+                                <label for="L1">What is your native language?</label><br><br>
+                                <select id="myL1" class="inputBox" type="range">
+                                  <option>English</option>
+                                  <option>German</option>
+                                  <option>Italian</option>
+                                  <option>Japanese</option>
+                                  <option>Mandarin</option>
+                                  <option>Portuguese</option>
+                                  <option>Russian</option>
+                                  <option>Spanish</option>
+                                  <option>Tagalog</option>
+                                </select>
+                                <br><br>
+                                <label for="L2">What language are you learning?</label><br><br>
+                                <select id="myL2" class="inputBox" type="range">
+                                  <option>English</option>
+                                  <option>German</option>
+                                  <option>Italian</option>
+                                  <option>Japanese</option>
+                                  <option>Mandarin</option>
+                                  <option>Portuguese</option>
+                                  <option>Russian</option>
+                                  <option>Spanish</option>
+                                  <option>Tagalog</option>
+                                </select>
+                                <br><br>
+                                <input type="submit" value="Submit"><br><br>
+                                <button class="Submit" onclick="addName()">Join</button><br><br>
+                            </div><!---closes div which contains form elements-->
+                        </form><!---closes form-->
+<input type="button" value="Get Match" onclick="twoPersonas()">
+<input type="button" value="Show Users" onclick="showUsers()">
+<input type="button" value="See User Info" onclick="writePersona()">
+<p id="users"></p>
+<p id="objects"></p>
+<p id="match">Match will go here...</p>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,138 @@
+body {
+    background: #005AA7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+@font-face {
+    font-family: OriginTech;
+    src: url(fonts/OriginTech\ personal\ use.otf);  
+    }
+@font-face {
+    font-family: FutureLight ;
+    src: url(fonts/Future\ Light.ttf);
+    }
+@font-face {
+    font-family: Rajdhani;
+    src: url(fonts/Rajdhani-Light.ttf);
+    }
+@font-face {
+    font-family: RajdhaniBold ;
+    src: url(fonts/Rajdhani-Bold.ttf);
+    }
+
+@font-face {
+    font-family: RajdhaniMedium;
+    src: url(fonts/Rajdhani-Medium.ttf);
+}
+
+h1 {
+    font-family: OriginTech;
+    color: crimson;
+    font-size: 48pt;
+    }
+
+
+
+h2 {
+    font-family: FutureLight ;
+    color: crimson
+    font-size: 72pt;
+    }
+
+
+p {
+    padding: 40px;
+    font-family: RajdhaniMedium;
+    color:black;
+    font-size: 18pt;
+    }
+
+.navbar {
+    background-color: cornflowerblue;
+    overflow:hidden;
+    position:fixed;
+    bottom: 0;
+    }
+
+.navbar a {
+    float:left;
+    color:crimson;
+    text-align: center;
+	align-content: center;
+	padding: 14px 16px;
+	font-family: "RajdhaniBold";
+	font-size: 18px;
+}
+
+.navbar a:hover {
+	background-color:#FFFDE4;
+	color:maroon;
+}
+
+.image {
+    padding: 20px;
+    float:left;
+    width:300px;
+}
+
+.paragraph {
+    padding: 20px;
+}
+
+.WhiteText {
+    color: #fcdfe2;
+}
+
+a {
+    color:maroon;
+}
+
+a:hover {
+    color:crimson;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 175px;
+    margin-bottom: 400px;
+}
+
+.grid-2{
+    background-color: #fcdfe2;
+}
+
+.header {
+	width: 100%;
+	background-color: black;
+	color: white;
+	box-sizing: border-box;
+	z-index: 1;
+	padding: 20px;
+    position:fixed;
+    top:0;
+    width:100%;
+}
+
+.clear {
+    clear: both;
+}
+
+.assignments {
+    margin-bottom: 75px;
+}
+
+/*        */
+   /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */
+        /*        */

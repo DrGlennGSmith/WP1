@@ -35,7 +35,7 @@ contact.php in two places as the name of the file
 in the html portion, action="FormToPhpToEmail.php" intead of
 action="contact.php".   -->
 
-    <form method="post" action="FormToPhpToEmail.php">
+    <form method="post" action="https://www.imapbook.com/wp1/FormToPhpToEmail.php">
         <label>Name:</label>
         <input name="sender">
 
